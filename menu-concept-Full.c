@@ -184,8 +184,8 @@ int main ()
         {
 //Medicine
           int Medicine_choice;
-          char Medicine[7][30]{"Paracetamol","Ibuprofen","Cough Syrup","Antibiotic Pills","Vitamin C","Antacid Tablets","Allergy Relief"},continue_choice;
-          float Medicine_prices [7]{1.50,2.00,3.25,5.99,2.75,1.80,3.50};
+          char Medicine[7][30]={"Paracetamol","Ibuprofen","Cough Syrup","Antibiotic Pills","Vitamin C","Antacid Tablets","Allergy Relief"},continue_choice;
+          float Medicine_prices [7]={1.50,2.00,3.25,5.99,2.75,1.80,3.50};
         printf("Medicines:\n");
         printf("1. Paracetamol ........ $10.50\n");
         printf("2. Ibuprofen .......... $7.00\n");
