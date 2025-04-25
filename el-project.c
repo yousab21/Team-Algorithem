@@ -2,6 +2,7 @@
 // Yahia Khaled Elsafty || Section (39)
 // Mohamed Hamada AboSeda || Section (39)
 // Yassin Khaled Elnaggar || Section (39)
+// Omar Mohamed Ragaa || Section (22)
 
 #include <stdio.h>
 #include <unistd.h>
