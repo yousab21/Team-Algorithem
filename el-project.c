@@ -46,7 +46,7 @@ int main() {
 
     printf("Welcome to our small shop\n\n");
     int checker=1;
-    char idk ;
+    char other_section ;
   
     while(checker)
     {
@@ -59,7 +59,7 @@ int main() {
         scanf("%d",&section);
   
         if(section>4)
-          printf("\nworng input \"ya kosmok\" \nTry Again \n\n");
+          printf("\nworng input \nTry Again \n\n");
         else 
         run=0;
       }
@@ -228,8 +228,8 @@ int main() {
       }
        
       printf("Do you want to Buy from another section?(y/n)");
-      scanf(" %c",&idk);
-      if(idk=='y'||idk=='Y')
+      scanf(" %c",&other_section);
+      if(other_section=='y'||other_section=='Y')
       checker=1; 
       else
       checker=0;
