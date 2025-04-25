@@ -129,6 +129,7 @@ int main() {
     int coupon_index = -1;
     float discount_value = 0.0;
 
+    // coupons
     printf("do you have a discount coupon [y/n] :");
     scanf(" %c", &coupon_response);
     if (coupon_response == 'y' || coupon_response == 'Y') {
