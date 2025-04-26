@@ -10,10 +10,10 @@
 #include <string.h>
 
 // Struct of item
-typedef struct item {
+struct product {
     char name[30];
     float price;
-} data;
+};
 
 double full_price = 0;
 
@@ -39,10 +39,11 @@ int overnight_checker() {
 }
 
 int main() {
-    int items_number = 0, total_items = 0, counter = 1;
-    int total_shipping = 0;
+  struct product item[100]; 
+    int item_index = 0 , number_of_items=0;
+    int total_shipping = 0; //lesa el code bta3 mat3amal4
     bool run = true;
-    data item[100];  // Set a max of 100 items
+ 
 
     printf("Welcome to our small shop\n\n");
     int checker=1;
@@ -94,7 +95,11 @@ int main() {
               printf("worng input \nTry Again \n\n");
             else
               printf("You have selected %s\n",foods[food_choice-1]);
-  
+            strcpy(item[item_index].name, foods[food_choice-1]);
+            item[item_index].price = foods_prices[food_choice-1];
+            item_index++;
+            number_of_items++;
+
             full_price+=(foods_prices[food_choice-1]);
   
   //continue full-loop / mini-loop
@@ -137,7 +142,11 @@ int main() {
             printf("worng input \nTry Again \n\n");
           else
             printf("You have selected %s\n",drinks[drink_choice-1]);
-  
+            strcpy(item[item_index].name, drinks[drink_choice-1]);
+            item[item_index].price = drinks_prices[drink_choice-1];
+            item_index++;
+            number_of_items++;
+
             full_price+=(drinks_prices[drink_choice-1]);
   //continue full-loop / mini-loop
             printf("Do you want to continue? (y/n): ");
@@ -174,7 +183,11 @@ int main() {
               printf("worng input \nTry Again \n\n");
             else
               printf("You have selected %s\n",clothes[clothes_choice-1]); 
-  
+              strcpy(item[item_index].name, clothes[clothes_choice-1]);
+              item[item_index].price = clothes_prices[clothes_choice-1];
+              item_index++;
+              number_of_items++;
+
             full_price+=(clothes_prices[clothes_choice-1]);
   //continue full-loop / mini-loop
             printf("Do you want to continue? (y/n): ");
@@ -212,6 +225,10 @@ int main() {
               printf("worng input \nTry Again \n\n");
             else
               printf("You have selected %s\n",Medicine[Medicine_choice-1]); 
+              strcpy(item[item_index].name, Medicine[Medicine_choice-1]);
+              item[item_index].price = Medicine_prices[Medicine_choice-1];
+              item_index++;
+              number_of_items++;
   
             full_price+=(Medicine_prices[Medicine_choice-1]);
   //continue full-loop / mini-loop
@@ -265,8 +282,10 @@ int main() {
     
 
     printf("\n\t\tYour Receipt:\n\n");
-    for (int i = 0; i < items_number; i++) {
-        printf("%s\t\tPrice: %.2f$\n", item[i].name, item[i].price);
+    for (item_index=0;item_index<number_of_items;item_index++)
+    {
+        printf("%s\t\t",item[item_index].name);
+        printf("%.2f$\n",item[item_index].price);
     }
 
     printf("\nTotal shipping:\t\t+%d$\n", total_shipping);
