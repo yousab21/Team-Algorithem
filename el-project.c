@@ -3,6 +3,7 @@
 // Mohamed Hamada AboSeda || Section (39)
 // Yassin Khaled Elnaggar || Section (39)
 // Omar Mohamed Ragaa || Section (22)
+// Omar Mohamed Shehata || Section (22)
 
 #include <stdio.h>
 #include <unistd.h>
@@ -20,33 +21,50 @@ double full_price = 0;
     char coupons[4][10] = { "yousab", "yahia", "mohamed", "yassin" };
     float discount[4] = { 0.1, 0.2, 0.3, 0.4 };
 
-// Overnight shipping prompt
-int overnight_checker() {
-    char a;
-    while (1) {
-        printf("Overnight shipping? [y/n]: ");
-        scanf(" %c", &a);  // Note the space before %c to skip leftover newline
+// shipping prompt
+int Shipping()
+{
+  int shipping_method,run=1;
+  while(1)
+  {
+    
+    printf("\nStandard Shipping\t5-7 Days\t10$\tEnter1\nFast Shipping\t\t2-3 Days\t17$\tEnter 2\nOvernight Shipping\tNext Day\t25$\t Enter 3\nInsert the Number: ");
+    scanf("%d",&shipping_method);
+    fflush(stdin);
+    switch (shipping_method)
+    {
+    case 1:
+      full_price +=10;
+      return 1;
+    break;
+    
+    case 2:
+      full_price += 17;
+      return 2;
+    break;
 
-        if (a == 'y' || a == 'Y') {
-            full_price += 5;
-            return 1;
-        } else if (a == 'n' || a == 'N') {
-            return 0;
-        } else {
-            printf("Wrong input! Please try again.\n");
-        }
+    case 3:
+      full_price +=25;
+      return 3;
+    break;
+
+    default:
+      printf("wrong input\nPlease Try Again\n\n");
+      run=1;
+    break;
     }
+  }
+return 0;
 }
 
 int main() {
   struct product item[100]; 
     int item_index = 0 , number_of_items=0;
-    int total_shipping = 0; //lesa el code bta3 mat3amal4
     bool run = true;
  
 
     printf("Welcome to our small shop\n\n");
-    int checker=1;
+    bool checker=true;
     char other_section ;
   
     while(checker)
@@ -231,7 +249,7 @@ int main() {
               number_of_items++;
   
             full_price+=(Medicine_prices[Medicine_choice-1]);
-  //continue full-loop / mini-loop
+//continue full-loop / mini-loop
             printf("Do you want to continue? (y/n): ");
             scanf(" %c",&continue_choice);
             if(continue_choice=='y'||continue_choice=='Y')
@@ -243,6 +261,7 @@ int main() {
           break;
         
       }
+ // Ask if the user wants to continue
        
       printf("Do you want to Buy from another section?(y/n)");
       scanf(" %c",&other_section);
@@ -252,11 +271,11 @@ int main() {
       checker=0;
        
     }
-        // Ask if the user wants to continue
+  
         
 
-    // Overnight shipping option
-    bool overnight = overnight_checker();
+ //  shipping options
+    int shipping_method = Shipping();
 
     char coupon_response ,coupon_code[20];
     int coupon_index = -1;
@@ -265,20 +284,23 @@ int main() {
     // coupons
     printf("do you have a discount coupon [y/n] :");
     scanf(" %c", &coupon_response);
-    if (coupon_response == 'y' || coupon_response == 'Y') {
-      
+    if (coupon_response == 'y' || coupon_response == 'Y') 
+    {
         printf("Please enter your coupon code: ");
         scanf("%s", coupon_code);
-           for (coupon_index = 0; coupon_index < 4; coupon_index++) {
-            if (strcmp(coupons[coupon_index], coupon_code) == 0) {
-                discount_value = full_price * discount[coupon_index];
-                break;
-            }
+
+        for (coupon_index = 0; coupon_index < 4; coupon_index++)
+        {
+          if (strcmp(coupons[coupon_index], coupon_code) == 0) 
+          {
+            discount_value = full_price * discount[coupon_index];
+              break;
+          }
         }
     }
-    else {
-        printf("invalid copoun \n");
-    }
+    else 
+      printf("invalid copoun \n");
+    
     
 
     printf("\n\t\tYour Receipt:\n\n");
@@ -288,10 +310,15 @@ int main() {
         printf("%.2f$\n",item[item_index].price);
     }
 
-    printf("\nTotal shipping:\t\t+%d$\n", total_shipping);
-    if (overnight) {
-        printf("Overnight delivery:\t+5.00$\n");
-    }
+    printf("=====================\n");
+    if(shipping_method==1)
+      printf("Total shipping:         10.00$\n");
+    else if(shipping_method==2)
+      printf("Total shipping:         17.00$\n");
+    else if(shipping_method==3)
+      printf("Total shipping:         25.00$\n");
+
+
     printf("raw price:\t\t%.2lf$\n", full_price);
     printf("Discount:\t\t-%.2f$\n", discount_value);
     full_price -= discount_value;
