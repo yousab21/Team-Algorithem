@@ -73,6 +73,7 @@ float Medicine_prices[8] = { 0, 1.50, 2.00, 3.25, 5.99, 2.75, 1.80, 3.50 };
 
 char coupons[4][10] = { "yousab", "yahia", "mohamed", "yassin" };
 float discount[4] = { 0.1, 0.2, 0.3, 0.4 };
+float discount_value = 0.0;
 //---------------------------------------------------------------------------------------------------------
 double full_price = 0;
 int number_of_items = 0;
@@ -102,6 +103,33 @@ int Shipping() {
     }
     return 0;
 }
+//--------------------------------------------------------------------------------------------------------- 
+// coupon function
+void check_coupon() {
+    char coupon_response, coupon_code[20];
+    int coupon_index = -1;
+    
+    printf("do you have a discount coupon [y/n]: ");
+    scanf(" %c", &coupon_response);
+
+    // Checking for Coupons
+    if (coupon_response == 'y' || coupon_response == 'Y') { // Check for the Availability of a coupon.
+        printf("Please enter your coupon code: ");
+        scanf("%s", coupon_code);
+
+        for (coupon_index = 0; coupon_index < 4; coupon_index++) { // Goes into each coupon in the array for valid ones.
+            if (strcmp(coupons[coupon_index], coupon_code) == 0) {
+                discount_value = full_price * discount[coupon_index]; 
+                break;
+            }
+                else {
+                printf("invalid coupon\n");
+            }
+        }      
+    }   
+}
+//---------------------------------------------------------------------------------------------------------    
+
 
 int main() {
     struct product item[100];
@@ -265,36 +293,19 @@ int main() {
         checker = (other_section == 'y' || other_section == 'Y') ? true : false;
     }
 
-    int shipping_method = Shipping(); // get the value of the shipping method
+    
 
-    char coupon_response, coupon_code[20];
-    int coupon_index = -1;
-    float discount_value = 0.0;
 
-    printf("do you have a discount coupon [y/n]: ");
-    scanf(" %c", &coupon_response);
-
-    // Checking for Coupons
-    if (coupon_response == 'y' || coupon_response == 'Y') { // Check for the Availability of a coupon.
-        printf("Please enter your coupon code: ");
-        scanf("%s", coupon_code);
-
-        for (coupon_index = 0; coupon_index < 4; coupon_index++) { // Goes into each coupon in the array for valid ones.
-            if (strcmp(coupons[coupon_index], coupon_code) == 0) {
-                discount_value = full_price * discount[coupon_index]; 
-                break;
-            }
-        }
-    } else {
-        printf("invalid coupon\n");
-    }
-
-                                //             ###     Printing Out the Receipt    ###             //
+                                
     if(number_of_items == 0) {
         printf("we are sorry no product intrested you\n");
         return 0;
     }  
     else{
+        int shipping_method = Shipping(); // get the value of the shipping method
+        void check_coupon(); // check for the coupon
+        
+        //             ###     Printing Out the Receipt    ###             //
         printf("\n\t\tYour Receipt:\n\n");
         for (item_index = 0; item_index < number_of_items; item_index++) {
             printf("%s\t\t%.2f$\n", item[item_index].name, item[item_index].price);
