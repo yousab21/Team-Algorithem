@@ -77,6 +77,7 @@ float discount_value = 0.0;
 //---------------------------------------------------------------------------------------------------------
 double full_price = 0;
 int number_of_items = 0;
+
 // shipping fnction
 int Shipping() {
     int shipping_method, run = 1;
@@ -104,6 +105,8 @@ int Shipping() {
     return 0;
 }
 //--------------------------------------------------------------------------------------------------------- 
+
+
 // coupon function
 void check_coupon() {
     char coupon_response, coupon_code[20];
@@ -304,7 +307,7 @@ int main() {
     else{
         int shipping_method = Shipping(); // get the value of the shipping method
         void check_coupon(); // check for the coupon
-        
+
         //             ###     Printing Out the Receipt    ###             //
         printf("\n\t\tYour Receipt:\n\n");
         for (item_index = 0; item_index < number_of_items; item_index++) {
