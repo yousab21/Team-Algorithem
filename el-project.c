@@ -82,7 +82,7 @@ int number_of_items = 0;
 int Shipping() {
     int shipping_method, run = 1;
     while (1) {
-        printf("\n1. Standard Shipping\t5-7 Days\t10$\n2. Fast Shipping\t\t2-3 Days\t17$\n3. Overnight Shipping\tNext Day\t25$\nchoose shipping option: "); // All Shipping choices
+        printf("\n1. Standard Shipping\t5-7 Days\t10$\n2. Fast Shipping\t2-3 Days\t17$\n3. Overnight Shipping\tNext Day\t25$\nchoose shipping option: "); // All Shipping choices
         scanf("%d", &shipping_method); // Receives the shipping option chose by the user.
         
         // Choosing The shipping method by the user.
@@ -169,15 +169,18 @@ int main() {
                         printf("%d. %s ............... $%.2f\n", i, foods[i-1], foods_prices[i-1]);
                     }
                 while (run) {
+
+                    food_choice=0;
                     printf("Enter the number of the food you want to buy: ");
                     scanf("%d", &food_choice);
+                    fflush(stdin);
 
                     if(food_choice == 10) {
                         printf("Exiting the food section.\n");
                         run = 0;
                         break;
                     }
-                    else if (food_choice < 11 && food_choice > 1) {
+                    else if (food_choice < 11 && food_choice >= 1) {
                         printf("You have selected %s\n", foods[food_choice - 1]);
                         // This part adds chosen items to the Cart
                         strcpy(item[item_index].name, foods[food_choice - 1]);
@@ -203,15 +206,17 @@ int main() {
                 }
                 while (run) {
                     
+                    drink_choice=0;
                     printf("Enter the number of the drink you want to buy: ");
                     scanf("%d", &drink_choice);
+                    fflush(stdin);
 
                     if(drink_choice == 11) {
                         printf("Exiting the drinks section.\n");
                         run = 0;
                         break;
                     }
-                    else if (drink_choice < 11 && drink_choice > 1) {
+                    else if (drink_choice < 11 && drink_choice >= 1) {
                         printf("You have selected %s\n", drinks[drink_choice - 1]);
                         strcpy(item[item_index].name, drinks[drink_choice - 1]);
                         item[item_index].price = drinks_prices[drink_choice - 1];
@@ -237,15 +242,17 @@ int main() {
                 }
                 while (run) {
 
+                    clothes_choice=0;
                     printf("Enter the number of the clothes you want to buy: ");
                     scanf("%d", &clothes_choice);
+                    fflush(stdin);
 
                     if(clothes_choice == 8) {
                         printf("Exiting the clothes section.\n");
                         run = 0;
                         break;
                     }
-                    else if (clothes_choice < 8 && clothes_choice > 1){
+                    else if (clothes_choice < 8 && clothes_choice >= 1){
                         printf("You have selected %s\n", clothes[clothes_choice - 1]);
                         strcpy(item[item_index].name, clothes[clothes_choice - 1]);
                         item[item_index].price = clothes_prices[clothes_choice - 1];
@@ -271,16 +278,18 @@ int main() {
                 }
                 
                 while (run) {
-                                       
+                    
+                    Medicine_choice=0;
                     printf("Enter the number of the Medicine you want to buy: ");
                     scanf("%d", &Medicine_choice);
+                    fflush(stdin);
 
                     if(Medicine_choice == 8) {
                         printf("Exiting the medicine section.\n");
                         run = 0;
                         break;
                     }
-                    else if (Medicine_choice < 8 && Medicine_choice > 1) {
+                    else if (Medicine_choice < 8 && Medicine_choice >= 1) {
                         printf("You have selected %s\n", Medicine[Medicine_choice - 1]);
                         strcpy(item[item_index].name, Medicine[Medicine_choice - 1]);
                         item[item_index].price = Medicine_prices[Medicine_choice - 1];
