@@ -111,7 +111,7 @@ int Shipping() {
 void check_coupon() {
     char coupon_response, coupon_code[20];
     int coupon_index = -1;
-    
+    int valid_coupon = 0; 
     printf("do you have a discount coupon [y/n]: ");
     scanf(" %c", &coupon_response);
 
@@ -123,13 +123,15 @@ void check_coupon() {
         for (coupon_index = 0; coupon_index < 4; coupon_index++) { // Goes into each coupon in the array for valid ones.
             if (strcmp(coupons[coupon_index], coupon_code) == 0) {
                 discount_value = full_price * discount[coupon_index]; 
+                valid_coupon = 1;
                 break;
             }
-                else {
-                printf("invalid coupon\n");
-            }
+        }
+    if (valid_coupon != 1) {
+            printf("Invalid coupon code.\n"); 
         }      
-    }   
+       
+}
 }
 //---------------------------------------------------------------------------------------------------------    
 
@@ -192,7 +194,7 @@ int main() {
                     }
                     else{
                         printf("wrong input \nTry Again \n\n");
-                        run = 0;
+                        continue;
                     }
                     //---------------------------------------------------------
                 }
@@ -226,7 +228,7 @@ int main() {
                     }
                     else{
                         printf("wrong input \nTry Again \n\n");
-                        run = 0;
+                        continue;
                     }
                         
                     //---------------------------------------------------------
@@ -262,7 +264,7 @@ int main() {
                     }
                     else{
                         printf("wrong input \nTry Again \n\n");
-                        run = 0;
+                        continue;
                     }
                     //------------------------------------------------------------
                     
@@ -299,7 +301,7 @@ int main() {
                     }
                     else{
                         printf("wrong input \nTry Again \n\n");
-                        run = 0;
+                        continue;
                     }
                     //-------------------------------------------------------------
                     
