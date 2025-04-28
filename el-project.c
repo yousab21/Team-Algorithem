@@ -306,7 +306,7 @@ int main() {
     }  
     else{
         int shipping_method = Shipping(); // get the value of the shipping method
-        void check_coupon(); // check for the coupon
+        check_coupon(); // check for the coupon
 
         //             ###     Printing Out the Receipt    ###             //
         printf("\n\t\tYour Receipt:\n\n");
