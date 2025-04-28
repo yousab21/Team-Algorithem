@@ -75,6 +75,7 @@ char coupons[4][10] = { "yousab", "yahia", "mohamed", "yassin" };
 float discount[4] = { 0.1, 0.2, 0.3, 0.4 };
 //---------------------------------------------------------------------------------------------------------
 double full_price = 0;
+int number_of_items = 0;
 // shipping fnction
 int Shipping() {
     int shipping_method, run = 1;
@@ -104,7 +105,7 @@ int Shipping() {
 
 int main() {
     struct product item[100];
-    int item_index = 0, number_of_items = 0;
+    int item_index = 0;
     bool run = true;
     bool checker = true;
     char other_section;
@@ -289,29 +290,35 @@ int main() {
     }
 
                                 //             ###     Printing Out the Receipt    ###             //
-    printf("\n\t\tYour Receipt:\n\n");
-    for (item_index = 0; item_index < number_of_items; item_index++) {
-        printf("%s\t\t%.2f$\n", item[item_index].name, item[item_index].price);
-    }
+    if(number_of_items == 0) {
+        printf("we are sorry no product intrested you\n");
+        return 0;
+    }  
+    else{
+        printf("\n\t\tYour Receipt:\n\n");
+        for (item_index = 0; item_index < number_of_items; item_index++) {
+            printf("%s\t\t%.2f$\n", item[item_index].name, item[item_index].price);
+        }
 
-    printf("=====================\n");
+        printf("=====================\n");
 
-    // Determining Shipping Cost at the end of the receipt.
-    if (shipping_method == 1)
-        printf("Total shipping:         10.00$\n");
-    else if (shipping_method == 2)
-        printf("Total shipping:         17.00$\n");
-    else if (shipping_method == 3)
-        printf("Total shipping:         25.00$\n");
+        // Determining Shipping Cost at the end of the receipt.
+        if (shipping_method == 1)
+            printf("Total shipping:         10.00$\n");
+        else if (shipping_method == 2)
+            printf("Total shipping:         17.00$\n");
+        else if (shipping_method == 3)
+            printf("Total shipping:         25.00$\n");
 
-    // Pricing
-    printf("raw price:\t\t%.2lf$\n", full_price);
-    printf("Discount:\t\t-%.2f$\n", discount_value);
+        // Pricing
+        printf("raw price:\t\t%.2lf$\n", full_price);
+        printf("Discount:\t\t-%.2f$\n", discount_value);
     
-    full_price -= discount_value;
-    printf("Final price:\t\t%.2lf$\n", full_price);
-    //------------------------------------------------
-    printf("\nThanks For Buying From Us!\nSee you soon :)\n");
+        full_price -= discount_value;
+        printf("Final price:\t\t%.2lf$\n", full_price);
+        //------------------------------------------------
+        printf("\nThanks For Buying From Us!\nSee you soon :)\n");
 
     return 0;
+}
 }
