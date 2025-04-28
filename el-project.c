@@ -16,7 +16,7 @@ struct product {
 //database for our shop
 int food_choice;
 char foods[10][30] = {
-    "exit               ",
+    "Bananas (1kg)      ",
     "Rice    (1kg)      ",
     "Bread  (loaf)      ",
     "Eggs  (dozen)      ",
@@ -25,13 +25,13 @@ char foods[10][30] = {
     "Butter (250g)      ",
     "Chicken (1kg)      ",
     "Apples  (1kg)      ",
-    "Bananas (1kg)      "
+    "exit               "
 };
-float foods_prices[10] = { 0 ,1.20, 0.99, 2.50, 1.30, 2.75, 2.10, 6.50, 1.80, 1.10 };
+float foods_prices[10] = { 1.20, 0.99, 2.50, 1.30, 2.75, 2.10, 6.50, 1.80, 1.10, 0 };
 
 int drink_choice;
 char drinks[11][30] = {
-    "exit               ",
+    "Yogurt Drink       ",
     "Water              ",
     "Cola               ",
     "Juice              ",
@@ -41,35 +41,35 @@ char drinks[11][30] = {
     "Milkshake          ",
     "smoothie           ",
     "Iced Tea           ",
-    "Yogurt Drink       "
+    "exit               "
 };
-float drinks_prices[11] = { 0, 0.80, 1.50, 2.00, 2.25, 3.99, 2.20, 1.75, 1.10, 1.30, 1.60 };
+float drinks_prices[11] = { 0.80, 1.50, 2.00, 2.25, 3.99, 2.20, 1.75, 1.10, 1.30, 1.60, 0 };
 
 int clothes_choice;
 char clothes[8][30] = {
-    "exit               ",
+    "Cap                ",
     "T-Shirt            ",
     "Jeans              ",
     "Jacket             ",
     "Hoodie             ",
     "Shorts             ",
     "Sneakers           ",
-    "Cap                "
+    "exit               "
 };
-float clothes_prices[8] = { 0, 9.99, 24.99, 39.99, 29.99, 14.50, 49.99, 7.99 };
+float clothes_prices[8] = { 9.99, 24.99, 39.99, 29.99, 14.50, 49.99, 7.99, 0 };
 
 int Medicine_choice;
 char Medicine[8][30] = {
-    "exit               ",
+    "Allergy Relief     ",
     "Paracetamol        ",
     "Ibuprofen          ",
     "Cough Syrup        ",
     "Antibiotic Pills   ",
     "Vitamin C          ",
     "Antacid Tablets    ",
-    "Allergy Relief     "
+    "exit               "
 };
-float Medicine_prices[8] = { 0, 1.50, 2.00, 3.25, 5.99, 2.75, 1.80, 3.50 };
+float Medicine_prices[8] = { 1.50, 2.00, 3.25, 5.99, 2.75, 1.80, 3.50, 0 };
 
 char coupons[4][10] = { "yousab", "yahia", "mohamed", "yassin" };
 float discount[4] = { 0.1, 0.2, 0.3, 0.4 };
@@ -153,7 +153,7 @@ int main() {
             printf("For Food Enter \"1\" \nFor Drinks Enter \"2\" \nFor Clothes Enter \"3\" \nFor Medicine Enter \"4\" \n");
             scanf("%d", &section);
 
-            if (section > 4)
+            if (section < 1 || section > 4)
                 printf("\nwrong input \nTry Again \n\n");
             else
                 run = 0;
@@ -172,15 +172,12 @@ int main() {
                     printf("Enter the number of the food you want to buy: ");
                     scanf("%d", &food_choice);
 
-                    if(food_choice == 1) {
+                    if(food_choice == 10) {
                         printf("Exiting the food section.\n");
                         run = 0;
                         break;
                     }
-                    else if (food_choice > 11|| food_choice < 1) {
-                        printf("wrong input \nTry Again \n\n");
-                    }
-                    else
+                    else if (food_choice < 11 && food_choice > 1) {
                         printf("You have selected %s\n", foods[food_choice - 1]);
                         // This part adds chosen items to the Cart
                         strcpy(item[item_index].name, foods[food_choice - 1]);
@@ -189,7 +186,12 @@ int main() {
                         number_of_items++;
                         full_price += foods_prices[food_choice - 1];
 
-
+                    }
+                    else{
+                        printf("wrong input \nTry Again \n\n");
+                        run = 0;
+                    }
+                    //---------------------------------------------------------
                 }
                 break;
 
@@ -204,22 +206,24 @@ int main() {
                     printf("Enter the number of the drink you want to buy: ");
                     scanf("%d", &drink_choice);
 
-                    if(drink_choice == 1) {
+                    if(drink_choice == 11) {
                         printf("Exiting the drinks section.\n");
                         run = 0;
                         break;
                     }
-                    else if (drink_choice > 11 || drink_choice < 1) {
-                        printf("wrong input \nTry Again \n\n");
-                    }
-                    else
+                    else if (drink_choice < 11 && drink_choice > 1) {
                         printf("You have selected %s\n", drinks[drink_choice - 1]);
                         strcpy(item[item_index].name, drinks[drink_choice - 1]);
                         item[item_index].price = drinks_prices[drink_choice - 1];
                         item_index++;
                         number_of_items++;
                         full_price += drinks_prices[drink_choice - 1];
-                    
+                    }
+                    else{
+                        printf("wrong input \nTry Again \n\n");
+                        run = 0;
+                    }
+                        
                     //---------------------------------------------------------
                     
                 }
@@ -236,21 +240,23 @@ int main() {
                     printf("Enter the number of the clothes you want to buy: ");
                     scanf("%d", &clothes_choice);
 
-                    if(clothes_choice == 1) {
+                    if(clothes_choice == 8) {
                         printf("Exiting the clothes section.\n");
                         run = 0;
                         break;
                     }
-                    else if (clothes_choice > 8 || clothes_choice < 1){
-                        printf("wrong input \nTry Again \n\n");
-                    }
-                    else
+                    else if (clothes_choice < 8 && clothes_choice > 1){
                         printf("You have selected %s\n", clothes[clothes_choice - 1]);
                         strcpy(item[item_index].name, clothes[clothes_choice - 1]);
                         item[item_index].price = clothes_prices[clothes_choice - 1];
                         item_index++;
                         number_of_items++;
                         full_price += clothes_prices[clothes_choice - 1];
+                    }
+                    else{
+                        printf("wrong input \nTry Again \n\n");
+                        run = 0;
+                    }
                     //------------------------------------------------------------
                     
                     
@@ -269,21 +275,23 @@ int main() {
                     printf("Enter the number of the Medicine you want to buy: ");
                     scanf("%d", &Medicine_choice);
 
-                    if(Medicine_choice == 1) {
+                    if(Medicine_choice == 8) {
                         printf("Exiting the medicine section.\n");
                         run = 0;
                         break;
                     }
-                    else if (Medicine_choice > 8 || Medicine_choice < 1) {
-                        printf("wrong input \nTry Again \n\n");
-                    }
-                    else
+                    else if (Medicine_choice < 8 && Medicine_choice > 1) {
                         printf("You have selected %s\n", Medicine[Medicine_choice - 1]);
                         strcpy(item[item_index].name, Medicine[Medicine_choice - 1]);
                         item[item_index].price = Medicine_prices[Medicine_choice - 1];
                         item_index++;
                         number_of_items++;
                         full_price += Medicine_prices[Medicine_choice - 1];
+                    }
+                    else{
+                        printf("wrong input \nTry Again \n\n");
+                        run = 0;
+                    }
                     //-------------------------------------------------------------
                     
                 
@@ -301,7 +309,7 @@ int main() {
 
                                 
     if(number_of_items == 0) {
-        printf("we are sorry no product intrested you\n");
+        printf("we are sorry no product interested you\n");
         return 0;
     }  
     else{
