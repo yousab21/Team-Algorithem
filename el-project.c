@@ -71,7 +71,7 @@ char Medicine[8][30] = {
 };
 float Medicine_prices[8] = { 1.50, 2.00, 3.25, 5.99, 2.75, 1.80, 3.50, 0 };
 
-char coupons[4][10] = { "yousab", "yahia", "mohamed", "yassin" };
+char coupons[4][10] = { "yousab", "yahia", "omar", "yassin" };
 float discount[4] = { 0.1, 0.2, 0.3, 0.4 };
 float discount_value = 0.0;
 //---------------------------------------------------------------------------------------------------------
@@ -312,13 +312,17 @@ int main() {
 
         printf("Do you want to Buy from another section? (y/n): ");
         scanf(" %c", &other_section);
-        checker = (other_section == 'y' || other_section == 'Y') ? true : false;
-    }
-
-    
-
-
-                                
+        if(other_section == 'n' || other_section == 'N') {
+            checker = false;
+        }
+        else if (other_section == 'y' || other_section == 'Y') {
+            checker = true;
+        }
+        else {
+            printf("wrong input \nTry Again \n\n");
+            continue;
+        }
+                   
     if(number_of_items == 0) {
         printf("we are sorry no product interested you\n");
         return 0;
@@ -353,5 +357,6 @@ int main() {
         printf("\nThanks For Buying From Us!\nSee you soon :)\n");
 
     return 0;
+}
 }
 }
