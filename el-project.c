@@ -145,7 +145,8 @@ int main() {
 
     printf("Welcome to our small shop\n\n");
 
-    while (checker) {
+    while (checker) 
+    {
         int section, run = 1;
 
         printf("Choose the section you want: \n\n");
@@ -322,7 +323,8 @@ int main() {
             printf("wrong input \nTry Again \n\n");
             continue;
         }
-                   
+    }
+                 
     if(number_of_items == 0) {
         printf("we are sorry no product had interested you\n");
         return 0;
@@ -359,4 +361,4 @@ int main() {
     return 0;
 }
 }
-}
+
