@@ -16,7 +16,7 @@ struct product {
 
 //database for our shop
 int food_choice;
-char foods[10][30] = {
+char foods[9][30] = {
     "Bananas (1kg)      ",
     "Rice    (1kg)      ",
     "Bread  (loaf)      ",
@@ -27,7 +27,7 @@ char foods[10][30] = {
     "Chicken (1kg)      ",
     "Apples  (1kg)      ",
 };
-float foods_prices[10] = { 1.20, 0.99, 2.50, 1.30, 2.75, 2.10, 6.50, 1.80, 1.10, 0 };
+float foods_prices[9] = { 1.20, 0.99, 2.50, 1.30, 2.75, 2.10, 6.50, 1.80, 1.10 };
 
 int drink_choice;
 char drinks[10][30] = {
@@ -45,7 +45,7 @@ char drinks[10][30] = {
 float drinks_prices[10] = { 0.80, 1.50, 2.00, 2.25, 3.99, 2.20, 1.75, 1.10, 1.30, 1.60 };
 
 int clothes_choice;
-char clothes[8][30] = {
+char clothes[7][30] = {
     "Cap                ",
     "T-Shirt            ",
     "Jeans              ",
@@ -54,10 +54,10 @@ char clothes[8][30] = {
     "Shorts             ",
     "Sneakers           ",
 };
-float clothes_prices[8] = { 9.99, 24.99, 39.99, 29.99, 14.50, 49.99, 7.99, 0 };
+float clothes_prices[7] = { 9.99, 24.99, 39.99, 29.99, 14.50, 49.99, 7.99 };
 
 int Medicine_choice;
-char Medicine[8][30] = {
+char Medicine[7][30] = {
     "Allergy Relief     ",
     "Paracetamol        ",
     "Ibuprofen          ",
@@ -66,7 +66,7 @@ char Medicine[8][30] = {
     "Vitamin C          ",
     "Antacid Tablets    ",
 };
-float Medicine_prices[8] = { 1.50, 2.00, 3.25, 5.99, 2.75, 1.80, 3.50, 0 };
+float Medicine_prices[7] = { 1.50, 2.00, 3.25, 5.99, 2.75, 1.80, 3.50 };
 
 char coupons[4][10] = { "yousab", "yahia", "omar", "yassin" };
 float discount[4] = { 0.1, 0.2, 0.3, 0.4 };
@@ -198,45 +198,40 @@ int main() {
         switch (section) {
             case 1: // FOOD SECTION
                 run = 1;
-
                 printf("Foods:\n");
-                    for(int i = 1; i <= 10; i++) {
+                    for(int i = 1; i <= 9; i++) {
                         printf("%d. %s ............... $%.2f\n", i, foods[i-1], foods_prices[i-1]);
                     }
                 while (run) {
-
-                    food_choice=0;
-                    printf("Enter the number of the food you want to buy: ");
+                    food_choice = 0;
+                    printf("Enter the number of the food you want to buy (Enter 0 to exit): ");
                     scanf("%d", &food_choice);
                     fflush(stdin);
-
-                    if(food_choice == 10) {
+                
+                    if (food_choice == 0) {  // Exit when user enters 0
                         printf("Exiting the food section.\n");
                         run = 0;
                         break;
                     }
-                    else if (food_choice < 11 && food_choice >= 1) {
+                    else if (food_choice >= 1 && food_choice <= 9) { // Valid choices
                         printf("You have selected %s\n", foods[food_choice - 1]);
-                        // This part adds chosen items to the Cart
                         strcpy(item[item_index].name, foods[food_choice - 1]);
                         item[item_index].price = foods_prices[food_choice - 1];
                         item_index++;
                         number_of_items++;
                         full_price += foods_prices[food_choice - 1];
-
                     }
-                    else{
+                    else {
                         printf("wrong input \nTry Again \n\n");
                         continue;
                     }
-                    //---------------------------------------------------------
                 }
                 break;
 
             case 2: // DRINKS SECTION
                 run = 1;
                 printf("\nDrinks:\n");
-                for(int i = 1; i <= 11; i++) {
+                for(int i = 1; i <= 10; i++) {
                     printf("%d. %s ............... $%.2f\n", i, drinks[i-1], drinks_prices[i-1]);
                 }
                 while (run) {
@@ -268,22 +263,21 @@ int main() {
             case 3: // CLOTHES SECTION
                 run = 1;
                 printf("Clothes:\n");
-                for(int i = 1; i <= 8; i++) {
+                for(int i = 1; i <= 7; i++) {
                     printf("%d. %s ............... $%.2f\n", i, clothes[i-1], clothes_prices[i-1]);
                 }
                 while (run) {
-
-                    clothes_choice=0;
-                    printf("Enter the number of the clothes you want to buy: ");
+                    clothes_choice = 0;
+                    printf("Enter the number of the clothes you want to buy (Enter 0 to exit): ");
                     scanf("%d", &clothes_choice);
                     fflush(stdin);
-
-                    if(clothes_choice == 8) {
+                
+                    if (clothes_choice == 0) {  // Exit when user enters 0
                         printf("Exiting the clothes section.\n");
                         run = 0;
                         break;
                     }
-                    else if (clothes_choice < 8 && clothes_choice >= 1){
+                    else if (clothes_choice >= 1 && clothes_choice <= 7) { // Valid choices
                         printf("You have selected %s\n", clothes[clothes_choice - 1]);
                         strcpy(item[item_index].name, clothes[clothes_choice - 1]);
                         item[item_index].price = clothes_prices[clothes_choice - 1];
@@ -291,13 +285,10 @@ int main() {
                         number_of_items++;
                         full_price += clothes_prices[clothes_choice - 1];
                     }
-                    else{
+                    else {
                         printf("wrong input \nTry Again \n\n");
                         continue;
                     }
-                    //------------------------------------------------------------
-                    
-                    
                 }
                 break;
 
@@ -309,18 +300,17 @@ int main() {
                 }
                 
                 while (run) {
-                    
-                    Medicine_choice=0;
-                    printf("Enter the number of the Medicine you want to buy: ");
+                    Medicine_choice = 0;
+                    printf("Enter the number of the Medicine you want to buy (Enter 0 to exit): ");
                     scanf("%d", &Medicine_choice);
                     fflush(stdin);
-
-                    if(Medicine_choice == 8) {
+                
+                    if (Medicine_choice == 0) {  // Exit when user enters 0
                         printf("Exiting the medicine section.\n");
                         run = 0;
                         break;
                     }
-                    else if (Medicine_choice < 8 && Medicine_choice >= 1) {
+                    else if (Medicine_choice >= 1 && Medicine_choice <= 7) { // Valid choices
                         printf("You have selected %s\n", Medicine[Medicine_choice - 1]);
                         strcpy(item[item_index].name, Medicine[Medicine_choice - 1]);
                         item[item_index].price = Medicine_prices[Medicine_choice - 1];
@@ -328,13 +318,10 @@ int main() {
                         number_of_items++;
                         full_price += Medicine_prices[Medicine_choice - 1];
                     }
-                    else{
+                    else {
                         printf("wrong input \nTry Again \n\n");
                         continue;
                     }
-                    //-------------------------------------------------------------
-                    
-                
                 }
                 break;
         }
