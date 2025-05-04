@@ -324,7 +324,7 @@ int main() {
         }
                    
     if(number_of_items == 0) {
-        printf("we are sorry no product interested you\n");
+        printf("we are sorry no product had interested you\n");
         return 0;
     }  
     else{
