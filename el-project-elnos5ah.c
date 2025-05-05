@@ -132,7 +132,7 @@ void check_coupon() {
 }
 //---------------------------------------------------------------------------------------------------------    
 
-void simulatePayment(float total) {  // Choosing out the payment method
+int simulatePayment(float total) {  // Choosing out the payment method
 
     int paymentMethod;
     float paidAmount;
@@ -141,7 +141,9 @@ void simulatePayment(float total) {  // Choosing out the payment method
     printf("Select payment method:\n");
     printf("1. Cash\n");
     printf("2. Credit Card\n");
-    printf("Choice: ");
+    printf("3. Vodafone Cash \\ Fawary\n");
+    printf("-----------------------------");
+    printf("\n\nChoice: ");
     scanf("%d", &paymentMethod);
 
     switch (paymentMethod) {
@@ -162,9 +164,16 @@ void simulatePayment(float total) {  // Choosing out the payment method
             printf("=========================================\n");
 
             break;
+        case 3:
+            printf("\n=========================================");
+            printf("\nPaying via digital services %.2f...\n",total);
+            printf("\t\tPayment Succefully Proccesed!\n");
+            printf("=========================================\n");
+            break;
         default:
             printf("Invalid choice. Try again.\n");
             simulatePayment(total);
+        return paymentMethod;
     }
 }
 
@@ -339,11 +348,10 @@ int main() {
             continue;
         }
                    
-    if(number_of_items == 0) {
+    if (number_of_items == 0) {
         printf("we are sorry no product interested you\n");
         return 0;
-    }  
-    else{
+    } else {
         int shipping_method = Shipping(); // get the value of the shipping method
         check_coupon(); // check for the coupon
         simulatePayment(full_price);
@@ -365,10 +373,19 @@ int main() {
         else if (shipping_method == 3)
             printf("Total shipping:         25.00$\n");
 
+        // Payment Method
+        if (simulatePayment == 1) {
+            printf("Payment Method: Cash\n");
+        } else if (simulatePayment == 2) {
+            printf("Pyament Method: Credit Card\n");
+        } else {
+            printf("Payment Method: Digital Services\n");
+        }
+        //------------------------------------------------
+
         // Pricing
         printf("raw price:\t\t%.2lf$\n", full_price);
         printf("Discount:\t\t-%.2f$\n", discount_value);
-    
         full_price -= discount_value;
         printf("Final price:\t\t%.2lf$\n", full_price);
         //------------------------------------------------
