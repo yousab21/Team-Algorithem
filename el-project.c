@@ -14,8 +14,8 @@ struct product {
     float price;
 };
 
-//database for our shop
-int food_choice;
+//products database for our shop
+int food_choice;  // FOOD
 char foods[9][30] = {
     "Bananas (1kg)      ",
     "Rice    (1kg)      ",
@@ -29,7 +29,7 @@ char foods[9][30] = {
 };
 float foods_prices[9] = { 1.20, 0.99, 2.50, 1.30, 2.75, 2.10, 6.50, 1.80, 1.10 };
 
-int drink_choice;
+int drink_choice; // DRINKS
 char drinks[10][30] = {
     "Yogurt Drink       ",
     "Water              ",
@@ -44,7 +44,7 @@ char drinks[10][30] = {
 };
 float drinks_prices[10] = { 0.80, 1.50, 2.00, 2.25, 3.99, 2.20, 1.75, 1.10, 1.30, 1.60 };
 
-int clothes_choice;
+int clothes_choice; // CLOTHES
 char clothes[7][30] = {
     "Cap                ",
     "T-Shirt            ",
@@ -56,7 +56,7 @@ char clothes[7][30] = {
 };
 float clothes_prices[7] = { 9.99, 24.99, 39.99, 29.99, 14.50, 49.99, 7.99 };
 
-int Medicine_choice;
+int Medicine_choice; // MEDICINE
 char Medicine[7][30] = {
     "Allergy Relief     ",
     "Paracetamol        ",
@@ -67,15 +67,21 @@ char Medicine[7][30] = {
     "Antacid Tablets    ",
 };
 float Medicine_prices[7] = { 1.50, 2.00, 3.25, 5.99, 2.75, 1.80, 3.50 };
+//----------------------------------------------------------------------------------
 
+// Coupons and Discounts Intiantion Section
 char coupons[4][10] = { "yousab", "yahia", "omar", "yassin" };
 float discount[4] = { 0.1, 0.2, 0.3, 0.4 };
 float discount_value = 0.0;
 //---------------------------------------------------------------------------------------------------------
-double full_price = 0;
-int number_of_items = 0;
 
-// shipping fnction
+double full_price = 0; // Full Price of the purchased items
+int number_of_items = 0; // Number of Purchesed items
+
+//================================================================!! ALL THE ADDED FEATURES OF THE SHOP !!=================================================================//
+
+
+// Shipping Function
 int Shipping() {
     int shipping_method, run = 1;
     while (1) {
@@ -101,10 +107,10 @@ int Shipping() {
     }
     return 0;
 }
-//--------------------------------------------------------------------------------------------------------- 
+//------------------------------------------------------------------------------------------------------------------------------------------------------------ 
 
 
-// coupon function
+// Coupons Function
 void check_coupon() {
     char coupon_response, coupon_code[20];
     int coupon_index = -1;
@@ -124,15 +130,15 @@ void check_coupon() {
                 break;
             }
         }
+      
     if (valid_coupon != 1) {
             printf("Invalid coupon code.\n"); 
         }      
-       
+    }
 }
-}
-//---------------------------------------------------------------------------------------------------------    
+//-------------------------------------------------------------------------------------------------------------------------------------------------------------------------    
 
-int simulatePayment(float total) {  // Choosing out the payment method
+int Payment_Function(float total) {  // Choosing out the payment method
 
     int paymentMethod;
     float paidAmount;
@@ -152,7 +158,7 @@ int simulatePayment(float total) {  // Choosing out the payment method
             scanf("%f", &paidAmount);
             if (paidAmount < total) {
                 printf("\nInsufficient amount! Please pay at least %.2f\n", total);
-                simulatePayment(total); // Re-prompt recursively
+                Payment_Function(total); // Re-prompt recursively
             } else {
                 printf("\nPayment accepted. Change: %.2f\n", paidAmount - total);
             }
@@ -172,11 +178,62 @@ int simulatePayment(float total) {  // Choosing out the payment method
             break;
         default:
             printf("Invalid choice. Try again.\n");
-            simulatePayment(total);
+            Payment_Function(total);
     }
     return paymentMethod;
 }
-//--------------------------------------------------------------------------------
+//-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+// Items Recommendation Function
+void recommend_items(int section_number, int choice) {
+    // Suggests items based on category and selected item
+    switch (section_number) {
+        case 1: // Food Section Recommendations
+            if (choice == 5) {
+                printf("You may also like: Cheese, Butter.\n\n");
+            } else if (choice == 7) {
+                printf("You may also like: Milk, Cheese.\n\n");
+            } else if (choice == 1) {
+                printf("You may also like: Apple, Milk.\n\n");
+            }
+            break;
+      
+        case 2: // Drinks Section Recommendations
+            if (choice == 1) {
+                printf("You may also like: Smoothie, Milkshake.\n\n");
+            } else if (choice == 3) {
+                printf("You may also like: Energy Drink, Iced Tea.\n\n");
+            } else if (choice == 6) {
+                printf("You may also like: Coffee, Milk.\n\n");
+            }
+            break;
+      
+        case 3: // Clothes Section Recommendations
+            if (choice == 2) {
+                printf("You may also like: Jeans, Sneakers.\n\n");
+            } else if (choice == 4) {
+                printf("You may also like: Hoodie, Jeans.\n\n");
+            } else if (choice == 7) {
+                printf("You may also like: Shorts, T-Shirt.\n\n");
+            }
+            break;
+      
+        case 4: // Medicine Section Recommendations
+            if (choice == 1) {
+                printf("You may also like: Antihistamines.\n\n");
+            } else if (choice == 3) {
+                printf("You may also like: Paracetamol.\n\n");
+            } else if (choice == 6) {
+                printf("You may also like: Cough Syrup.\n\n");
+            }
+            break;
+    }
+}
+
+//---------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+//=================================================================END OF FEATURES SECTION OF THE CODE=====================================================================//
 
 int main() {
     struct product item[100];
@@ -223,12 +280,16 @@ int main() {
                         break;
                     }
                     else if (food_choice >= 1 && food_choice <= 9) { // Valid choices
-                        printf("You have selected %s\n", foods[food_choice - 1]);
+                        printf("\nYou have selected %s\n", foods[food_choice - 1]);
                         strcpy(item[item_index].name, foods[food_choice - 1]);
                         item[item_index].price = foods_prices[food_choice - 1];
                         item_index++;
                         number_of_items++;
                         full_price += foods_prices[food_choice - 1];
+
+                        // Call out for Recommendations Function
+                        recommend_items(section, food_choice);
+                        
                     }
                     else {
                         printf("wrong input \nTry Again \n\n");
@@ -255,12 +316,15 @@ int main() {
                         break;
                     }
                     else if (food_choice >= 1 && food_choice <= 9) { // Valid choices
-                        printf("You have selected %s\n", foods[food_choice - 1]);
+                        printf("\nYou have selected %s\n", foods[food_choice - 1]);
                         strcpy(item[item_index].name, foods[food_choice - 1]);
                         item[item_index].price = foods_prices[food_choice - 1];
                         item_index++;
                         number_of_items++;
                         full_price += foods_prices[food_choice - 1];
+
+                        // Call out for Recommendations Function
+                        recommend_items(section, food_choice);
                     }
                     else {
                         printf("wrong input \nTry Again \n\n");
@@ -287,12 +351,15 @@ int main() {
                         break;
                     }
                     else if (clothes_choice >= 1 && clothes_choice <= 7) { // Valid choices
-                        printf("You have selected %s\n", clothes[clothes_choice - 1]);
+                        printf("\nYou have selected %s\n", clothes[clothes_choice - 1]);
                         strcpy(item[item_index].name, clothes[clothes_choice - 1]);
                         item[item_index].price = clothes_prices[clothes_choice - 1];
                         item_index++;
                         number_of_items++;
                         full_price += clothes_prices[clothes_choice - 1];
+
+                        // Call out for Recommendations Function
+                        recommend_items(section, clothes_choice);
                     }
                     else {
                         printf("wrong input \nTry Again \n\n");
@@ -320,12 +387,15 @@ int main() {
                         break;
                     }
                     else if (Medicine_choice >= 1 && Medicine_choice <= 7) { // Valid choices
-                        printf("You have selected %s\n", Medicine[Medicine_choice - 1]);
+                        printf("\nYou have selected %s\n", Medicine[Medicine_choice - 1]);
                         strcpy(item[item_index].name, Medicine[Medicine_choice - 1]);
                         item[item_index].price = Medicine_prices[Medicine_choice - 1];
                         item_index++;
                         number_of_items++;
                         full_price += Medicine_prices[Medicine_choice - 1];
+
+                        // Call out for Recommendations Function
+                        recommend_items(section, Medicine_choice);
                     }
                     else {
                         printf("wrong input \nTry Again \n\n");
@@ -355,47 +425,56 @@ int main() {
     } else {
         int shipping_method = Shipping(); // get the value of the shipping method
         check_coupon(); // check for the coupon
-        int payment_m_print = simulatePayment(full_price);
+        int payment_m_print = Payment_Function(full_price);
 
 
 
 
-        //             ###     Printing Out the Receipt    ###             //
-        printf("\n\t\tYour Receipt:\n\n");
-        for (item_index = 0; item_index < number_of_items; item_index++) {
-            printf("%s\t\t%.2f$\n", item[item_index].name, item[item_index].price);
-        }
+                                                         //             ###     Printing Out the Receipt    ###             //
+      printf("\n\t\tYour Receipt:\n\n");
+      
+      // Printing item list
+      for (item_index = 0; item_index < number_of_items; item_index++) {
+          printf("%-25s %.2f$\n", item[item_index].name, item[item_index].price);
+      }
+      
+      printf("\n=====================================\n");
+      
+      // Determining Shipping Cost at the end of the receipt
+      if (shipping_method == 1)
+          printf("Total Shipping:           10.00$\n");
+      else if (shipping_method == 2)
+          printf("Total Shipping:           17.00$\n");
+      else if (shipping_method == 3)
+          printf("Total Shipping:           25.00$\n");
+      
+      printf("\n-------------------------------------\n");
+      
+      // Pricing Section
+      printf("Raw Price:                %.2lf$\n", full_price);
+      printf("Discount:                -%.2f$\n", discount_value);
+      full_price -= discount_value;
+      printf("Final Price:             %.2lf$\n", full_price);
+      
+      printf("\n=====================================\n");
+      
+      // Payment Method
+      if (payment_m_print == 1) {
+          printf("\nPayment Method: Cash\n");
+      } else if (payment_m_print == 2) {
+          printf("\nPayment Method: Credit Card\n");
+      } else {
+          printf("\nPayment Method: Digital Services\n");
+      }
 
-        printf("=========================\n");
-
-        // Determining Shipping Cost at the end of the receipt.
-        if (shipping_method == 1)
-            printf("Total shipping:         10.00$\n");
-        else if (shipping_method == 2)
-            printf("Total shipping:         17.00$\n");
-        else if (shipping_method == 3)
-            printf("Total shipping:         25.00$\n");
-
-
-        // Pricing
-        printf("raw price:\t\t%.2lf$\n", full_price);
-        printf("Discount:\t\t-%.2f$\n", discount_value);
-        full_price -= discount_value;
-        printf("Final price:\t\t%.2lf$\n", full_price);
-        //------------------------------------------------
-
-        // Payment Method
-        if (payment_m_print == 1) {
-            printf("\nPayment Method: Cash\n");
-        } else if (payment_m_print == 2) {
-            printf("\nPyament Method: Credit Card\n");
-        } else {
-            printf("\nPayment Method: Digital Services\n");
-        }
-        //------------------------------------------------
-        printf("\nThanks For Buying From Us!\nSee you soon :)\n");
-
-    return 0;
+      // Thanks Message
+      printf("\n-------------------------------------\n");
+      
+      printf("\n      Thanks For Buying From Us!\n");
+      printf("           See You Soon :)\n");
+      
+      printf("\n=====================================\n");
+      
+          return 0;
     }
 }
-
