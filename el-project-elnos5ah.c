@@ -173,10 +173,10 @@ int simulatePayment(float total) {  // Choosing out the payment method
         default:
             printf("Invalid choice. Try again.\n");
             simulatePayment(total);
-        return paymentMethod;
     }
+    return paymentMethod;
 }
-
+//--------------------------------------------------------------------------------
 
 int main() {
     struct product item[100];
@@ -204,7 +204,7 @@ int main() {
         }
         //---------------------------------------------------------------------
         
-        switch (section) {
+        switch (section) { 
             case 1: // FOOD SECTION
                 run = 1;
                 printf("Foods:\n");
@@ -304,7 +304,7 @@ int main() {
             case 4: // MEDICINE SECTION
                 run = 1;
                 printf("Medicines:\n");
-                for(int i = 1; i <= 8; i++) {
+                for(int i = 1; i <= 7; i++) {
                     printf("%d. %s ............... $%.2f\n", i, Medicine[i-1], Medicine_prices[i-1]);
                 }
                 
@@ -335,9 +335,9 @@ int main() {
                 break;
         }
 
-        printf("Do you want to Buy from another section? (y/n): ");
+        printf("Do you want to Buy from another section? (y/n): "); // Asking for continuance.
         scanf(" %c", &other_section);
-        if(other_section == 'n' || other_section == 'N') {
+        if (other_section == 'n' || other_section == 'N') {
             checker = false;
         }
         else if (other_section == 'y' || other_section == 'Y') {
@@ -347,14 +347,17 @@ int main() {
             printf("wrong input \nTry Again \n\n");
             continue;
         }
+}
                    
-    if (number_of_items == 0) {
-        printf("we are sorry no product interested you\n");
+    if (number_of_items == 0) { // Sorry Message
+        printf("\nWe are sorry that none of our products has intrested you and we're willing to see you soon :(\n");
         return 0;
     } else {
         int shipping_method = Shipping(); // get the value of the shipping method
         check_coupon(); // check for the coupon
-        simulatePayment(full_price);
+        int payment_m_print = simulatePayment(full_price);
+
+
 
 
         //             ###     Printing Out the Receipt    ###             //
@@ -373,15 +376,6 @@ int main() {
         else if (shipping_method == 3)
             printf("Total shipping:         25.00$\n");
 
-        // Payment Method
-        if (simulatePayment == 1) {
-            printf("Payment Method: Cash\n");
-        } else if (simulatePayment == 2) {
-            printf("Pyament Method: Credit Card\n");
-        } else {
-            printf("Payment Method: Digital Services\n");
-        }
-        //------------------------------------------------
 
         // Pricing
         printf("raw price:\t\t%.2lf$\n", full_price);
@@ -389,9 +383,19 @@ int main() {
         full_price -= discount_value;
         printf("Final price:\t\t%.2lf$\n", full_price);
         //------------------------------------------------
+
+        // Payment Method
+        if (payment_m_print == 1) {
+            printf("\nPayment Method: Cash\n");
+        } else if (payment_m_print == 2) {
+            printf("\nPyament Method: Credit Card\n");
+        } else {
+            printf("\nPayment Method: Digital Services\n");
+        }
+        //------------------------------------------------
         printf("\nThanks For Buying From Us!\nSee you soon :)\n");
 
     return 0;
+    }
 }
-}
-}
+
