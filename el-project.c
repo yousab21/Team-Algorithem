@@ -80,32 +80,56 @@ int number_of_items = 0; // Number of Purchesed items
 
 //================================================================!! ALL THE ADDED FEATURES OF THE SHOP !!=================================================================//
 
+// Shipping Sites Function Pricing
+
+char *locations[10] = {
+    "Talkha",
+    "El Gamaa",
+    "El Toriel",
+    "Gehan Street",
+    "Sandoob",
+    "Shinnawy",
+    "El Mashaya",
+    "El Mogamaa",
+    "El Dawahi",
+    "El Mahatta"
+};
+
+float pricesOfShipping[10] = {
+    30.0, 40.0, 35.0, 45.0, 50.0,
+    25.0, 55.0, 38.0, 42.0, 60.0
+};
+
 
 // Shipping Function
 int Shipping() {
     int shipping_method, run = 1;
-    while (1) {
+    int shippingPrice = 0;
+    while (run) {
         printf("\n1. Standard Shipping\t5-7 Days\t10$\n2. Fast Shipping\t2-3 Days\t17$\n3. Overnight Shipping\tNext Day\t25$\nchoose shipping option: "); // All Shipping choices
         scanf("%d", &shipping_method); // Receives the shipping option chose by the user.
         
         // Choosing The shipping method by the user.
         switch (shipping_method) {
             case 1:           
-                full_price += 10;
-                return 1;
+                shippingPrice += 10;
+                run = 0;
+            break;
             case 2:
-                full_price += 17;
-                return 2;
+                shippingPrice += 17;
+                run = 0;
+            break;
             case 3:
-                full_price += 25;
-                return 3;
+                shippingPrice += 25;
+                run = 0;
+            break;
             default:
                 printf("wrong input\nPlease Try Again\n\n"); // The Message if the user entered a wrong value.
                 run = 1;
                 break;
         }
     }
-    return 0;
+    return shippingPrice;
 }
 //------------------------------------------------------------------------------------------------------------------------------------------------------------ 
 
@@ -157,22 +181,22 @@ int Payment_Function(float total) {  // Choosing out the payment method
             printf("Enter amount paid: ");
             scanf("%f", &paidAmount);
             if (paidAmount < total) {
-                printf("\nInsufficient amount! Please pay at least %.2f\n", total);
+                printf("\nInsufficient amount! Please pay at least %.2f EGP\n", total);
                 Payment_Function(total); // Re-prompt recursively
             } else {
-                printf("\nPayment accepted. Change: %.2f\n", paidAmount - total);
+                printf("\nPayment accepted. Change: %.2f EGP\n", paidAmount - total);
             }
             break;
         case 2:
             printf("\n=========================================");
-            printf("\nProcessing credit card payment of %.2f...\n", total);
+            printf("\nProcessing credit card payment of %.2f EGP...\n", total);
             printf("\t\tPayment successful!\n");
             printf("=========================================\n");
 
             break;
         case 3:
             printf("\n=========================================");
-            printf("\nPaying via digital services %.2f...\n",total);
+            printf("\nPaying via digital services %.2f EGP...\n",total);
             printf("\t\tPayment Succefully Proccesed!\n");
             printf("=========================================\n");
             break;
@@ -424,9 +448,32 @@ int main() {
         return 0;
     } else {
         int shipping_method = Shipping(); // get the value of the shipping method
+        
+        // Determining the shipping location
+        int choiceOfShipping;
+
+        printf("\nSelect your shipping address from the list below:\n");
+        for (int i = 0; i < 10; i++) {
+            printf("%d. %s\n", i + 1, locations[i]);
+        }
+
+        printf("Enter the number of your location: ");
+        scanf("%d", &choiceOfShipping);
+
+        if (choiceOfShipping < 1 || choiceOfShipping > 10) {
+            printf("Invalid location number.\n");
+            return 1;
+        }
+
+        printf("\nShipping to %s costs %.2f EGP.\n\n", locations[choiceOfShipping - 1], pricesOfShipping[choiceOfShipping - 1]); // Printing out the location and its cost
+
+        float total_shipping_price = pricesOfShipping[choiceOfShipping - 1] + shipping_method; // Adding the location shipping and the shipping according to timing
+        
+        full_price = full_price + total_shipping_price; // Full Price after all the shipping cost.
+        //----------------------------------------------------------------------------------------------------------------------------------------------------------------
+        
         check_coupon(); // check for the coupon
         int payment_m_print = Payment_Function(full_price);
-
 
 
 
@@ -435,26 +482,21 @@ int main() {
       
       // Printing item list
       for (item_index = 0; item_index < number_of_items; item_index++) {
-          printf("%-25s %.2f$\n", item[item_index].name, item[item_index].price);
+          printf("%-25s %.2f EGP\n", item[item_index].name, item[item_index].price);
       }
       
       printf("\n=====================================\n");
       
       // Determining Shipping Cost at the end of the receipt
-      if (shipping_method == 1)
-          printf("Total Shipping:           10.00$\n");
-      else if (shipping_method == 2)
-          printf("Total Shipping:           17.00$\n");
-      else if (shipping_method == 3)
-          printf("Total Shipping:           25.00$\n");
+      printf("Total shipping Price: %.2f EGP", total_shipping_price);
       
       printf("\n-------------------------------------\n");
       
       // Pricing Section
-      printf("Raw Price:                %.2lf$\n", full_price);
-      printf("Discount:                -%.2f$\n", discount_value);
+      printf("Raw Price:                %.2lf EGP\n", full_price);
+      printf("Discount:                -%.2f EGP\n", discount_value);
       full_price -= discount_value;
-      printf("Final Price:             %.2lf$\n", full_price);
+      printf("Final Price:             %.2lf EGP\n", full_price);
       
       printf("\n=====================================\n");
       
