@@ -340,15 +340,15 @@ int main() {
                         break;
                     }
                     else if (food_choice >= 1 && food_choice <= 9) { // Valid choices
-                        printf("\nYou have selected %s\n", foods[food_choice - 1]);
-                        strcpy(item[item_index].name, foods[food_choice - 1]);
-                        item[item_index].price = foods_prices[food_choice - 1];
+                        printf("\nYou have selected %s\n", drinks[drink_choice - 1]);
+                        strcpy(item[item_index].name, drinks[drink_choice - 1]);
+                        item[item_index].price = drinks_prices[drink_choice - 1];
                         item_index++;
                         number_of_items++;
-                        full_price += foods_prices[food_choice - 1];
+                        full_price += drinks_prices[drink_choice - 1];
 
                         // Call out for Recommendations Function
-                        recommend_items(section, food_choice);
+                        recommend_items(section, drink_choice);
                     }
                     else {
                         printf("wrong input \nTry Again \n\n");
@@ -503,10 +503,10 @@ int main() {
       }                                                                               //for the love of god dont mess with them
       else {                                                                          //         IAM WATCHINH YOU !!
         printf("   || Discount:                   -%2.2f EGP  ||\n", discount_value); //          ############
-      }                                                                               //   #######    0000   #########
-                                                                                      // /##         00 ** 00          ##\ 
-      full_price -= discount_value;                                                   // \##         00 ** 00          ##/                            
-                                                                                      //   #######    0000    ########
+      }                                                                               //   #######    0000    #########
+                                                                                      // /##        00 ** 00           ##\ 
+      full_price -= discount_value;                                                   // \##        00 ** 00           ##/                            
+                                                                                      //   #######    0000     ########
       if(full_price >100){                                                            //          ############
             printf("   || Total Price:                %.2lf EGP ||\n", full_price);
       } 
