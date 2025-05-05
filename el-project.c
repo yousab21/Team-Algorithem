@@ -503,11 +503,12 @@ int main() {
       }                                                                               //for the love of god dont mess with them
       else {                                                                          //         IAM WATCHINH YOU !!
         printf("   || Discount:                   -%2.2f EGP  ||\n", discount_value); //          ############
-      }                                                                               //   #######    0000    #########
-                                                                                      // /##        00 ** 00           ##\ 
-      full_price -= discount_value;                                                   // \##        00 ** 00           ##/                            
-                                                                                      //   #######    0000     ########
-      if(full_price >100){                                                            //          ############
+      }                                                                               //   #######    0000    ########
+                                                                                      // /##        00 ** 00          ##\ 
+                                                                                      // \##        00 ** 00          ##/                            
+      full_price -= discount_value;                                                   //   #######    0000     #######
+                                                                                      //          ############
+      if(full_price >100){                                                            
             printf("   || Total Price:                %.2lf EGP ||\n", full_price);
       } 
       else{
