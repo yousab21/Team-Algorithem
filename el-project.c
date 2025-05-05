@@ -532,9 +532,9 @@ int main() {
 
       // Thanks Message
       printf("   ||----------------------------------------||\n");
-      printf("   || the shipping adress is  %s   ||\n",locations[choiceOfShipping - 1]);
+      printf("   ||    the shipping adress is  %s||\n",locations[choiceOfShipping - 1]);
       printf("   || the pakage will be on your door in %.0f  ||\n",deldevrytime[choiceOfShipping - 1]);
-      printf("   || after your revive the nofification     ||\n");
+      printf("   || min after your revive the nofification ||\n");
       printf("   ||      Thanks For Buying From Us!        ||\n");
       printf("   ||           See You Soon :)              ||\n"); 
       printf("   ||========================================||\n");
