@@ -329,17 +329,17 @@ int main() {
                     printf("%d. %s ............... $%.2f\n", i, drinks[i-1], drinks_prices[i-1]);
                 }
                 while (run) {
-                    food_choice = 0;
-                    printf("Enter the number of the food you want to buy (Enter 0 to exit): ");
-                    scanf("%d", &food_choice);
+                    drink_choice = 0;
+                    printf("Enter the number of the drink you want to buy (Enter 0 to exit): ");
+                    scanf("%d", &drink_choice);
                     fflush(stdin);
                 
-                    if (food_choice == 0) {  // Exit when user enters 0
-                        printf("Exiting the food section.\n");
+                    if (drink_choice == 0) {  // Exit when user enters 0
+                        printf("Exiting the drinks section.\n");
                         run = 0;
                         break;
                     }
-                    else if (food_choice >= 1 && food_choice <= 9) { // Valid choices
+                    else if (drink_choice >= 1 && drink_choice <= 9) { // Valid choices
                         printf("\nYou have selected %s\n", drinks[drink_choice - 1]);
                         strcpy(item[item_index].name, drinks[drink_choice - 1]);
                         item[item_index].price = drinks_prices[drink_choice - 1];
