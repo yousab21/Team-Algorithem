@@ -500,14 +500,14 @@ int main() {
 
       if (discount_value>10) {
         printf("   || Discount:                   -%2.2f EGP ||\n", discount_value);  //lines 476 to end are to adjust spacing
-      }                                                                            //for the love of god dont mess with them
-      else {
-        printf("   || Discount:                   -%2.2f EGP  ||\n", discount_value);
-      }
-  
-      full_price -= discount_value;
-    
-      if(full_price >100){
+      }                                                                               //for the love of god dont mess with them
+      else {                                                                          //         IAM WATCHINH YOU !!
+        printf("   || Discount:                   -%2.2f EGP  ||\n", discount_value); //          ############
+      }                                                                               //   #######    0000   #########
+                                                                                      // /##         00 ** 00          ##\ 
+      full_price -= discount_value;                                                   // \##         00 ** 00          ##/                            
+                                                                                      //   #######    0000    ########
+      if(full_price >100){                                                            //          ############
             printf("   || Total Price:                %.2lf EGP ||\n", full_price);
       } 
       else{
@@ -523,7 +523,7 @@ int main() {
       
       // Payment Method Section
       if (payment_m_print == 1) {
-        printf("   ||           Payment Method: Cash          ||\n");
+        printf("   ||           Payment Method: Cash         ||\n");
       } else if (payment_m_print == 2) {
         printf("   ||       Payment Method: Credit Card      ||\n");
       } else {
