@@ -339,7 +339,7 @@ int main() {
                         run = 0;
                         break;
                     }
-                    else if (drink_choice >= 1 && drink_choice <= 9) { // Valid choices
+                    else if (drink_choice >= 1 && drink_choice <= 10) { // Valid choices
                         printf("\nYou have selected %s\n", drinks[drink_choice - 1]);
                         strcpy(item[item_index].name, drinks[drink_choice - 1]);
                         item[item_index].price = drinks_prices[drink_choice - 1];
