@@ -271,6 +271,40 @@ void recommend_items(int section_number, int choice) {
 //---------------------------------------------------------------------------------------------------------------------------------------------------------
 //---------------------------------------------------------------------------------------------------------------------------------------------------------
 
+// Customer Support Function
+
+void printQuestions() {
+    printf("========== Customer Support Center ==========\n");
+    printf("Please select your question by entering the number:\n\n");
+    printf("1.  What are your store hours?\n");
+    printf("2.  How can I track my order?\n");
+    printf("3.  What is your return policy?\n");
+    printf("4.  Can I modify my order after placing it?\n");
+    printf("5.  What payment methods do you accept?\n");
+    printf("6.  How do I use a coupon code?\n");
+    printf("7.  Is there a minimum order for delivery?\n");
+    printf("8.  How are cold/frozen items delivered?\n");
+    printf("9.  Do you have organic products?\n");
+    printf("10. How can I contact customer service?\n");
+    printf("=============================================\n");
+}
+
+void answerQuestion(int choice) {
+    switch (choice) {
+        case 1: printf("\nOur store is open daily from 8 AM to 10 PM.\n\n"); break;
+        case 2: printf("\nWe do not provide a tracking service yet but stay tuned for the updates.\n\n"); break;
+        case 3: printf("\nReturns are accepted within 7 days with the receipt.\n\n"); break;
+        case 4: printf("\nUnfortunately we do not support that but you could contact us via our phone number that you will find at the customer support section.\n\n"); break;
+        case 5: printf("\nWe accept cash, credit/debit cards, and digital wallets like Vodafone Cash and Fawery.\n\n"); break;
+        case 6: printf("\nApply the coupon at checkout in the 'Promo Code' field.\n\n"); break;
+        case 7: printf("\nNo you could order as much as you want from 1 EGP to 1000 or more!\n\n"); break;
+        case 8: printf("\nCold items are delivered in temperature-controlled packaging.\n\n"); break;
+        case 9: printf("\nWe offer a wide selection of certified organic products.\n\n"); break;
+        case 10: printf("\nCall us at 4041404 or email dukan-404@grocery.com.\n\n"); break;
+        default: printf("\nInvalid selection. Please choose a number between 1 and 10.\n\n");
+    }
+}
+
 //=========================================================================================================================================================================//
 //=================================================================END OF FEATURES SECTION OF THE CODE=====================================================================//
 //=========================================================================================================================================================================//
@@ -291,11 +325,11 @@ int main() {
 
         // Choosing the desired section in the grocery shop
         while (run) {
-            printf("For Food Enter \"1\" \nFor Drinks Enter \"2\" \nFor Clothes Enter \"3\" \nFor Medicine Enter \"4\" \n");
+            printf("For Food Enter \"1\" \nFor Drinks Enter \"2\" \nFor Clothes Enter \"3\" \nFor Medicine Enter \"4\" \nFor Customer Support Enter \"5\" \n");
             printf("\nSection: ");
             scanf("%d", &section);
 
-            if (section < 1 || section > 4)
+            if (section < 1 || section > 5)
                 printf("\n\t!Wrong Input! \n\t! Try Again ! \n\n");
             else
                 run = 0;
@@ -444,9 +478,32 @@ int main() {
                     }
                 }
                 break;
+            case 5: // Customer Support Section
+                run = 1;
+                printf("\nWelcome to the Customer Support Center!\n");
+                printQuestions();
+                int question_choice;
+
+                while (run) {
+                    printf("Enter the number of your question [Press 0 for Exit]: ");
+                    scanf("%d", &question_choice);
+                
+                    if (question_choice == 0) {
+                        printf("\nExiting the customer support section...........\n");
+                        run = 0;
+                    } else if (question_choice < 1 || question_choice > 10) {
+                        printf("\n\t!Wrong Input! \n\t! Try Again ! \n\n");
+                        run = 1; 
+                    }
+                    else {
+                        answerQuestion(question_choice);
+                        run = 1;
+                    }
+                }
+                break;
         }
 
-        printf("\nDo you want to Buy from another section? (y/n): "); // Asking for continuance.
+        printf("\nDo you want to visit another section? (y/n): "); // Asking for continuance.
         scanf(" %c", &other_section);
         if (other_section == 'n' || other_section == 'N') {
             checker = false;
@@ -461,7 +518,7 @@ int main() {
 }
                    
     if (number_of_items == 0) { // Sorry Message
-        printf("\nWe are sorry that none of our products has intrested you and we're willing to see you soon :(\n");
+        printf("\nWe are sorry that none of our products has intrested you and we're willing to see you soon :(\n\n");
         return 0;
     } else {
         int shipping_method = Shipping(); // get the value of the shipping method
