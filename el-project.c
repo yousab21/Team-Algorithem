@@ -191,17 +191,17 @@ int Payment_Function(float total) {  // Choosing out the payment method
             }
             break;
         case 2:
-            printf("\n=========================================");
+            printf("\n==============================================");
             printf("\nProcessing credit card payment of %.2f EGP...\n", total);
             printf("\t\tPayment successful!\n");
-            printf("=========================================\n\n\n");
+            printf("==============================================\n\n\n");
 
             break;
         case 3:
-            printf("\n=========================================");
+            printf("\n==============================================");
             printf("\nPaying via digital services %.2f EGP...\n",total);
             printf("\t\tPayment Succefully Proccesed!\n");
-            printf("=========================================\n\n\n");
+            printf("==============================================\n\n\n");
             break;
         default:
             printf("\nInvalid choice. Try again.\n");
@@ -554,7 +554,7 @@ int main() {
       printf("          ||   Mins After You Receive The Message   ||\n");
       printf("          ||      Thanks For Buying From Us!        ||\n");
       printf("          ||           See You Soon :)              ||\n"); 
-      printf("          ||========================================||\n");
+      printf("          ||========================================||\n\n\n");
       
           return 0;
     }
