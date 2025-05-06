@@ -166,7 +166,7 @@ void check_coupon() {
             }
         }
       
-    if (valid_coupon != 1) {
+    if (valid_coupon != 1) { // if the coupon is not valid print out this message.
             printf("\nInvalid coupon code.\n"); 
         }      
     }
