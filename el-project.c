@@ -549,8 +549,8 @@ int main() {
 
       // Thanks Message
       printf("          ||----------------------------------------||\n");
-      printf("          ||    The shipping address is %s||\n",locations[choiceOfShipping - 1]);
-      printf("          || The package will be on your door in %.0f ||\n",deldevrytime[choiceOfShipping - 1]);
+      printf("          ||    The Shipping Address Is %s||\n",locations[choiceOfShipping - 1]);
+      printf("          || The Package Will Be On Your Door In %.0f ||\n",deldevrytime[choiceOfShipping - 1]);
       printf("          ||   Mins After You Receive The Message   ||\n");
       printf("          ||      Thanks For Buying From Us!        ||\n");
       printf("          ||           See You Soon :)              ||\n"); 
