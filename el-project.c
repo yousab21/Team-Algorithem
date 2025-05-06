@@ -283,7 +283,7 @@ int main() {
             scanf("%d", &section);
 
             if (section < 1 || section > 4)
-                printf("\nwrong input \nTry Again \n\n");
+                printf("\n\t!Wrong Input! \n\t! Try Again ! \n\n");
             else
                 run = 0;
         }
@@ -320,7 +320,7 @@ int main() {
                         
                     }
                     else {
-                        printf("wrong input \nTry Again \n\n");
+                        printf("\n\t!Wrong Input! \n\t! Try Again ! \n\n");
                         continue;
                     }
                 }
@@ -355,7 +355,7 @@ int main() {
                         recommend_items(section, drink_choice);
                     }
                     else {
-                        printf("wrong input \nTry Again \n\n");
+                        printf("\n\t!Wrong Input! \n\t! Try Again ! \n\n");
                         continue;
                     }
                 }
@@ -390,7 +390,7 @@ int main() {
                         recommend_items(section, clothes_choice);
                     }
                     else {
-                        printf("wrong input \nTry Again \n\n");
+                        printf("\n\t!Wrong Input! \n\t! Try Again ! \n\n");
                         continue;
                     }
                 }
@@ -426,7 +426,7 @@ int main() {
                         recommend_items(section, Medicine_choice);
                     }
                     else {
-                        printf("wrong input \nTry Again \n\n");
+                        printf("\n\t!Wrong Input! \n\t! Try Again ! \n\n");
                         continue;
                     }
                 }
@@ -442,7 +442,7 @@ int main() {
             checker = true;
         }
         else {
-            printf("wrong input \nTry Again \n\n");
+            printf("\n\t!Wrong Input! \n\t! Try Again ! \n\n");
             continue;
         }
 }
