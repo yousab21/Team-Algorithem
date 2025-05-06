@@ -76,7 +76,7 @@ float Medicine_prices[7] = { 1.50, 2.00, 3.25, 5.99, 2.75, 1.80, 3.50 };
 //----------------------------------------------------------------------------------
 
 
-// Coupons and Discounts Intiation Section
+// Coupons and Discounts Initiation Section
 char coupons[4][10] = { "yousab", "yahia", "omar", "yassin" };
 float discount[4] = { 0.05, 0.1, 0.15, 0.2 };
 float discount_value = 0.0;
@@ -91,8 +91,7 @@ int number_of_items = 0; // Number of Purchesed items
 //================================================================!! ALL THE ADDED FEATURES TO THE SHOP !!=================================================================//
 //=========================================================================================================================================================================//
 
-// Shipping Locations Function Pricing
-
+// Shipping Locations Function For Delivery Duration
 char *locations[10] = {
     "Talkha      ",
     "El Gamaa    ",
@@ -106,7 +105,7 @@ char *locations[10] = {
     "El Mahatta  "
 };
 
-float deldevrytime[10] = {
+float deldevrytime[10] = { // Delevery Durations.
     30.0, 40.0, 35.0, 45.0, 50.0,
     25.0, 55.0, 38.0, 42.0, 60.0
 };
@@ -123,15 +122,15 @@ int Shipping() {
         // Choosing The Shipping Method By The User.
         switch (shipping_method) {
             case 1:           
-                shippingPrice += 10;
+                shippingPrice += 10; // First Bundle
                 run = 0;
             break;
             case 2:
-                shippingPrice += 17;
+                shippingPrice += 17; // Second Bundle
                 run = 0;
             break;
             case 3:
-                shippingPrice += 25;
+                shippingPrice += 25; // Third Bundle
                 run = 0;
             break;
             default:
@@ -140,7 +139,7 @@ int Shipping() {
                 break;
         }
     }
-    return shippingPrice;
+    return shippingPrice; // Returns Shipping Price of The One Selected By The User.
 }
 //------------------------------------------------------------------------------------------------------------------------------------------------------------ 
 //------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -150,7 +149,7 @@ void check_coupon() {
     char coupon_response, coupon_code[20];
     int coupon_index = -1;
     int valid_coupon = 0; 
-    printf("Do you have a discount coupon [y/n]? ");
+    printf("Do you have a discount coupon [y/n]? "); // Asking For Coupons.
     scanf(" %c", &coupon_response);
 
     // Checking for Coupons
@@ -158,7 +157,7 @@ void check_coupon() {
         printf("Please enter your coupon code: ");
         scanf("%s", coupon_code);
 
-        for (coupon_index = 0; coupon_index < 4; coupon_index++) { // Goes into each coupon in the array for valid ones.
+        for (coupon_index = 0; coupon_index < 4; coupon_index++) { // Goes into each coupon in the array and compares it for valid ones.
             if (strcmp(coupons[coupon_index], coupon_code) == 0) {
                 discount_value = full_price * discount[coupon_index]; 
                 valid_coupon = 1;
@@ -166,7 +165,7 @@ void check_coupon() {
             }
         }
       
-    if (valid_coupon != 1) { // if the coupon is not valid print out this message.
+    if (valid_coupon != 1) { // if the coupon is not valid, print out this message.
             printf("\nInvalid coupon code.\n"); 
         }      
     }
@@ -178,7 +177,7 @@ void check_coupon() {
 int Payment_Function(double total) {  // Choosing out the payment method
 
     int paymentMethod;
-    float paidAmount;
+    float paidAmount; 
 
     printf("\n------ Payment ------\n");
     printf("Select payment method:\n");
@@ -273,7 +272,7 @@ void recommend_items(int section_number, int choice) {
 
 // Customer Support Function
 
-void printQuestions() {
+void printQuestions() { // Function for Quetions.
     printf("========== Customer Support Center ==========\n");
     printf("Please select your question by entering the number:\n\n");
     printf("1.  What are your store hours?\n");
@@ -289,7 +288,7 @@ void printQuestions() {
     printf("=============================================\n");
 }
 
-void answerQuestion(int choice) {
+void answerQuestion(int choice) { // Answers for the Questions.
     switch (choice) {
         case 1: printf("\nOur store is open daily from 8 AM to 10 PM.\n\n"); break;
         case 2: printf("\nWe do not provide a tracking service yet but stay tuned for the updates.\n\n"); break;
@@ -590,7 +589,7 @@ int main() {
 
       if (discount_value>10) {
         printf("          || Discount:                   -%2.2f EGP ||\n", discount_value);  //lines 476 to end are to adjust spacing
-      }                                                                               //for the love of god dont mess with them
+      }                                                                               //for the love of god, don't mess with them
       else {                                                                          //         IAM WATCHINH YOU !!
         printf("          || Discount:                   -%2.2f EGP  ||\n", discount_value); //          ############
       }                                                                               //   #######    0000    ########
@@ -633,6 +632,7 @@ int main() {
       printf("          ||           See You Soon :)              ||\n"); 
       printf("          ||========================================||\n\n\n");
       
+      //                                                                       [END OF RECEIPT.]
           return 0;
     }
 }
