@@ -269,7 +269,7 @@ int main() {
     bool checker = true;
     char other_section;
 
-    printf("Welcome to our small shop\n\n");
+    printf("\t\t\t\t\t\tWelcome to Dukan-404\n\n");
 
     while (checker) {
         int section, run = 1;
