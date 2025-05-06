@@ -519,6 +519,7 @@ int main() {
 
       printf("          ||                                        ||\n");
       printf("          ||----------------------------------------||\n");
+      
 
       // Pricing Section
       if(full_price >100){
@@ -528,7 +529,7 @@ int main() {
             printf("          || Raw Price:                  %.2lf EGP  ||\n", full_price);
       }
 
-      printf("          || Shipping Price:             +%d EGP  ||\n", shipping_method);
+      printf("          || Shipping Price:                %d EGP  ||\n", shipping_method); // Printing the shipping price
 
       if (discount_value>10) {
         printf("          || Discount:                   -%2.2f EGP ||\n", discount_value);  //lines 476 to end are to adjust spacing
