@@ -276,6 +276,7 @@ int main() {
         // Choosing the desired section in the grocery shop
         while (run) {
             printf("For Food Enter \"1\" \nFor Drinks Enter \"2\" \nFor Clothes Enter \"3\" \nFor Medicine Enter \"4\" \n");
+            printf("\nSection: ");
             scanf("%d", &section);
 
             if (section < 1 || section > 4)
@@ -533,9 +534,9 @@ int main() {
 
       // Thanks Message
       printf("   ||----------------------------------------||\n");
-      printf("   ||    the shipping adress is  %s||\n",locations[choiceOfShipping - 1]);
-      printf("   || the pakage will be on your door in %.0f  ||\n",deldevrytime[choiceOfShipping - 1]);
-      printf("   || min after your revive the nofification ||\n");
+      printf("   ||    The shipping address is %s||\n",locations[choiceOfShipping - 1]);
+      printf("   || The package will be on your door in %.0f ||\n",deldevrytime[choiceOfShipping - 1]);
+      printf("   ||mins after your receive the notification||\n");
       printf("   ||      Thanks For Buying From Us!        ||\n");
       printf("   ||           See You Soon :)              ||\n"); 
       printf("   ||========================================||\n");
