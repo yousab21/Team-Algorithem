@@ -106,7 +106,7 @@ int Shipping() {
     int shipping_method, run = 1;
     int shippingPrice = 0;
     while (run) {
-        printf("\n1. Standard Shipping\t5-7 Days\t10$\n2. Fast Shipping\t2-3 Days\t17$\n3. Overnight Shipping\tNext Day\t25$\nchoose shipping option: "); // All Shipping choices
+        printf("\n1. Standard Shipping\t5-7 Days\t10$\n2. Fast Shipping\t2-3 Days\t17$\n3. Overnight Shipping\tNext Day\t25$\n\nchoose shipping option: "); // All Shipping choices
         scanf("%d", &shipping_method); // Receives the shipping option chose by the user.
         
         // Choosing The shipping method by the user.
@@ -300,7 +300,7 @@ int main() {
                     fflush(stdin);
                 
                     if (food_choice == 0) {  // Exit when user enters 0
-                        printf("Exiting the food section.\n");
+                        printf("\nExiting the food section............\n");
                         run = 0;
                         break;
                     }
@@ -336,7 +336,7 @@ int main() {
                     fflush(stdin);
                 
                     if (drink_choice == 0) {  // Exit when user enters 0
-                        printf("Exiting the drinks section.\n");
+                        printf("\nExiting the drinks section............\n");
                         run = 0;
                         break;
                     }
@@ -371,7 +371,7 @@ int main() {
                     fflush(stdin);
                 
                     if (clothes_choice == 0) {  // Exit when user enters 0
-                        printf("Exiting the clothes section.\n");
+                        printf("\nExiting the clothes section...........\n");
                         run = 0;
                         break;
                     }
@@ -407,7 +407,7 @@ int main() {
                     fflush(stdin);
                 
                     if (Medicine_choice == 0) {  // Exit when user enters 0
-                        printf("Exiting the medicine section.\n");
+                        printf("\nExiting the medicine section...........\n");
                         run = 0;
                         break;
                     }
@@ -430,7 +430,7 @@ int main() {
                 break;
         }
 
-        printf("Do you want to Buy from another section? (y/n): "); // Asking for continuance.
+        printf("\nDo you want to Buy from another section? (y/n): "); // Asking for continuance.
         scanf(" %c", &other_section);
         if (other_section == 'n' || other_section == 'N') {
             checker = false;
