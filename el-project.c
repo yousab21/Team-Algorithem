@@ -484,75 +484,77 @@ int main() {
       int orderNumber = (rand() % 99) + 1;  // Generating a Random Number
       //==========
 
-      printf("   ||========================================||\n");                                                   //             ###     Printing Out the Receipt    ###             //
-      printf("   ||              Your Receipt:             ||\n");
-      printf("   ||                                        ||\n");
+      printf("          ||========================================||\n");                                                   //             ###     Printing Out the Receipt    ###             //
+      printf("          ||              Your Receipt              ||\n");    
+      printf("          ||========================================||\n");
+      printf("          || Product Name:                    Price ||\n");
+      printf("          ||                                        ||\n");
       // Printing item list
       for (item_index = 0; item_index < number_of_items; item_index++) {  
         if(item[item_index].price < 10){   
-             printf("   || %-25s    +%.2f EGP ||\n", item[item_index].name, item[item_index].price);    
+             printf("          || %d- %-25s +%.2f EGP ||\n",item_index + 1, item[item_index].name, item[item_index].price);    
         }
         else if (item[item_index].price >= 10){   
-             printf("   || %-25s   +%.2f EGP ||\n", item[item_index].name, item[item_index].price);  
+             printf("          || %d- %-25s+%.2f EGP ||\n",item_index + 1, item[item_index].name, item[item_index].price);  
         }     
     }
 
-      printf("   ||                                        ||\n");
-      printf("   ||----------------------------------------||\n");
+      printf("          ||                                        ||\n");
+      printf("          ||----------------------------------------||\n");
 
       // Pricing Section
       full_price += shipping_method; // Adding the shipping method price to the full price
       if(full_price >100){
-            printf("   || Raw Price:                  %.2lf EGP ||\n", full_price);      
+            printf("          || Raw Price:                  %.2lf EGP ||\n", full_price);      
       } 
       else{
-            printf("   || Raw Price:                  %.2lf EGP  ||\n", full_price);
+            printf("          || Raw Price:                  %.2lf EGP  ||\n", full_price);
       }
 
       if (discount_value>10) {
-        printf("   || Discount:                   -%2.2f EGP ||\n", discount_value);  //lines 476 to end are to adjust spacing
+        printf("          || Discount:                   -%2.2f EGP ||\n", discount_value);  //lines 476 to end are to adjust spacing
       }                                                                               //for the love of god dont mess with them
       else {                                                                          //         IAM WATCHINH YOU !!
-        printf("   || Discount:                   -%2.2f EGP  ||\n", discount_value); //          ############
+        printf("          || Discount:                   -%2.2f EGP  ||\n", discount_value); //          ############
       }                                                                               //   #######    0000    ########
                                                                                       // /##        00 ** 00          ##\ 
                                                                                       // \##        00 ** 00          ##/                            
       full_price -= discount_value;                                                   //   #######    0000     #######
                                                                                       //          ############
       if(full_price >100){                                                            
-            printf("   || Total Price:                %.2lf EGP ||\n", full_price);
+            printf("          || Total Price:                %.2lf EGP ||\n", full_price);
       } 
       else{
-            printf("   || Total Price:                %.2lf EGP  ||\n", full_price);
+            printf("          || Total Price:                %.2lf EGP  ||\n", full_price);
       }
       
       
-      printf("   ||----------------------------------------||\n");
+      printf("          ||----------------------------------------||\n");
       
       // Payment Method Section
       if (payment_m_print == 1) {
-        printf("   ||           Payment Method: Cash         ||\n");
+        printf("          ||           Payment Method: Cash         ||\n");
       } else if (payment_m_print == 2) {
-        printf("   ||       Payment Method: Credit Card      ||\n");
+        printf("          ||       Payment Method: Credit Card      ||\n");
       } else {
-        printf("   ||    Payment Method: Digital Services    ||\n");
+        printf("          ||    Payment Method: Digital Services    ||\n");
       }
 
       if (orderNumber >= 10) {
-          printf("   ||            Order Number: %d            ||\n", orderNumber);
+          printf("          ||            Order Number: %d            ||\n", orderNumber);
       } else {
-          printf("   ||            Order Number: %d             ||\n", orderNumber);
+          printf("          ||            Order Number: %d             ||\n", orderNumber);
       }
         
 
       // Thanks Message
-      printf("   ||----------------------------------------||\n");
-      printf("   ||    The shipping address is %s||\n",locations[choiceOfShipping - 1]);
-      printf("   || The package will be on your door in %.0f ||\n",deldevrytime[choiceOfShipping - 1]);
-      printf("   ||   Mins After You Receive The Message   ||\n");
-      printf("   ||      Thanks For Buying From Us!        ||\n");
-      printf("   ||           See You Soon :)              ||\n"); 
-      printf("   ||========================================||\n");
+      printf("          ||----------------------------------------||\n");
+      printf("          ||    The shipping address is %s||\n",locations[choiceOfShipping - 1]);
+      printf("          || The package will be on your door in %.0f ||\n",deldevrytime[choiceOfShipping - 1]);
+      printf("          ||   Mins After You Receive The Message   ||\n");
+      printf("          ||      Thanks For Buying From Us!        ||\n");
+      printf("          ||           See You Soon :)              ||\n"); 
+      printf("          ||========================================||\n");
       
           return 0;
     }
