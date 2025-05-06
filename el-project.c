@@ -175,7 +175,7 @@ void check_coupon() {
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 // Payment Function
-int Payment_Function(float total) {  // Choosing out the payment method
+int Payment_Function(double total) {  // Choosing out the payment method
 
     int paymentMethod;
     float paidAmount;
@@ -194,22 +194,22 @@ int Payment_Function(float total) {  // Choosing out the payment method
             printf("Total Price [%f EGP]: ", full_price);
             scanf("%f", &paidAmount);
             if (paidAmount < total) {
-                printf("\nInsufficient amount! Please pay at least [%.2f EGP]\n\n\n", total);
+                printf("\nInsufficient amount! Please pay at least [%f EGP]\n\n\n", total);
                 Payment_Function(total); // Re-prompt recursively
             } else {
-                printf("\nPayment accepted. Change: %.2f EGP\n\n\n", paidAmount - total);
+                printf("\nPayment accepted. Change: %f EGP\n\n\n", paidAmount - total);
             }
             break;
         case 2:
             printf("\n==============================================");
-            printf("\nProcessing credit card payment of %.2f EGP...\n", total);
+            printf("\nProcessing credit card payment of %f EGP...\n", total);
             printf("\t\tPayment successful!\n");
             printf("==============================================\n\n\n");
 
             break;
         case 3:
             printf("\n==============================================");
-            printf("\nPaying via digital services %.2f EGP...\n",total);
+            printf("\nPaying via digital services %f EGP...\n",total);
             printf("\t\tPayment Succefully Proccesed!\n");
             printf("==============================================\n\n\n");
             break;
@@ -228,41 +228,41 @@ void recommend_items(int section_number, int choice) {
     switch (section_number) {
         case 1: // Food Section Recommendations
             if (choice == 5) {
-                printf("\t\tYou may also like: Cheese, Butter.\n\n");
+                printf("\t\t[You may also like: Cheese, Butter.]\n");
             } else if (choice == 7) {
-                printf("\t\tYou may also like: Milk, Cheese.\n\n");
+                printf("\t\t[You may also like: Milk, Cheese.]\n");
             } else if (choice == 1) {
-                printf("\t\tYou may also like: Apple, Milk.\n\n");
+                printf("\t\t[You may also like: Apple, Milk.]\n");
             }
             break;
       
         case 2: // Drinks Section Recommendations
             if (choice == 1) {
-                printf("\t\tYou may also like: Smoothie, Milkshake.\n\n");
+                printf("\t\t[You may also like: Smoothie, Milkshake.]\n");
             } else if (choice == 3) {
-                printf("\t\tYou may also like: Energy Drink, Iced Tea.\n\n");
+                printf("\t\t[You may also like: Energy Drink, Iced Tea.]\n");
             } else if (choice == 6) {
-                printf("\t\tYou may also like: Coffee, Milk.\n\n");
+                printf("\t\t[You may also like: Coffee, Milk.]\n");
             }
             break;
       
         case 3: // Clothes Section Recommendations
             if (choice == 2) {
-                printf("\t\tYou may also like: Jeans, Sneakers.\n\n");
+                printf("\t\t[You may also like: Jeans, Sneakers.]\n");
             } else if (choice == 4) {
-                printf("\t\tYou may also like: Hoodie, Jeans.\n\n");
+                printf("\t\t[You may also like: Hoodie, Jeans.]\n");
             } else if (choice == 7) {
-                printf("\t\tYou may also like: Shorts, T-Shirt.\n\n");
+                printf("\t\t[You may also like: Shorts, T-Shirt.]\n");
             }
             break;
       
         case 4: // Medicine Section Recommendations
             if (choice == 1) {
-                printf("\t\tYou may also like: Antihistamines.\n\n");
+                printf("\t\t[You may also like: Antihistamines.]\n");
             } else if (choice == 3) {
-                printf("\t\tYou may also like: Paracetamol.\n\n");
+                printf("\t\t[You may also like: Paracetamol.]\n");
             } else if (choice == 6) {
-                printf("\t\tYou may also like: Cough Syrup.\n\n");
+                printf("\t\t[You may also like: Cough Syrup.]\n");
             }
             break;
     }
@@ -311,7 +311,7 @@ int main() {
                     }
                 while (run) {
                     food_choice = 0;
-                    printf("Enter the number of the food you want to buy (Enter 0 to exit): ");
+                    printf("\nEnter the number of the food you want to buy (Enter 0 to exit): ");
                     scanf("%d", &food_choice);
                     fflush(stdin);
                 
@@ -321,7 +321,7 @@ int main() {
                         break;
                     }
                     else if (food_choice >= 1 && food_choice <= 9) { // Valid choices
-                        printf("\n\t\tYou have selected %s\n", foods[food_choice - 1]);
+                        printf("\n\t\tYOU HAVE SELECTED %s\n", foods[food_choice - 1]);
                         strcpy(item[item_index].name, foods[food_choice - 1]);
                         item[item_index].price = foods_prices[food_choice - 1];
                         item_index++;
@@ -347,7 +347,7 @@ int main() {
                 }
                 while (run) {
                     drink_choice = 0;
-                    printf("Enter the number of the drink you want to buy (Enter 0 to exit): ");
+                    printf("\nEnter the number of the drink you want to buy (Enter 0 to exit): ");
                     scanf("%d", &drink_choice);
                     fflush(stdin);
                 
@@ -382,7 +382,7 @@ int main() {
                 }
                 while (run) {
                     clothes_choice = 0;
-                    printf("Enter the number of the clothes you want to buy (Enter 0 to exit): ");
+                    printf("\nEnter the number of the clothes you want to buy (Enter 0 to exit): ");
                     scanf("%d", &clothes_choice);
                     fflush(stdin);
                 
@@ -418,7 +418,7 @@ int main() {
                 
                 while (run) {
                     Medicine_choice = 0;
-                    printf("Enter the number of the Medicine you want to buy (Enter 0 to exit): ");
+                    printf("\nEnter the number of the Medicine you want to buy (Enter 0 to exit): ");
                     scanf("%d", &Medicine_choice);
                     fflush(stdin);
                 
