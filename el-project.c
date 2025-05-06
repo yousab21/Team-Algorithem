@@ -465,7 +465,7 @@ int main() {
         return 0;
     } else {
         int shipping_method = Shipping(); // get the value of the shipping method
-        
+        full_price += shipping_method; // Adding the shipping method price to the full price
         // Determining the shipping location
         bool LocationVerification = true;
         int choiceOfShipping;
@@ -521,13 +521,14 @@ int main() {
       printf("          ||----------------------------------------||\n");
 
       // Pricing Section
-      full_price += shipping_method; // Adding the shipping method price to the full price
       if(full_price >100){
             printf("          || Raw Price:                  %.2lf EGP ||\n", full_price);      
       } 
       else{
             printf("          || Raw Price:                  %.2lf EGP  ||\n", full_price);
       }
+
+      printf("          || Shipping Price:             +%d EGP  ||\n", shipping_method);
 
       if (discount_value>10) {
         printf("          || Discount:                   -%2.2f EGP ||\n", discount_value);  //lines 476 to end are to adjust spacing
