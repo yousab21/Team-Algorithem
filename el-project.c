@@ -8,6 +8,9 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdbool.h>
+#include <stdlib.h>
+#include <time.h>
+
 // class of items
 struct product { 
     char name[30];
@@ -473,6 +476,10 @@ int main() {
         int payment_m_print = Payment_Function(full_price);
 
 
+      // Random Order Number
+      srand(time(NULL));  // Seeding the random number with a random value
+      int orderNumber = (rand() % 99) + 1;  // Generating a Random Number
+      //==========
 
       printf("   ||========================================||\n");                                                   //             ###     Printing Out the Receipt    ###             //
       printf("   ||              Your Receipt:             ||\n");
@@ -518,10 +525,6 @@ int main() {
       
       
       printf("   ||----------------------------------------||\n");
-      printf("   ||                                        ||\n");
-      
-      
-      
       
       // Payment Method Section
       if (payment_m_print == 1) {
@@ -531,6 +534,9 @@ int main() {
       } else {
         printf("   ||    Payment Method: Digital Services    ||\n");
       }
+
+      printf("   ||            Order Number: %d            ||\n", orderNumber);
+        
 
       // Thanks Message
       printf("   ||----------------------------------------||\n");
