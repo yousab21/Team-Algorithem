@@ -72,7 +72,7 @@ char Medicine[7][30] = {
 float Medicine_prices[7] = { 1.50, 2.00, 3.25, 5.99, 2.75, 1.80, 3.50 };
 //----------------------------------------------------------------------------------
 
-// Coupons and Discounts Intiantion Section
+// Coupons and Discounts Intiation Section
 char coupons[4][10] = { "yousab", "yahia", "omar", "yassin" };
 float discount[4] = { 0.05, 0.1, 0.15, 0.2 };
 float discount_value = 0.0;
@@ -181,10 +181,10 @@ int Payment_Function(float total) {  // Choosing out the payment method
 
     switch (paymentMethod) {
         case 1:
-            printf("Enter amount paid: ");
+            printf("Total Price [%f EGP]: ", full_price);
             scanf("%f", &paidAmount);
             if (paidAmount < total) {
-                printf("\nInsufficient amount! Please pay at least %.2f EGP\n\n\n", total);
+                printf("\nInsufficient amount! Please pay at least [%.2f EGP]\n\n\n", total);
                 Payment_Function(total); // Re-prompt recursively
             } else {
                 printf("\nPayment accepted. Change: %.2f EGP\n\n\n", paidAmount - total);
@@ -217,41 +217,41 @@ void recommend_items(int section_number, int choice) {
     switch (section_number) {
         case 1: // Food Section Recommendations
             if (choice == 5) {
-                printf("You may also like: Cheese, Butter.\n\n");
+                printf("\t\tYou may also like: Cheese, Butter.\n\n");
             } else if (choice == 7) {
-                printf("You may also like: Milk, Cheese.\n\n");
+                printf("\t\tYou may also like: Milk, Cheese.\n\n");
             } else if (choice == 1) {
-                printf("You may also like: Apple, Milk.\n\n");
+                printf("\t\tYou may also like: Apple, Milk.\n\n");
             }
             break;
       
         case 2: // Drinks Section Recommendations
             if (choice == 1) {
-                printf("You may also like: Smoothie, Milkshake.\n\n");
+                printf("\t\tYou may also like: Smoothie, Milkshake.\n\n");
             } else if (choice == 3) {
-                printf("You may also like: Energy Drink, Iced Tea.\n\n");
+                printf("\t\tYou may also like: Energy Drink, Iced Tea.\n\n");
             } else if (choice == 6) {
-                printf("You may also like: Coffee, Milk.\n\n");
+                printf("\t\tYou may also like: Coffee, Milk.\n\n");
             }
             break;
       
         case 3: // Clothes Section Recommendations
             if (choice == 2) {
-                printf("You may also like: Jeans, Sneakers.\n\n");
+                printf("\t\tYou may also like: Jeans, Sneakers.\n\n");
             } else if (choice == 4) {
-                printf("You may also like: Hoodie, Jeans.\n\n");
+                printf("\t\tYou may also like: Hoodie, Jeans.\n\n");
             } else if (choice == 7) {
-                printf("You may also like: Shorts, T-Shirt.\n\n");
+                printf("\t\tYou may also like: Shorts, T-Shirt.\n\n");
             }
             break;
       
         case 4: // Medicine Section Recommendations
             if (choice == 1) {
-                printf("You may also like: Antihistamines.\n\n");
+                printf("\t\tYou may also like: Antihistamines.\n\n");
             } else if (choice == 3) {
-                printf("You may also like: Paracetamol.\n\n");
+                printf("\t\tYou may also like: Paracetamol.\n\n");
             } else if (choice == 6) {
-                printf("You may also like: Cough Syrup.\n\n");
+                printf("\t\tYou may also like: Cough Syrup.\n\n");
             }
             break;
     }
@@ -308,7 +308,7 @@ int main() {
                         break;
                     }
                     else if (food_choice >= 1 && food_choice <= 9) { // Valid choices
-                        printf("\nYou have selected %s\n", foods[food_choice - 1]);
+                        printf("\n\t\tYou have selected %s\n", foods[food_choice - 1]);
                         strcpy(item[item_index].name, foods[food_choice - 1]);
                         item[item_index].price = foods_prices[food_choice - 1];
                         item_index++;
@@ -344,7 +344,7 @@ int main() {
                         break;
                     }
                     else if (drink_choice >= 1 && drink_choice <= 10) { // Valid choices
-                        printf("\nYou have selected %s\n", drinks[drink_choice - 1]);
+                        printf("\n\t\tYou have selected %s\n", drinks[drink_choice - 1]);
                         strcpy(item[item_index].name, drinks[drink_choice - 1]);
                         item[item_index].price = drinks_prices[drink_choice - 1];
                         item_index++;
@@ -379,7 +379,7 @@ int main() {
                         break;
                     }
                     else if (clothes_choice >= 1 && clothes_choice <= 7) { // Valid choices
-                        printf("\nYou have selected %s\n", clothes[clothes_choice - 1]);
+                        printf("\n\t\tYou have selected %s\n", clothes[clothes_choice - 1]);
                         strcpy(item[item_index].name, clothes[clothes_choice - 1]);
                         item[item_index].price = clothes_prices[clothes_choice - 1];
                         item_index++;
@@ -415,7 +415,7 @@ int main() {
                         break;
                     }
                     else if (Medicine_choice >= 1 && Medicine_choice <= 7) { // Valid choices
-                        printf("\nYou have selected %s\n", Medicine[Medicine_choice - 1]);
+                        printf("\n\t\tYou have selected %s\n", Medicine[Medicine_choice - 1]);
                         strcpy(item[item_index].name, Medicine[Medicine_choice - 1]);
                         item[item_index].price = Medicine_prices[Medicine_choice - 1];
                         item_index++;
@@ -538,14 +538,18 @@ int main() {
         printf("   ||    Payment Method: Digital Services    ||\n");
       }
 
-      printf("   ||            Order Number: %d            ||\n", orderNumber);
+      if (orderNumber >= 10) {
+          printf("   ||            Order Number: %d            ||\n", orderNumber);
+      } else {
+          printf("   ||            Order Number: %d             ||\n", orderNumber);
+      }
         
 
       // Thanks Message
       printf("   ||----------------------------------------||\n");
       printf("   ||    The shipping address is %s||\n",locations[choiceOfShipping - 1]);
       printf("   || The package will be on your door in %.0f ||\n",deldevrytime[choiceOfShipping - 1]);
-      printf("   ||mins after your receive the notification||\n");
+      printf("   ||   Mins After You Receive The Message   ||\n");
       printf("   ||      Thanks For Buying From Us!        ||\n");
       printf("   ||           See You Soon :)              ||\n"); 
       printf("   ||========================================||\n");
