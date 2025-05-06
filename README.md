@@ -7,4 +7,4 @@ Yaret Neltazem be El Clean Coding Standards:
   3- Always leave comments.
   4- Complex tasks should be separated as their own function.
 
-                                                            ~~ WE AHAM 7AGA : ( IF IT IS NOT BROKEN DO NOT FIX IT ! ) ~~
+~~ WE AHAM 7AGA : ( IF IT IS NOT BROKEN DO NOT FIX IT ! ) ~~
