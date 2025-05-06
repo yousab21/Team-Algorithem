@@ -127,7 +127,7 @@ int Shipping() {
                 run = 0;
             break;
             default:
-                printf("wrong input\nPlease Try Again\n\n"); // The Message if the user entered a wrong value.
+                printf("\n\t!Wrong Input! \n\t! Try Again ! \n\n"); // The Message if the user entered a wrong value.
                 run = 1;
                 break;
         }
@@ -142,7 +142,7 @@ void check_coupon() {
     char coupon_response, coupon_code[20];
     int coupon_index = -1;
     int valid_coupon = 0; 
-    printf("do you have a discount coupon [y/n]: ");
+    printf("Do you have a discount coupon [y/n]? ");
     scanf(" %c", &coupon_response);
 
     // Checking for Coupons
@@ -159,7 +159,7 @@ void check_coupon() {
         }
       
     if (valid_coupon != 1) {
-            printf("Invalid coupon code.\n"); 
+            printf("\nInvalid coupon code.\n"); 
         }      
     }
 }
@@ -204,7 +204,7 @@ int Payment_Function(float total) {  // Choosing out the payment method
             printf("=========================================\n\n\n");
             break;
         default:
-            printf("Invalid choice. Try again.\n");
+            printf("\nInvalid choice. Try again.\n");
             Payment_Function(total);
     }
     return paymentMethod;
@@ -454,22 +454,25 @@ int main() {
         int shipping_method = Shipping(); // get the value of the shipping method
         
         // Determining the shipping location
+        bool LocationVerification = true;
         int choiceOfShipping;
-
-        printf("\nSelect your shipping address from the list below:\n");
-        for (int i = 0; i < 10; i++) {
-            printf("%d. %s\n", i + 1, locations[i]);
-        }
-
-        printf("Enter the number of your location: ");
-        scanf("%d", &choiceOfShipping);
-
-        if (choiceOfShipping < 1 || choiceOfShipping > 10) {
-            printf("Invalid location number.\n");
-            return 1;
-        }
-
+        while (LocationVerification) {
+            
+            printf("\nSelect your shipping address from the list below:\n");
+            for (int i = 0; i < 10; i++) {
+                printf("%d. %s\n", i + 1, locations[i]);
+            }
     
+            printf("Enter the number of your location: ");
+            scanf("%d", &choiceOfShipping);
+    
+            if (choiceOfShipping < 1 || choiceOfShipping > 10) {
+                printf("\n\t!Invalid location number.!\n");
+                LocationVerification = true;
+            } else {
+                LocationVerification = false;
+            }
+        }
         //----------------------------------------------------------------------------------------------------------------------------------------------------------------
         
         check_coupon(); // check for the coupon
