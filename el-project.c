@@ -35,6 +35,7 @@ char foods[9][30] = {
 };
 float foods_prices[9] = { 1.20, 0.99, 2.50, 1.30, 2.75, 2.10, 6.50, 1.80, 1.10 };
 
+
 int drink_choice; // DRINKS
 char drinks[10][30] = {
     "Yogurt Drink       ",
@@ -77,7 +78,7 @@ float Medicine_prices[7] = { 1.50, 2.00, 3.25, 5.99, 2.75, 1.80, 3.50 };
 
 
 // Coupons and Discounts Intiation Section
-char coupons[5][10] = { "yousab", "yahia", "omar", "yassin", "dr.mohamed" };
+char coupons[5][10] = { "yousab", "yahia", "omar", "yassin", "dr.mohamed" }; // 5 coupons
 float discount[5] = { 0.05, 0.1, 0.15, 0.2, 0.99 }; // 5%, 10%, 15%, 20% 
 float discount_value = 0.0;
 //---------------------------------------------------------------------------------------------------------
@@ -551,7 +552,7 @@ int main() {
         //----------------------------------------------------------------------------------------------------------------------------------------------------------------
         
         check_coupon(); // check for the coupon
-        int payment_m_print = Payment_Function(full_price);
+        int payment_m_print = Payment_Function(full_price - discount_value);
 
 
       // Random Order Number
