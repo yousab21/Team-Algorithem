@@ -347,7 +347,7 @@ int main() {
 
         // Choosing the desired section in the grocery shop
         while (run) {
-            printf("For Food Enter \"1\" \nFor Drinks Enter \"2\" \nFor Clothes Enter \"3\" \nFor Medicine Enter \"4\" \n======================\nTo See Your Cart Enter \"5\" \nFor Customer Support Enter \"6\" \n");
+            printf("For Food Enter \"1\" \nFor Drinks Enter \"2\" \nFor Clothes Enter \"3\" \nFor Medicine Enter \"4\" \n======================\nTo See Your Cart Enter \"5\" \nFor Customer Support Enter \"6\" \n"); // Print out the sections
             if (number_of_items > 0) { // If there are items in the cart then print the payment option
                 printf("\n[Proceed to payment Enter \"7\"] \n");
             }
@@ -360,10 +360,10 @@ int main() {
                 } else if (section == 7) { // Proceed to payment
                         checker = false;
                         run = 0;
-                } else if (section == 0) {
+                } else if (section == 0) { // Exit the program
                     checker = false;
                     run = 0;
-                } else {
+                } else { // Valid section
                     run = 0;
                 }
             }
@@ -371,10 +371,10 @@ int main() {
             if (number_of_items == 0) { // If there are no items in the cart then do not show the payment option
                 if (section < 0 || section > 6) {
                     printf("\n\t!Wrong Input! \n\t! Try Again ! \n\n");
-                } else if (section == 0) {
+                } else if (section == 0) { // Exit the program
                     checker = false;
                     run = 0;
-                } else {
+                } else { // Valid section
                     run = 0;
                 }
     
@@ -388,7 +388,7 @@ int main() {
                 run = 1;
                 printf("Foods:\n");
                     for(int i = 1; i <= 9; i++) {
-                        printf("%d. %s ............... $%.2f\n", i, foods[i-1], foods_prices[i-1]);
+                        printf("%d. %s ............... $%.2f\n", i, foods[i-1], foods_prices[i-1]); // Print out the food items.
                     }
                 while (run) {
                     food_choice = 0;
@@ -402,13 +402,13 @@ int main() {
                         break;
                     }
                     else if (food_choice >= 1 && food_choice <= 9) { // Valid choices
-                        printf("\n\t\tYOU HAVE SELECTED %s\n", foods[food_choice - 1]);
-
+                        printf("\n\t\tYOU HAVE SELECTED %s\n", foods[food_choice - 1]); // Print out the selected item
+                        // Adding the selected item to the cart
                         strcpy(item[item_index].name, foods[food_choice - 1]);
                         item[item_index].price = foods_prices[food_choice - 1];
-                        item_index++; 
-                        number_of_items++;
-                        full_price += foods_prices[food_choice - 1];
+                        item_index++; // Increment the item index to add the new item.
+                        number_of_items++; // Increment the number of items in the cart
+                        full_price += foods_prices[food_choice - 1]; // Adding the price of the selected item to the full price
 
                         // Call out for Recommendations Function
                         recommend_items(section, food_choice);
@@ -425,7 +425,7 @@ int main() {
                 run = 1;
                 printf("\nDrinks:\n");
                 for(int i = 1; i <= 10; i++) {
-                    printf("%d. %s ............... $%.2f\n", i, drinks[i-1], drinks_prices[i-1]);
+                    printf("%d. %s ............... $%.2f\n", i, drinks[i-1], drinks_prices[i-1]); // Print out the drinks items.
                 }
                 while (run) {
                     drink_choice = 0;
@@ -439,12 +439,13 @@ int main() {
                         break;
                     }
                     else if (drink_choice >= 1 && drink_choice <= 10) { // Valid choices
-                        printf("\n\t\tYou have selected %s\n", drinks[drink_choice - 1]);
+                        printf("\n\t\tYou have selected %s\n", drinks[drink_choice - 1]); // Print out the selected item
+                        // Adding the selected item to the cart
                         strcpy(item[item_index].name, drinks[drink_choice - 1]);
                         item[item_index].price = drinks_prices[drink_choice - 1];
-                        item_index++;
-                        number_of_items++;
-                        full_price += drinks_prices[drink_choice - 1];
+                        item_index++; // Increment the item index to add the new item.
+                        number_of_items++; // Increment the number of items in the cart
+                        full_price += drinks_prices[drink_choice - 1]; // Adding the price of the selected item to the full price
 
                         // Call out for Recommendations Function
                         recommend_items(section, drink_choice);
@@ -460,7 +461,7 @@ int main() {
                 run = 1;
                 printf("Clothes:\n");
                 for(int i = 1; i <= 7; i++) {
-                    printf("%d. %s ............... $%.2f\n", i, clothes[i-1], clothes_prices[i-1]);
+                    printf("%d. %s ............... $%.2f\n", i, clothes[i-1], clothes_prices[i-1]); // Print out the clothes items.
                 }
                 while (run) {
                     clothes_choice = 0;
@@ -474,12 +475,14 @@ int main() {
                         break;
                     }
                     else if (clothes_choice >= 1 && clothes_choice <= 7) { // Valid choices
-                        printf("\n\t\tYou have selected %s\n", clothes[clothes_choice - 1]);
+                        printf("\n\t\tYou have selected %s\n", clothes[clothes_choice - 1]); // Print out the selected item
+
+                        // Adding the selected item to the cart
                         strcpy(item[item_index].name, clothes[clothes_choice - 1]);
                         item[item_index].price = clothes_prices[clothes_choice - 1];
-                        item_index++;
-                        number_of_items++;
-                        full_price += clothes_prices[clothes_choice - 1];
+                        item_index++; // Increment the item index to add the new item.
+                        number_of_items++; // Increment the number of items in the cart
+                        full_price += clothes_prices[clothes_choice - 1]; // Adding the price of the selected item to the full price
 
                         // Call out for Recommendations Function
                         recommend_items(section, clothes_choice);
@@ -495,7 +498,7 @@ int main() {
                 run = 1;
                 printf("Medicines:\n");
                 for(int i = 1; i <= 7; i++) {
-                    printf("%d. %s ............... $%.2f\n", i, Medicine[i-1], Medicine_prices[i-1]);
+                    printf("%d. %s ............... $%.2f\n", i, Medicine[i-1], Medicine_prices[i-1]); // Print out the medicine items.
                 }
                 
                 while (run) {
@@ -510,12 +513,14 @@ int main() {
                         break;
                     }
                     else if (Medicine_choice >= 1 && Medicine_choice <= 7) { // Valid choices
-                        printf("\n\t\tYou have selected %s\n", Medicine[Medicine_choice - 1]);
+                        printf("\n\t\tYou have selected %s\n", Medicine[Medicine_choice - 1]); // Print out the selected item
+                        
+                        // Adding the selected item to the cart
                         strcpy(item[item_index].name, Medicine[Medicine_choice - 1]);
                         item[item_index].price = Medicine_prices[Medicine_choice - 1];
-                        item_index++;
-                        number_of_items++;
-                        full_price += Medicine_prices[Medicine_choice - 1];
+                        item_index++; // Increment the item index to add the new item.
+                        number_of_items++; // Increment the number of items in the cart
+                        full_price += Medicine_prices[Medicine_choice - 1]; // Adding the price of the selected item to the full price
 
                         // Call out for Recommendations Function
                         recommend_items(section, Medicine_choice);
@@ -527,28 +532,28 @@ int main() {
                 }
                 break;
             case 5: // Show the selected items
-                show_selected_items();
+                show_selected_items(); 
                 break;
             
             case 6: // Customer Support Section
                 run = 1;
-                printf("\nWelcome to the Customer Support Center!\n");
-                printQuestions();
-                int question_choice;
+                printf("\nWelcome to the Customer Support Center!\n"); // Customer Support Section welcome message
+                printQuestions(); // Print out the questions
+                int question_choice; // Variable to store the question choice
 
                 while (run) {
-                    printf("Enter the number of your question [Press 0 for Exit]: ");
+                    printf("Enter the number of your question [Press 0 for Exit]: "); // Get the question choice
                     scanf("%d", &question_choice);
                 
-                    if (question_choice == 0) {
+                    if (question_choice == 0) { // Exit when user enters 0
                         printf("\nExiting the customer support section...........\n\n");
                         run = 0;
-                    } else if (question_choice < 1 || question_choice > 10) {
+                    } else if (question_choice < 1 || question_choice > 10) { // Invalid choice
                         printf("\n\t!Wrong Input! \n\t! Try Again ! \n\n");
                         run = 1; 
                     }
                     else {
-                        answerQuestion(question_choice);
+                        answerQuestion(question_choice); // Answer the question
                         run = 1;
                     }
                 }
@@ -558,9 +563,9 @@ int main() {
 }
 
     if (section == 0) { // Exit the program
-        printf("\nExiting the program...........\n\n");
+        printf("\nExiting the program...........\n\n"); // Exitting the program message.
         return 0;
-    } else {              
+    } else { // Proceed to payment      
         if (number_of_items == 0) { // Sorry Message
             printf("\nWe are sorry that none of our products has intrested you and we're willing to see you soon :(\n\n");
             return 0;
@@ -570,17 +575,18 @@ int main() {
             // Determining the shipping location
             bool LocationVerification = true;
             int choiceOfShipping;
-            while (LocationVerification) {
+
+            while (LocationVerification) { // Loop until a valid location is selected
                 
-                printf("\nSelect your shipping address from the list below:\n");
+                printf("\nSelect your shipping address from the list below:\n"); // Show the locations
                 for (int i = 0; i < 10; i++) {
                     printf("%d. %s\n", i + 1, locations[i]);
                 }
         
-                printf("Enter the number of your location: ");
+                printf("Enter the number of your location: "); // Get the location number
                 scanf("%d", &choiceOfShipping);
         
-                if (choiceOfShipping < 1 || choiceOfShipping > 10) {
+                if (choiceOfShipping < 1 || choiceOfShipping > 10) { // Invalid location number
                     printf("\n\t!Invalid location number.!\n");
                     LocationVerification = true;
                 } else {
