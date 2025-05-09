@@ -336,37 +336,44 @@ int main() {
     bool run = true;
     bool checker = true;
     char other_section;
+    int section;
 
     printf("\n\t\t\t\t\t\tWelcome to Dukan-404!\n\n");
 
     while (checker) {
-        int section, run = 1;
+        int run = 1;
 
         printf("Choose the section you want: \n\n");
 
         // Choosing the desired section in the grocery shop
         while (run) {
-            printf("For Food Enter \"1\" \nFor Drinks Enter \"2\" \nFor Clothes Enter \"3\" \nFor Medicine Enter \"4\" \nTo See your cart Enter \"5\" \nFor Customer Support Enter \"6\" \n");
+            printf("For Food Enter \"1\" \nFor Drinks Enter \"2\" \nFor Clothes Enter \"3\" \nFor Medicine Enter \"4\" \n======================\nTo See Your Cart Enter \"5\" \nFor Customer Support Enter \"6\" \n");
             if (number_of_items > 0) { // If there are items in the cart then print the payment option
                 printf("\n[Proceed to payment Enter \"7\"] \n");
             }
-            printf("\nSection: "); // Choossing the section
+            printf("\nSection [Enter 0 to Exit the Program]: "); // Choossing the section
             scanf("%d", &section); // Choosing the section
 
             if (number_of_items > 0) { // If there are items in the cart then show the payment option
-                if (section < 1 || section > 7) {
+                if (section < 0 || section > 7) {
                     printf("\n\t!Wrong Input! \n\t! Try Again ! \n\n");
                 } else if (section == 7) { // Proceed to payment
                         checker = false;
                         run = 0;
+                } else if (section == 0) {
+                    checker = false;
+                    run = 0;
                 } else {
                     run = 0;
                 }
             }
 
             if (number_of_items == 0) { // If there are no items in the cart then do not show the payment option
-                if (section < 1 || section > 6) {
+                if (section < 0 || section > 6) {
                     printf("\n\t!Wrong Input! \n\t! Try Again ! \n\n");
+                } else if (section == 0) {
+                    checker = false;
+                    run = 0;
                 } else {
                     run = 0;
                 }
@@ -549,125 +556,130 @@ int main() {
         }
 
 }
-                   
-    if (number_of_items == 0) { // Sorry Message
-        printf("\nWe are sorry that none of our products has intrested you and we're willing to see you soon :(\n\n");
+
+    if (section == 0) { // Exit the program
+        printf("\nExiting the program...........\n\n");
         return 0;
-    } else {
-        int shipping_method = Shipping(); // get the value of the shipping method
-        full_price += shipping_method; // Adding the shipping method price to the full price
-        // Determining the shipping location
-        bool LocationVerification = true;
-        int choiceOfShipping;
-        while (LocationVerification) {
+    } else {              
+        if (number_of_items == 0) { // Sorry Message
+            printf("\nWe are sorry that none of our products has intrested you and we're willing to see you soon :(\n\n");
+            return 0;
+        } else {
+            int shipping_method = Shipping(); // get the value of the shipping method
+            full_price += shipping_method; // Adding the shipping method price to the full price
+            // Determining the shipping location
+            bool LocationVerification = true;
+            int choiceOfShipping;
+            while (LocationVerification) {
+                
+                printf("\nSelect your shipping address from the list below:\n");
+                for (int i = 0; i < 10; i++) {
+                    printf("%d. %s\n", i + 1, locations[i]);
+                }
+        
+                printf("Enter the number of your location: ");
+                scanf("%d", &choiceOfShipping);
+        
+                if (choiceOfShipping < 1 || choiceOfShipping > 10) {
+                    printf("\n\t!Invalid location number.!\n");
+                    LocationVerification = true;
+                } else {
+                    LocationVerification = false;
+                }
+            }
+            //----------------------------------------------------------------------------------------------------------------------------------------------------------------
             
-            printf("\nSelect your shipping address from the list below:\n");
-            for (int i = 0; i < 10; i++) {
-                printf("%d. %s\n", i + 1, locations[i]);
-            }
-    
-            printf("Enter the number of your location: ");
-            scanf("%d", &choiceOfShipping);
-    
-            if (choiceOfShipping < 1 || choiceOfShipping > 10) {
-                printf("\n\t!Invalid location number.!\n");
-                LocationVerification = true;
-            } else {
-                LocationVerification = false;
-            }
-        }
-        //----------------------------------------------------------------------------------------------------------------------------------------------------------------
+            check_coupon(); // check for the coupon
+            int payment_m_print = Payment_Function(full_price - discount_value);
+
+
+        // Random Order Number
+        srand(time(NULL));  // Seeding the random number with a random value
+        int orderNumber = (rand() % 99) + 1;  // Generating a Random Number
+        //=====================================================================
+
+        //============================================================================================================================================//
+                                                    //             ###     Printing Out the Receipt    ###             //
+        //==========================================================================================================================================//
         
-        check_coupon(); // check for the coupon
-        int payment_m_print = Payment_Function(full_price - discount_value);
-
-
-      // Random Order Number
-      srand(time(NULL));  // Seeding the random number with a random value
-      int orderNumber = (rand() % 99) + 1;  // Generating a Random Number
-      //=====================================================================
-
-      //============================================================================================================================================//
-                                                //             ###     Printing Out the Receipt    ###             //
-      //==========================================================================================================================================//
-      
-      printf("\n");
-      printf("          ||========================================||\n");
-      printf("          ||              Your Receipt              ||\n");    
-      printf("          ||========================================||\n");
-      printf("          || Product Name:                    Price ||\n");
-      printf("          ||                                        ||\n");
-      // Printing item list
-      for (item_index = 0; item_index < number_of_items; item_index++) {  
-        if(item[item_index].price < 10){   
-             printf("          || %d- %-25s +%.2f EGP ||\n",item_index + 1, item[item_index].name, item[item_index].price);    
+        printf("\n");
+        printf("          ||========================================||\n");
+        printf("          ||              Your Receipt              ||\n");    
+        printf("          ||========================================||\n");
+        printf("          || Product Name:                    Price ||\n");
+        printf("          ||                                        ||\n");
+        // Printing item list
+        for (item_index = 0; item_index < number_of_items; item_index++) {  
+            if(item[item_index].price < 10){   
+                printf("          || %d- %-25s +%.2f EGP ||\n",item_index + 1, item[item_index].name, item[item_index].price);    
+            }
+            else if (item[item_index].price >= 10){   
+                printf("          || %d- %-25s+%.2f EGP ||\n",item_index + 1, item[item_index].name, item[item_index].price);  
+            }     
         }
-        else if (item[item_index].price >= 10){   
-             printf("          || %d- %-25s+%.2f EGP ||\n",item_index + 1, item[item_index].name, item[item_index].price);  
-        }     
-    }
 
-      printf("          ||                                        ||\n");
-      printf("          ||----------------------------------------||\n");
-      
-
-      // Pricing Section
-      if(full_price >100){
-            printf("          || Raw Price:                  %.2lf EGP ||\n", full_price);      
-      } 
-      else{
-            printf("          || Raw Price:                  %.2lf EGP  ||\n", full_price);
-      }
-
-      printf("          || Shipping Price:                %d EGP  ||\n", shipping_method); // Printing the shipping price
-
-      if (discount_value>10) {
-        printf("          || Discount:                   -%2.2f EGP ||\n", discount_value);  //lines 476 to end are to adjust spacing
-      }                                                                               //for the love of god dont mess with them
-      else {                                                                          //         IAM WATCHINH YOU !!
-        printf("          || Discount:                   -%2.2f EGP  ||\n", discount_value); //          ############
-      }                                                                               //   #######    0000    ########
-                                                                                      // /##        00 ** 00          ##\ 
-                                                                                      // \##        00 ** 00          ##/                            
-      full_price -= discount_value;                                                   //   #######    0000     #######
-                                                                                      //          ############
-      if(full_price >100){                                                            
-            printf("          || Total Price:                %.2lf EGP ||\n", full_price);
-      } else if (full_price < 1) {
-            printf("          || Total Price:                %.2lf EGP   ||\n", full_price);
-      }
-      else{
-            printf("          || Total Price:                %.2lf EGP  ||\n", full_price);
-      }
-      
-      
-      printf("          ||----------------------------------------||\n");
-      
-      // Payment Method Section
-      if (payment_m_print == 1) {
-        printf("          ||           Payment Method: Cash         ||\n");
-      } else if (payment_m_print == 2) {
-        printf("          ||       Payment Method: Credit Card      ||\n");
-      } else {
-        printf("          ||    Payment Method: Digital Services    ||\n");
-      }
-
-      if (orderNumber >= 10) {
-          printf("          ||            Order Number: %d            ||\n", orderNumber);
-      } else {
-          printf("          ||            Order Number: %d             ||\n", orderNumber);
-      }
+        printf("          ||                                        ||\n");
+        printf("          ||----------------------------------------||\n");
         
 
-      // Thanks Message
-      printf("          ||----------------------------------------||\n");
-      printf("          ||    The Shipping Address Is %s||\n",locations[choiceOfShipping - 1]);
-      printf("          || The Package Will Be On Your Door In %.0f ||\n",deldevrytime[choiceOfShipping - 1]);
-      printf("          ||   Mins After You Receive The Message   ||\n");
-      printf("          ||      Thanks For Buying From Us!        ||\n");
-      printf("          ||           See You Soon :)              ||\n"); 
-      printf("          ||========================================||\n\n\n");
-      
-          return 0;
+        // Pricing Section
+        if(full_price >100){
+                printf("          || Raw Price:                  %.2lf EGP ||\n", full_price);      
+        } 
+        else{
+                printf("          || Raw Price:                  %.2lf EGP  ||\n", full_price);
+        }
+
+        printf("          || Shipping Price:                %d EGP  ||\n", shipping_method); // Printing the shipping price
+
+        if (discount_value>10) {
+            printf("          || Discount:                   -%2.2f EGP ||\n", discount_value);  //lines 476 to end are to adjust spacing
+        }                                                                               //for the love of god dont mess with them
+        else {                                                                          //         IAM WATCHINH YOU !!
+            printf("          || Discount:                   -%2.2f EGP  ||\n", discount_value); //          ############
+        }                                                                               //   #######    0000    ########
+                                                                                        // /##        00 ** 00          ##\ 
+                                                                                        // \##        00 ** 00          ##/                            
+        full_price -= discount_value;                                                   //   #######    0000     #######
+                                                                                        //          ############
+        if(full_price >100){                                                            
+                printf("          || Total Price:                %.2lf EGP ||\n", full_price);
+        } else if (full_price < 1) {
+                printf("          || Total Price:                %.2lf EGP   ||\n", full_price);
+        }
+        else{
+                printf("          || Total Price:                %.2lf EGP  ||\n", full_price);
+        }
+        
+        
+        printf("          ||----------------------------------------||\n");
+        
+        // Payment Method Section
+        if (payment_m_print == 1) {
+            printf("          ||           Payment Method: Cash         ||\n");
+        } else if (payment_m_print == 2) {
+            printf("          ||       Payment Method: Credit Card      ||\n");
+        } else {
+            printf("          ||    Payment Method: Digital Services    ||\n");
+        }
+
+        if (orderNumber >= 10) {
+            printf("          ||            Order Number: %d            ||\n", orderNumber);
+        } else {
+            printf("          ||            Order Number: %d             ||\n", orderNumber);
+        }
+            
+
+        // Thanks Message
+        printf("          ||----------------------------------------||\n");
+        printf("          ||    The Shipping Address Is %s||\n",locations[choiceOfShipping - 1]);
+        printf("          || The Package Will Be On Your Door In %.0f ||\n",deldevrytime[choiceOfShipping - 1]);
+        printf("          ||   Mins After You Receive The Message   ||\n");
+        printf("          ||      Thanks For Buying From Us!        ||\n");
+        printf("          ||           See You Soon :)              ||\n"); 
+        printf("          ||========================================||\n\n\n");
+        
+            return 0;
+        }
     }
 }
