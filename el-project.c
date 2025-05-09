@@ -314,16 +314,18 @@ void answerQuestion(int choice) {
 }
 //---------------------------------------------------------------------------------------------------------------------------------------------------------
 //---------------------------------------------------------------------------------------------------------------------------------------------------------
+
+// Cart Function
 void show_selected_items() {
     printf("\n======= Your Selected Items =======\n");
     if ( number_of_items == 0) {
         printf("No items selected yet.\n");
     } else {
         for (int i = 0; i < number_of_items; i++) {
-            printf("%2d. %-20s - %.2f EGP\n", i + 1, item[i].name, item[i].price);
+            printf("%2d. %-20s - %.2f EGP\n", i + 1, item[i].name, item[i].price); // Print out the selected items
         }
         printf("----------------------------------\n");
-        printf("Total so far: %.2f EGP\n", full_price);
+        printf("Total so far: %.2f EGP\n", full_price); // Print out the total price for the current selected items.
     }
     printf("===================================\n\n");
 }
