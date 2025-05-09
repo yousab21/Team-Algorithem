@@ -330,6 +330,25 @@ void show_selected_items() {
     printf("===================================\n\n");
 }
 
+//---------------------------------------------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------------------------------------------
+
+// Function for removing items from the cart
+
+void remove_item_from_cart(int item_index) {
+    if (item_index < 0 || item_index >= number_of_items) {
+        printf("Invalid item index.\n");
+        return;
+    }
+    // Shift items to the left
+    for (int i = item_index; i < number_of_items - 1; i++) {
+        item[i] = item[i + 1];
+    }
+    number_of_items--;
+    full_price -= item[item_index].price; // Update the total price
+    printf("Item removed from cart.\n");
+}
+
 //=========================================================================================================================================================================//
 //=================================================================END OF FEATURES SECTION OF THE CODE=====================================================================//
 //=========================================================================================================================================================================//
@@ -534,7 +553,35 @@ int main() {
                 }
                 break;
             case 5: // Show the selected items
-                show_selected_items(); 
+                show_selected_items();
+                char check_for_removal;
+                int item_to_remove;
+                printf("\nEnter [r] to enter the page where you can remove the items from your cart, else press any key: ");
+                scanf("%s", &check_for_removal);
+              
+                if (check_for_removal == 'r') { // If the user wants to remove an item from the cart
+                    run = true;
+
+                    while (run) 
+                    {
+                        printf("Enter the number of the item you want to remove [Press 0 for exit]: ");
+                        scanf("%d", &item_to_remove);
+
+                        if (item_to_remove == 0) { // Exit when user enters 0
+                            printf("\nExiting the cart section...........\n\n");
+                            run = false;
+                        } else if (item_to_remove < 1 || item_to_remove > number_of_items) { // Invalid choice
+                            printf("\n\t!Wrong Input! \n\t! Try Again ! \n\n");
+                            run = true; 
+                        } else if (item_to_remove >= 1 || item_to_remove <= number_of_items) {
+                            remove_item_from_cart(item_to_remove - 1);
+                            run = true;
+                            printf("\n[Item removed from cart.]\n");
+                        }
+                        show_selected_items(); // Show the updated cart
+                    }
+                }
+
                 break;
             
             case 6: // Customer Support Section
