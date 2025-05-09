@@ -86,6 +86,8 @@ float discount_value = 0.0;
 // Global Variables
 double full_price = 0; // Full Price of the purchased items
 int number_of_items = 0; // Number of Purchesed items
+struct product item[100]; // Array of items
+int item_index = 0; // Index for the items
 
 
 //=========================================================================================================================================================================//
@@ -310,14 +312,27 @@ void answerQuestion(int choice) {
         default: printf("\nInvalid selection. Please choose a number between 1 and 10.\n\n");
     }
 }
+//---------------------------------------------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------------------------------------------
+void show_selected_items() {
+    printf("\n======= Your Selected Items =======\n");
+    if ( number_of_items == 0) {
+        printf("No items selected yet.\n");
+    } else {
+        for (int i = 0; i < number_of_items; i++) {
+            printf("%2d. %-20s - %.2f EGP\n", i + 1, item[i].name, item[i].price);
+        }
+        printf("----------------------------------\n");
+        printf("Total so far: %.2f EGP\n", full_price);
+    }
+    printf("===================================\n\n");
+}
 
 //=========================================================================================================================================================================//
 //=================================================================END OF FEATURES SECTION OF THE CODE=====================================================================//
 //=========================================================================================================================================================================//
 
 int main() {
-    struct product item[100];
-    int item_index = 0;
     bool run = true;
     bool checker = true;
     char other_section;
@@ -331,11 +346,11 @@ int main() {
 
         // Choosing the desired section in the grocery shop
         while (run) {
-            printf("For Food Enter \"1\" \nFor Drinks Enter \"2\" \nFor Clothes Enter \"3\" \nFor Medicine Enter \"4\" \nFor Customer Support Enter \"5\" \n");
+            printf("For Food Enter \"1\" \nFor Drinks Enter \"2\" \nFor Clothes Enter \"3\" \nFor Medicine Enter \"4\" \nTo See your cart Enter \"5\" \nFor Customer Support Enter \"6\" \n");
             printf("\nSection: ");
             scanf("%d", &section);
 
-            if (section < 1 || section > 5)
+            if (section < 1 || section > 6)
                 printf("\n\t!Wrong Input! \n\t! Try Again ! \n\n");
             else
                 run = 0;
@@ -362,9 +377,10 @@ int main() {
                     }
                     else if (food_choice >= 1 && food_choice <= 9) { // Valid choices
                         printf("\n\t\tYOU HAVE SELECTED %s\n", foods[food_choice - 1]);
+
                         strcpy(item[item_index].name, foods[food_choice - 1]);
                         item[item_index].price = foods_prices[food_choice - 1];
-                        item_index++;
+                        item_index++; 
                         number_of_items++;
                         full_price += foods_prices[food_choice - 1];
 
@@ -484,7 +500,11 @@ int main() {
                     }
                 }
                 break;
-            case 5: // Customer Support Section
+            case 5: // Show the selected items
+                show_selected_items();
+                break;
+            
+            case 6: // Customer Support Section
                 run = 1;
                 printf("\nWelcome to the Customer Support Center!\n");
                 printQuestions();
