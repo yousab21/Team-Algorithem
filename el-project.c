@@ -347,13 +347,32 @@ int main() {
         // Choosing the desired section in the grocery shop
         while (run) {
             printf("For Food Enter \"1\" \nFor Drinks Enter \"2\" \nFor Clothes Enter \"3\" \nFor Medicine Enter \"4\" \nTo See your cart Enter \"5\" \nFor Customer Support Enter \"6\" \n");
-            printf("\nSection: ");
-            scanf("%d", &section);
+            if (number_of_items > 0) { // If there are items in the cart then print the payment option
+                printf("\n[Proceed to payment Enter \"7\"] \n");
+            }
+            printf("\nSection: "); // Choossing the section
+            scanf("%d", &section); // Choosing the section
 
-            if (section < 1 || section > 6)
-                printf("\n\t!Wrong Input! \n\t! Try Again ! \n\n");
-            else
-                run = 0;
+            if (number_of_items > 0) { // If there are items in the cart then show the payment option
+                if (section < 1 || section > 7) {
+                    printf("\n\t!Wrong Input! \n\t! Try Again ! \n\n");
+                } else if (section == 7) { // Proceed to payment
+                        checker = false;
+                        run = 0;
+                } else {
+                    run = 0;
+                }
+            }
+
+            if (number_of_items == 0) { // If there are no items in the cart then do not show the payment option
+                if (section < 1 || section > 6) {
+                    printf("\n\t!Wrong Input! \n\t! Try Again ! \n\n");
+                } else {
+                    run = 0;
+                }
+    
+            }
+            
         }
         //---------------------------------------------------------------------
         
@@ -371,7 +390,7 @@ int main() {
                     fflush(stdin);
                 
                     if (food_choice == 0) {  // Exit when user enters 0
-                        printf("\nExiting the food section............\n");
+                        printf("\nExiting the food section............\n\n");
                         run = 0;
                         break;
                     }
@@ -408,7 +427,7 @@ int main() {
                     fflush(stdin);
                 
                     if (drink_choice == 0) {  // Exit when user enters 0
-                        printf("\nExiting the drinks section............\n");
+                        printf("\nExiting the drinks section............\n\n");
                         run = 0;
                         break;
                     }
@@ -443,7 +462,7 @@ int main() {
                     fflush(stdin);
                 
                     if (clothes_choice == 0) {  // Exit when user enters 0
-                        printf("\nExiting the clothes section...........\n");
+                        printf("\nExiting the clothes section...........\n\n");
                         run = 0;
                         break;
                     }
@@ -479,7 +498,7 @@ int main() {
                     fflush(stdin);
                 
                     if (Medicine_choice == 0) {  // Exit when user enters 0
-                        printf("\nExiting the medicine section...........\n");
+                        printf("\nExiting the medicine section...........\n\n");
                         run = 0;
                         break;
                     }
@@ -515,7 +534,7 @@ int main() {
                     scanf("%d", &question_choice);
                 
                     if (question_choice == 0) {
-                        printf("\nExiting the customer support section...........\n");
+                        printf("\nExiting the customer support section...........\n\n");
                         run = 0;
                     } else if (question_choice < 1 || question_choice > 10) {
                         printf("\n\t!Wrong Input! \n\t! Try Again ! \n\n");
@@ -529,18 +548,6 @@ int main() {
                 break;
         }
 
-        printf("\nDo you want to visit another section? (y/n): "); // Asking for continuance.
-        scanf(" %c", &other_section);
-        if (other_section == 'n' || other_section == 'N') {
-            checker = false;
-        }
-        else if (other_section == 'y' || other_section == 'Y') {
-            checker = true;
-        }
-        else {
-            printf("\n\t!Wrong Input! \n\t! Try Again ! \n\n");
-            continue;
-        }
 }
                    
     if (number_of_items == 0) { // Sorry Message
