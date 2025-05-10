@@ -46,7 +46,7 @@ char drinks[10][30] = {
     "Coffee             ",
     "Tea                ",
     "Milkshake          ",
-    "smoothie           ",
+    "Smoothie           ",
     "Iced Tea           ",
 };
 float drinks_prices[10] = { 0.80, 1.50, 2.00, 2.25, 3.99, 2.20, 1.75, 1.10, 1.30, 1.60 };
