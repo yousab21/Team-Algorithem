@@ -682,10 +682,10 @@ int main() {
                 printf("          || Raw Price:                  %.2lf EGP ||\n", full_price);      
         } 
         else{
-                printf("          || Raw Price:                  %.2lf EGP  ||\n", full_price);
+                printf("          || Raw Price:                   %.2lf EGP ||\n", full_price);
         }
 
-        printf("          || Shipping Price:                %d EGP  ||\n", shipping_method); // Printing the shipping price
+        printf("          || Shipping Price:                 %d EGP ||\n", shipping_method); // Printing the shipping price
 
         if (discount_value>100) {
             printf("          || Discount:                  -%.2f EGP ||\n", discount_value);  
