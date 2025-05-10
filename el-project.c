@@ -691,7 +691,7 @@ int main() {
             printf("          || Discount:                  -%.2f EGP ||\n", discount_value);  
         }                                                                                        
         else if(discount_value > 10) {
-           printf("          || Discount:                    -%.2f EGP ||\n", discount_value);  //lines 660 to end are to adjust spacing
+            printf("          || Discount:                   -%.2f EGP ||\n", discount_value);  //lines 660 to end are to adjust spacing
         }                                                                                        //for the love of god do not mess with them
         else {                                                                                   //         IAM WATCHINH YOU !!
             printf("          || Discount:                    -%.2f EGP ||\n", discount_value); //          ############
