@@ -88,7 +88,7 @@ double full_price = 0; // Full Price of the purchased items
 int number_of_items = 0; // Number of Purchesed items
 struct product item[100]; // Array of items
 int item_index = 0; // Index for the items
-
+int shipping_method; // Shipping Method
 
 //=========================================================================================================================================================================//
 //================================================================!! ALL THE ADDED FEATURES TO THE SHOP !!=================================================================//
@@ -117,10 +117,10 @@ float deldevrytime[10] = {
 
 // Shipping Function
 int Shipping() {
-    int shipping_method, run = 1;
+    int run = 1;
     int shippingPrice = 0;
     while (run) {
-        printf("\n1. Standard Shipping\t5-7 Days\t10$\n2. Fast Shipping\t2-3 Days\t17$\n3. Overnight Shipping\tNext Day\t25$\n\nchoose shipping option: "); // All Shipping choices
+        printf("\n1. Standard Shipping\t5-7 Days\t10$\n2. Fast Shipping\t\t2-3 Days\t17$\n3. Overnight Shipping\tNext Day\t25$\n4. take away\n\nchoose shipping option: "); // All Shipping choices
         scanf("%d", &shipping_method); // Receives The Shipping Option Chose By The User.
         
         // Choosing The Shipping Method By The User.
@@ -137,6 +137,10 @@ int Shipping() {
                 shippingPrice += 25;
                 run = 0;
             break;
+            case 4:
+                shippingPrice += 0;
+                run = 0;
+            break;  
             default:
                 printf("\n\t!Wrong Input! \n\t! Try Again ! \n\n"); // The Message if the user entered a wrong value.
                 run = 1;
@@ -619,12 +623,12 @@ int main() {
             printf("\nWe are sorry that none of our products has intrested you and we're willing to see you soon :(\n\n");
             return 0;
         } else {
-            int shipping_method = Shipping(); // get the value of the shipping method
-            full_price += shipping_method; // Adding the shipping method price to the full price
+            float shipping_price = Shipping(); // get the value of the shipping method
+            full_price += shipping_price; // Adding the shipping method price to the full price
             // Determining the shipping location
             bool LocationVerification = true;
             int choiceOfShipping;
-
+        if(shipping_method != 4){     //only print out shipping location if the the shipping method is not take away
             while (LocationVerification) { // Loop until a valid location is selected
                 
                 printf("\nSelect your shipping address from the list below:\n"); // Show the locations
@@ -642,6 +646,7 @@ int main() {
                     LocationVerification = false;
                 }
             }
+        }
             //----------------------------------------------------------------------------------------------------------------------------------------------------------------
             
             check_coupon(); // check for the coupon
@@ -679,13 +684,20 @@ int main() {
 
         // Pricing Section
         if(full_price >100){
-                printf("          || Raw Price:                  %.2lf EGP ||\n", full_price);      
+                printf("          || Raw Price:                  %.2f EGP ||\n", full_price);      
+        } 
+        else if(full_price > 10) {
+                printf("          || Raw Price:                   %.2f EGP ||\n", full_price);
+        }
+        else{
+                printf("          || Raw Price:                    %.2f EGP ||\n", full_price);
+        }
+        if(shipping_price > 10){
+                printf("          || Shipping Price:              %.2f EGP ||\n", shipping_price); // Printing the shipping price
         } 
         else{
-                printf("          || Raw Price:                   %.2lf EGP ||\n", full_price);
+                printf("          || Shipping Price:               %.2f EGP ||\n", shipping_price); // Printing the shipping price
         }
-
-        printf("          || Shipping Price:                 %d EGP ||\n", shipping_method); // Printing the shipping price
 
         if (discount_value>100) {
             printf("          || Discount:                  -%.2f EGP ||\n", discount_value);  
@@ -701,13 +713,13 @@ int main() {
         full_price -= discount_value;                                                            //   #######    0000     #######
                                                                                                  //          ############
         if(full_price >100){                                                            
-                printf("          || Total Price:                %.2lf EGP ||\n", full_price);
+                printf("          || Total Price:                %.2f EGP ||\n", full_price);
         } 
         else if (full_price > 10) {
-                printf("          || Total Price:                 %.2lf EGP ||\n", full_price);
+                printf("          || Total Price:                 %.2f EGP ||\n", full_price);
         }
         else{
-                printf("          || Total Price:                  %.2lf EGP ||\n", full_price);
+                printf("          || Total Price:                  %.2f EGP ||\n", full_price);
         }
         
         
@@ -729,15 +741,22 @@ int main() {
         }
             
 
-        // Thanks Message
+        if (shipping_method !=4) { // If the shipping method is not take away
         printf("          ||----------------------------------------||\n");
         printf("          ||    The Shipping Address Is %s||\n",locations[choiceOfShipping - 1]);
         printf("          || The Package Will Be On Your Door In %.0f ||\n",deldevrytime[choiceOfShipping - 1]);
         printf("          ||   Mins After You Receive The Message   ||\n");
-        printf("          ||      Thanks For Buying From Us!        ||\n");
-        printf("          ||           See You Soon :)              ||\n"); 
+        printf("          ||        Thanks For Buying From Us!      ||\n");
+        printf("          ||             See You Soon :)            ||\n"); 
         printf("          ||========================================||\n\n\n");
-        
+        }
+        else {   //if the shipping method is take away
+        printf("          ||----------------------------------------||\n");
+        printf("          ||            take away order             ||\n");  
+        printf("          ||        Thanks For Buying From Us!      ||\n");
+        printf("          ||             See You Soon :)            ||\n"); 
+        printf("          ||========================================||\n\n\n");
+        }
             return 0;
         }
     }
