@@ -120,7 +120,7 @@ int Shipping() {
     int run = 1;
     int shippingPrice = 0;
     while (run) {
-        printf("\n1. Standard Shipping\t5-7 Days\t10$\n2. Fast Shipping\t\t2-3 Days\t17$\n3. Overnight Shipping\tNext Day\t25$\n4. take away\n\nchoose shipping option: "); // All Shipping choices
+        printf("\n1. Standard Shipping\t5-7 Days\t10$\n2. Fast Shipping\t\t2-3 Days\t17$\n3. Overnight Shipping\tNext Day\t25$\n\nchoose shipping option: "); // All Shipping choices
         scanf("%d", &shipping_method); // Receives The Shipping Option Chose By The User.
         
         // Choosing The Shipping Method By The User.
@@ -137,10 +137,6 @@ int Shipping() {
                 shippingPrice += 25;
                 run = 0;
             break;
-            case 4:
-                shippingPrice += 0;
-                run = 0;
-            break;  
             default:
                 printf("\n\t!Wrong Input! \n\t! Try Again ! \n\n"); // The Message if the user entered a wrong value.
                 run = 1;
@@ -239,44 +235,89 @@ void recommend_items(int section_number, int choice) {
     // Suggests items based on category and selected item
     switch (section_number) {
         case 1: // Food Section Recommendations
-            if (choice == 5) {
-                printf("\t\t[You may also like: Cheese, Butter.]\n");
+            if (choice == 1) {
+                printf("\t\t[3am Far8li: Mawgood Mawgood! El Mooz Lesah Gai Gdeed!]\n");
+            } else if (choice == 2) { 
+                printf("\t\t[3am Far8li: 3andak Toffa7 w 7leeb. Momken Te3mel Behom Milkshake Lazeez]\n");
+            } else if (choice == 3) {
+                printf("\t\t[3am Far8li: El 3eesh Tazah lesah Gai Embar7! Law tgeeb gebna aw zebda yb2a 3al El 3al]\n");
+            } else if (choice == 4) {
+                printf("\t\t[3am Far8li: El beid yeb2a gameel law 3amaltoh m3 Gbnah, Shakshookah Ya M3lem!]\n");
+            } else if (choice == 5) {
+                printf("\t\t[3am Far8li: El laban dayman mofeed!]\n");
+            } else if (choice == 6) {
+                printf("\t\t[3am Far8li: 3andak Gbnah w Zbdah lw 3ayz.]\n");
             } else if (choice == 7) {
-                printf("\t\t[You may also like: Milk, Cheese.]\n");
-            } else if (choice == 1) {
-                printf("\t\t[You may also like: Apple, Milk.]\n");
+                printf("\t\t[3am Far8li: El Zebda m3 el toast We El 3asal teb2a 7ekaya.]\n");
+            } else if (choice == 8) {
+                printf("\t\t[3am Far8li: 3andak Laban w Gbnah fi El Tlagah Eli Odam!]\n");
+            } else if (choice == 9) {
+                printf("\t\t[3am Far8li: Yeb2a smoothie ya fa5eem.]\n");
             }
-            break;
-      
+        break;
+        //-----------------------------------------------------------------------------------------
+
         case 2: // Drinks Section Recommendations
             if (choice == 1) {
-                printf("\t\t[You may also like: Smoothie, Milkshake.]\n");
+                printf("\t\t[3am Far8li: El Laban El Rayeb da momtaz!]\n");
+            } else if (choice == 2) {
+                printf("\t\t[3am Far8li: T7eb Smoothie wla Milkshake kman?]\n");
             } else if (choice == 3) {
-                printf("\t\t[You may also like: Energy Drink, Iced Tea.]\n");
+                printf("\t\t[3am Far8li: El Cola Sa23ah bas ma tensash El Maya... El Gaw 7ar Elnahardah.]\n");
+            } else if (choice == 4) { 
+                printf("\t\t[3am Far8li: Fi Energy Drink we Iced Tea fi el freezer]\n");
+            } else if (choice == 5) {
+                printf("\t\t[3am Far8li: El Energy Drink da yenfa3 ma3 el sahra.]\n");
             } else if (choice == 6) {
-                printf("\t\t[You may also like: Coffee, Milk.]\n");
-            }
-            break;
-      
-        case 3: // Clothes Section Recommendations
-            if (choice == 2) {
-                printf("\t\t[You may also like: Jeans, Sneakers.]\n");
-            } else if (choice == 4) {
-                printf("\t\t[You may also like: Hoodie, Jeans.]\n");
+                printf("\t\t[3am Far8li: Zo2ak Hayel fi el 2hwa!]\n");
             } else if (choice == 7) {
-                printf("\t\t[You may also like: Shorts, T-Shirt.]\n");
+                printf("\t\t[3am Far8li: 2hwa we 7aleeb, a7la nescafe!]\n");
+            } else if (choice == 8) {
+                printf("\t\t[3am Far8li: El Milkshake da fatkarny b sob7 el elgoma3a... lw 3andak smoothie tamam!]\n");
+            } else if (choice == 9) {
+                printf("\t\t[3am Far8li: Smoothie? Da y3ady el sob7 b nafs tayba. 7ot ma3ah laban w toffa7.]\n");
+            } else if (choice == 10) {
+                printf("\t\t[3am Far8li: Iced Tea da 3ashan el gaw. W lw shay sokh, ana 3andy bard.]\n");
             }
-            break;
-      
+        break;
+        //-----------------------------------------------------------------------------------------
+
+        case 3: // Clothes Section Recommendations
+            if (choice == 1) {
+                printf("\t\t[3am Far8li: El T-Shirt da yelzemlo Shorts 3leek.]\n");
+            } else if (choice == 2) {
+                printf("\t\t[3am Far8li: Jeans? Gamed! El Sneakers haykamlak el style.]\n");
+            } else if (choice == 3) {
+                printf("\t\t[3am Far8li: El Jacket dah to7fah 3leek!]\n");
+            } else if (choice == 4) {
+                printf("\t\t[3am Far8li: El Hoodie dah m3 el jeans el sodah damaaaar]\n");
+            } else if (choice == 5) {
+                printf("\t\t[3am Far8li: Shorts Lel sa7el! Ragel Betfham.]\n");
+            } else if (choice == 6) {
+                printf("\t\t[3am Far8li: El Sneakers dol lesah nazleen gdeed!]\n");
+            } else if (choice == 7) {
+                printf("\t\t[3am Far8li: Law el gaw 7ar, geeb Shorts w T-Shirts.]\n");
+            }
+        break;   
+        //-----------------------------------------------------------------------------------------
+
         case 4: // Medicine Section Recommendations
             if (choice == 1) {
-                printf("\t\t[You may also like: Antihistamines.]\n");
+                printf("\t\t[You may also like: Paracetamol, Ibuprofen.]\n");
+            } else if (choice == 2) {
+                printf("\t\t[You may also like: Allergy Relief, Cough Syrup.]\n");
             } else if (choice == 3) {
-                printf("\t\t[You may also like: Paracetamol.]\n");
+                printf("\t\t[You may also like: Paracetamol, Ibuprofen.]\n");
+            } else if (choice == 4) {
+                printf("\t\t[You may also like: Vitamin C, Antibiotic Pills.]\n");
+            } else if (choice == 5) {
+                printf("\t\t[You may also like: Vitamin C, Paracetamol.]\n");
             } else if (choice == 6) {
-                printf("\t\t[You may also like: Cough Syrup.]\n");
+                printf("\t\t[You may also like: Antacid Tablets, Cough Syrup.]\n");
+            } else if (choice == 7) {
+                printf("\t\t[You may also like: Allergy Relief, Antibiotic Pills.]\n");
             }
-            break;
+        break;
     }
 }
 
