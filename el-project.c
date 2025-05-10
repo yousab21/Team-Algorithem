@@ -687,23 +687,27 @@ int main() {
 
         printf("          || Shipping Price:                %d EGP  ||\n", shipping_method); // Printing the shipping price
 
-        if (discount_value>10) {
-            printf("          || Discount:                   -%2.2f EGP ||\n", discount_value);  //lines 476 to end are to adjust spacing
-        }                                                                               //for the love of god dont mess with them
-        else {                                                                          //         IAM WATCHINH YOU !!
-            printf("          || Discount:                   -%2.2f EGP  ||\n", discount_value); //          ############
-        }                                                                               //   #######    0000    ########
-                                                                                        // /##        00 ** 00          ##\ 
-                                                                                        // \##        00 ** 00          ##/                            
-        full_price -= discount_value;                                                   //   #######    0000     #######
-                                                                                        //          ############
+        if (discount_value>100) {
+            printf("          || Discount:                  -%.2f EGP ||\n", discount_value);  
+        }                                                                                        
+        else if(discount_value > 10) {
+           printf("          || Discount:                    -%.2f EGP ||\n", discount_value);  //lines 660 to end are to adjust spacing
+        }                                                                                        //for the love of god do not mess with them
+        else {                                                                                   //         IAM WATCHINH YOU !!
+            printf("          || Discount:                    -%.2f EGP ||\n", discount_value); //          ############
+        }                                                                                        //   #######    0000    ########
+                                                                                                 // /##        00 ** 00          ##\ 
+                                                                                                 // \##        00 ** 00          ##/                            
+        full_price -= discount_value;                                                            //   #######    0000     #######
+                                                                                                 //          ############
         if(full_price >100){                                                            
                 printf("          || Total Price:                %.2lf EGP ||\n", full_price);
-        } else if (full_price < 1) {
-                printf("          || Total Price:                %.2lf EGP   ||\n", full_price);
+        } 
+        else if (full_price > 10) {
+                printf("          || Total Price:                 %.2lf EGP ||\n", full_price);
         }
         else{
-                printf("          || Total Price:                %.2lf EGP  ||\n", full_price);
+                printf("          || Total Price:                  %.2lf EGP ||\n", full_price);
         }
         
         
