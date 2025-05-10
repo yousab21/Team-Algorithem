@@ -199,7 +199,7 @@ int Payment_Function(double total) {  // Choosing out the payment method
 
     switch (paymentMethod) {
         case 1:
-            printf("Total Price [%f EGP]: ", full_price);
+            printf("Total Price [%f EGP]: ", full_price - discount_value);
             scanf("%f", &paidAmount);
             if (paidAmount < total) {
                 printf("\nInsufficient amount! Please pay at least [%f EGP]\n\n\n", total);
