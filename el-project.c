@@ -661,7 +661,7 @@ int main() {
         return 0;
     } else { // Proceed to payment      
         if (number_of_items == 0) { // Sorry Message
-            printf("\n3am Far8ali: Mafeesh Moshkelah ya Basha Tnwar Fi ei wa2t!\n\n");
+            printf("\n3am Far8ali: Mafeesh Moshkelah ya Basha Tnwar Fi ei wa2t 🫡!\n\n");
             return 0;
         } else {
             float shipping_price = Shipping(); // get the value of the shipping method
