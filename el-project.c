@@ -79,7 +79,7 @@ float Medicine_prices[7] = { 1.50, 2.00, 3.25, 5.99, 2.75, 1.80, 3.50 };
 
 // Coupons and Discounts Intiation Section
 char coupons[5][10] = { "yousab", "yahia", "omar", "yassin", "dr.mohamed" }; // 5 coupons
-float discount[5] = { 0.05, 0.1, 0.15, 0.2, 0.99 }; // 5%, 10%, 15%, 20% 
+float discount[5] = { 0.05, 0.1, 0.15, 0.2, 0.99 }; // 5%, 10%, 15%, 20% , 99%
 float discount_value = 0.0;
 //---------------------------------------------------------------------------------------------------------
 
@@ -661,7 +661,7 @@ int main() {
         return 0;
     } else { // Proceed to payment      
         if (number_of_items == 0) { // Sorry Message
-            printf("\nWe are sorry that none of our products has intrested you and we're willing to see you soon :(\n\n");
+            printf("\n3am Far8ali: Mafeesh Moshkelah ya Basha Tnwar Fi ei wa2t!\n\n");
             return 0;
         } else {
             float shipping_price = Shipping(); // get the value of the shipping method
