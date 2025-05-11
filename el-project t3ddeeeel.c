@@ -500,10 +500,10 @@ void remove_item_from_cart(int item_index) {
 
 void Rating ()
 {
-    int presentation_rating,costumerSupport_rating,readabilty_rating,CodeEfficiency_rating;
+    int presentation_rating,costumerSupport_rating,readabilty_rating,CodeEfficiency_rating,full_rating,precentage;
     printf("          ||========================================||\n");
-    printf("          ||      Please rating our online shop!    ||\n");
-    printf("          ||      3shan 3m fr8ly 👳 m4 rady ydf3    ||\n");
+    printf("          ||      Please rate our online shop!    ||\n");
+    printf("          ||      3shan 3m far8ali 👳 m4 rady ydf3  ||\n");
 
     printf("          ||========================================||\n");
     printf("               costumer support? (out of 10):    ");
@@ -520,9 +520,19 @@ void Rating ()
 
     printf("                presentation? (out of 10):       "); 
     scanf("%d", &presentation_rating);
-    printf("          ||========================================||\n");
+    printf("          ||========================================||\n\n\n");
 
+    full_rating=presentation_rating+costumerSupport_rating+readabilty_rating+CodeEfficiency_rating;
+    precentage= (full_rating/40)*100;
 
+    if(precentage>=90)
+        printf("3m far8ali 👳: bainy keda lazm a7asb el 3yal di begad!");
+    else if(precentage>=75)
+        printf("3m far8ali 👳: El eyal te3bt fe3lan h7asb b 25%% discount");
+    else if (precentage>=50)
+        printf("3m far8ali 👳: El 3yal e4t8lt w shrt brdo hdf3 50%% mn el mabl8");
+    else if (precentage<=50)
+         printf("3m far8ali 👳: bernamg 3la el kd khals hdf3 30%% 3shan mz3lhm4");
 }
 
 //=========================================================================================================================================================================//
