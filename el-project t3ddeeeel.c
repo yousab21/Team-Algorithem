@@ -502,7 +502,7 @@ void Rating ()
 {
     int presentation_rating,costumerSupport_rating,readabilty_rating,CodeEfficiency_rating,full_rating,precentage;
     printf("          ||========================================||\n");
-    printf("          ||      Please rate our online shop!    ||\n");
+    printf("          ||      Please rate our online shop!      ||\n");
     printf("          ||      3shan 3m far8ali 👳 m4 rady ydf3  ||\n");
 
     printf("          ||========================================||\n");
