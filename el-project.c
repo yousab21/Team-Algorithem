@@ -816,10 +816,7 @@ if (section == 0) { // Exit the program
             printf("          ||            Order Number: %d            ||\n", orderNumber);
         } else {
             printf("          ||            Order Number: %d             ||\n", orderNumber);
-        }
-            
-
-        if (shipping_method !=4) { // If the shipping method is not take away
+        }  
         printf("          ||----------------------------------------||\n");
         printf("          ||    The Shipping Address Is %s||\n",locations[choiceOfShipping - 1]);
         printf("          || The Package Will Be On Your Door In %.0f ||\n",deldevrytime[choiceOfShipping - 1]);
@@ -828,14 +825,6 @@ if (section == 0) { // Exit the program
         printf("          ||             See You Soon :)            ||\n"); 
         printf("          ||========================================||\n\n\n");
         }
-        else {   //if the shipping method is take away
-        printf("          ||----------------------------------------||\n");
-        printf("          ||            take away order             ||\n");  
-        printf("          ||        Thanks For Buying From Us!      ||\n");
-        printf("          ||             See You Soon :)            ||\n"); 
-        printf("          ||========================================||\n\n\n");
-        }
-            return 0;
-        }
-    }
+    return 0;
+}
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
