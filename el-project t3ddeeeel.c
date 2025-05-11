@@ -500,14 +500,14 @@ void remove_item_from_cart(int item_index) {
 
 void Rating ()
 {
-    int presentation_rating,coupons_rating,readabilty_rating,CodeEfficiency_rating;
+    int presentation_rating,costumerSupport_rating,readabilty_rating,CodeEfficiency_rating;
     printf("          ||========================================||\n");
     printf("          ||      Please rating our online shop!    ||\n");
     printf("          ||      3shan 3m fr8ly 👳 m4 rady ydf3    ||\n");
 
     printf("          ||========================================||\n");
     printf("               costumer support? (out of 10):    ");
-    scanf("%d",&coupons_rating);
+    scanf("%d",&costumerSupport_rating);
     printf("          ||----------------------------------------||\n");
  
     printf("               Code readabilty? (out of 10):     ");
@@ -521,6 +521,7 @@ void Rating ()
     printf("                presentation? (out of 10):       "); 
     scanf("%d", &presentation_rating);
     printf("          ||========================================||\n");
+
 
 }
 
