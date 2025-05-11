@@ -78,7 +78,7 @@ float Medicine_prices[7] = { 1.50, 2.00, 3.25, 5.99, 2.75, 1.80, 3.50 };
 
 
 // Coupons and Discounts Intiation Section
-char coupons[5][10] = { "yousab", "yahia", "omar", "yassin", "dr.mohamed" }; // 5 coupons
+char coupons[5][20] = { "yousab", "yahia", "omar", "yassin", "dr.mohamed" }; // 5 coupons
 float discount[5] = { 0.05, 0.1, 0.15, 0.2, 0.99 }; // 5%, 10%, 15%, 20% , 99%
 float discount_value = 0.0;
 //---------------------------------------------------------------------------------------------------------
@@ -451,6 +451,7 @@ int main() {
             }
             printf("\nSection [Enter 0 to Exit the Program]: "); // Choossing the section
             scanf("%d", &section); // Choosing the section
+            fflush(stdin);
 
             if (number_of_items > 0) { // If there are items in the cart then show the payment option
                 if (section < 0 || section > 7) {
