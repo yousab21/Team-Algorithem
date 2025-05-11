@@ -91,7 +91,7 @@ int item_index = 0; // Index for the items
 int shipping_method; // Shipping Method
 
 
-char *locations[10] = {
+char locations[10][30] = {
     "Talkha      ",
     "El Gamaa    ",
     "El Toriel   ",
