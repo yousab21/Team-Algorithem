@@ -90,11 +90,6 @@ struct product item[100]; // Array of items
 int item_index = 0; // Index for the items
 int shipping_method; // Shipping Method
 
-//=========================================================================================================================================================================//
-//================================================================!! ALL THE ADDED FEATURES TO THE SHOP !!=================================================================//
-//=========================================================================================================================================================================//
-
-// Shipping Locations Function Pricing
 
 char *locations[10] = {
     "Talkha      ",
@@ -114,8 +109,38 @@ float deldevrytime[10] = {
     25.0, 55.0, 38.0, 42.0, 60.0
 };
 
+char greetings_3m_far8ali [10][100] = {
+    "[3m far8ali👳🏽 : menawar el ma7al yam3alem eh a5barak keda]",
+    "[3m far8ali👳🏽 : Ahlan wasahlan ya basha]",
+    "[3m far8ali👳🏽 : Izayyak ya me3alem kollo tamam?]",
+    "[3m far8ali👳🏽 : Sabah el fol ya gameel!]",
+    "[3m far8ali👳🏽 : Feenak ya rayes? mabt3adee4 leh]",
+    "[3m far8ali👳🏽 : el samalo 3liko ya ba4a!, t3ala e4rab 4ay m3ana]",
+    "[3m far8ali👳🏽 : 3mel eih ya gada3 eh a5barak el ayam di]",
+    "[3m far8ali👳🏽 : kont lesa fi dema8i walahi enta fen keda ya me3alem]",
+    "[3m far8ali👳🏽 : el dukan dukanak ye me3alem 5od ra7tak]",
+    "[3m far8ali👳🏽 : el ducan nawar lma enta da5alt walahi]" 
+};
 
-// Shipping Function
+char farewells_3m_far8ali [10][100] = {
+    "[3m far8ali👳🏽 : Maʿ el salama ya basha!]",
+    "[3m far8ali👳🏽 : Yalla salam ya gameel!]",
+    "[3m far8ali👳🏽 : Ashofak 3la 5eir insha2 Allah!]",
+    "[3m far8ali👳🏽 : Matet2akharsh 3alina keda ya ma3lem!]",
+    "[3m far8ali👳🏽 : Yalla bye bye ya ma3lem !]",
+    "[3m far8ali👳🏽 : tenawatna fi 2y wa3t, el makan makanak!]",
+    "[3m far8ali👳🏽 : Dayman menawarna ya 7abibi!]",
+    "[3m far8ali👳🏽 : 7ala ya kebeer salamli 3la el 3eyal]",
+    "[3m far8ali👳🏽 : 7adretak tesharraf ay wa2t]",
+    "[3m far8ali👳🏽 : te4arfna 3alatoon ya m3alem]" 
+};
+
+
+//=========================================================================================================================================================================//
+//================================================================!! ALL THE ADDED FEATURES TO THE SHOP !!=================================================================//
+//=========================================================================================================================================================================//
+
+// Shipping Locations Function Pricing
 int Shipping() {
     int run = 1;
     int shippingPrice = 0;
@@ -236,86 +261,86 @@ void recommend_items(int section_number, int choice) {
     switch (section_number) {
         case 1: // Food Section Recommendations
             if (choice == 1) {
-                printf("\t\t[3am Far8li👳🏽‍♂️: Mawgood Mawgood! El Mooz Lesah Gai Gdeed!]\n");
+                printf("\t\t[3m Far8ali👳🏽: Mawgood Mawgood! El Mooz Lesah Gai Gdeed!]\n");
             } else if (choice == 2) { 
-                printf("\t\t[3am Far8li👳🏽‍♂️: 3andak Toffa7 w 7leeb. Momken Te3mel Behom Milkshake Lazeez]\n");
+                printf("\t\t[3m Far8ali👳🏽: 3andak Toffa7 w 7leeb. Momken Te3mel Behom Milkshake Lazeez]\n");
             } else if (choice == 3) {
-                printf("\t\t[3am Far8li👳🏽‍♂️: El 3eesh Tazah lesah Gai Embar7! Law tgeeb gebna aw zebda yb2a 3al El 3al]\n");
+                printf("\t\t[3m Far8ali👳🏽: El 3eesh Tazah lesah Gai Embar7! Law tgeeb gebna aw zebda yb2a 3al El 3al]\n");
             } else if (choice == 4) {
-                printf("\t\t[3am Far8li👳🏽‍♂️: El beid yeb2a gameel law 3amaltoh m3 Gbnah, Shakshookah Ya M3lem!]\n");
+                printf("\t\t[3m Far8ali👳🏽: El beid yeb2a gameel law 3maltoh m3 Gbnah, Shakshookah Ya M3lem!]\n");
             } else if (choice == 5) {
-                printf("\t\t[3am Far8l👳🏽‍♂️: El laban dayman mofeed!]\n");
+                printf("\t\t[3m Far8al👳🏽: El laban dayman mofeed!]\n");
             } else if (choice == 6) {
-                printf("\t\t[3am Far8li👳🏽‍♂️: 3andak Gbnah w Zbdah lw 3ayz.]\n");
+                printf("\t\t[3m Far8ali👳🏽: 3andak Gbnah w Zbdah lw 3ayz.]\n");
             } else if (choice == 7) {
-                printf("\t\t[3am Far8li👳🏽‍♂️: El Zebda m3 el toast We El 3asal teb2a 7ekaya.]\n");
+                printf("\t\t[3m Far8ali👳🏽: El Zebda m3 el toast We El 3asal teb2a 7ekaya.]\n");
             } else if (choice == 8) {
-                printf("\t\t[3am Far8li👳🏽‍♂️: 3andak Laban w Gbnah fi El Tlagah Eli Odam!]\n");
+                printf("\t\t[3m Far8ali👳🏽: 3andak Laban w Gbnah fi El Tlagah Eli Odam!]\n");
             } else if (choice == 9) {
-                printf("\t\t[3am Far8li👳🏽‍♂️: Yeb2a smoothie ya fa5eem.]\n");
+                printf("\t\t[3m Far8ali👳🏽: Yeb2a smoothie ya fa5eem.]\n");
             }
         break;
         //-----------------------------------------------------------------------------------------
 
         case 2: // Drinks Section Recommendations
             if (choice == 1) {
-                printf("\t\t[3am Far8li👳🏽‍♂️: El Laban El Rayeb da momtaz!]\n");
+                printf("\t\t[3m Far8ali👳🏽: El Laban El Rayeb da momtaz!]\n");
             } else if (choice == 2) {
-                printf("\t\t[3am Far8li👳🏽‍♂️: T7eb Smoothie wla Milkshake kman?]\n");
+                printf("\t\t[3m Far8ali👳🏽: T7eb Smoothie wla Milkshake kman?]\n");
             } else if (choice == 3) {
-                printf("\t\t[3am Far8li👳🏽‍♂️: El Cola Sa23ah bas ma tensash El Maya... El Gaw 7ar Elnahardah.]\n");
+                printf("\t\t[3m Far8ali👳🏽: El Cola Sa23ah bas ma tensash El Maya... El Gaw 7ar Elnahardah.]\n");
             } else if (choice == 4) { 
-                printf("\t\t[3am Far8li👳🏽‍♂️: Fi Energy Drink we Iced Tea fi el freezer]\n");
+                printf("\t\t[3m Far8ali👳🏽: Fi Energy Drink we Iced Tea fi el freezer]\n");
             } else if (choice == 5) {
-                printf("\t\t[3am Far8li👳🏽‍♂️: El Energy Drink da yenfa3 ma3 el sahra.]\n");
+                printf("\t\t[3m Far8ali👳🏽: El Energy Drink da yenfa3 ma3 el sahra.]\n");
             } else if (choice == 6) {
-                printf("\t\t[3am Far8li👳🏽‍♂️: Zo2ak Hayel fi el 2hwa!]\n");
+                printf("\t\t[3m Far8ali👳🏽: Zo2ak Hayel fi el 2hwa!]\n");
             } else if (choice == 7) {
-                printf("\t\t[3am Far8li👳🏽‍♂️: 2hwa we 7aleeb, a7la nescafe!]\n");
+                printf("\t\t[3m Far8ali👳🏽: 2hwa we 7aleeb, a7la nescafe!]\n");
             } else if (choice == 8) {
-                printf("\t\t[3am Far8li👳🏽‍♂️: El Milkshake da fatkarny b sob7 el elgoma3a... lw 3andak smoothie tamam!]\n");
+                printf("\t\t[3m Far8ali👳🏽: El Milkshake da fatkarny b sob7 el elgoma3a... lw 3andak smoothie tamam!]\n");
             } else if (choice == 9) {
-                printf("\t\t[3am Far8li👳🏽‍♂️: Smoothie? Da y3ady el sob7 b nafs tayba. 7ot ma3ah laban w toffa7.]\n");
+                printf("\t\t[3m Far8ali👳🏽: Smoothie? Da y3ady el sob7 b nafs tayba. 7ot ma3ah laban w toffa7.]\n");
             } else if (choice == 10) {
-                printf("\t\t[3am Far8li👳🏽‍♂️: Iced Tea da 3ashan el gaw. W lw shay sokh, ana 3andy bard.]\n");
+                printf("\t\t[3m Far8ali👳🏽: Iced Tea da 3ashan el gaw. W lw shay sokh, ana 3andy bard.]\n");
             }
         break;
         //-----------------------------------------------------------------------------------------
 
         case 3: // Clothes Section Recommendations
             if (choice == 1) {
-                printf("\t\t[3am Far8li👳🏽‍♂️: El T-Shirt da yelzemlo Shorts 3leek.]\n");
+                printf("\t\t[3m Far8ali👳🏽: El T-Shirt da yelzemlo Shorts 3leek.]\n");
             } else if (choice == 2) {
-                printf("\t\t[3am Far8li👳🏽‍♂️: Jeans? Gamed! El Sneakers haykamlak el style.]\n");
+                printf("\t\t[3m Far8ali👳🏽: Jeans? Gamed! El Sneakers haykamlak el style.]\n");
             } else if (choice == 3) {
-                printf("\t\t[3am Far8li👳🏽‍♂️: El Jacket dah to7fah 3leek!]\n");
+                printf("\t\t[3m Far8ali👳🏽: El Jacket dah to7fah 3leek!]\n");
             } else if (choice == 4) {
-                printf("\t\t[3am Far8li👳🏽‍♂️: El Hoodie dah m3 el jeans el sodah damaaaar]\n");
+                printf("\t\t[3m Far8ali👳🏽: El Hoodie dah m3 el jeans el sodah damaaaar]\n");
             } else if (choice == 5) {
-                printf("\t\t[3am Far8li👳🏽‍♂️: Shorts Lel sa7el! Ragel Betfham.]\n");
+                printf("\t\t[3m Far8ali👳🏽: Shorts Lel sa7el! Ragel Betfham.]\n");
             } else if (choice == 6) {
-                printf("\t\t[3am Far8li👳🏽‍♂️: El Sneakers dol lesah nazleen gdeed!]\n");
+                printf("\t\t[3m Far8ali👳🏽: El Sneakers dol lesah nazleen gdeed!]\n");
             } else if (choice == 7) {
-                printf("\t\t[3am Far8li👳🏽‍♂️: Law el gaw 7ar, geeb Shorts w T-Shirts.]\n");
+                printf("\t\t[3m Far8ali👳🏽: Law el gaw 7ar, geeb Shorts w T-Shirts.]\n");
             }
         break;   
         //-----------------------------------------------------------------------------------------
 
         case 4: // Medicine Section Recommendations
             if (choice == 1) {
-                printf("\t\t[You may also need👳🏽‍♂️: Paracetamol, Ibuprofen.]\n");
+                printf("\t\t[3m Far8ali👳🏽: lw 3andak 7asasia 5od dwa ko7a kman e7tyati.]\n");
             } else if (choice == 2) {
-                printf("\t\t[You may also need👳🏽‍♂️: Allergy Relief, Cough Syrup.]\n");
+                printf("\t\t[3m Far8ali👳🏽: dah momtaz le el soda3 !]\n");
             } else if (choice == 3) {
-                printf("\t\t[You may also need👳🏽‍♂️: Paracetamol, Ibuprofen.]\n");
+                printf("\t\t[3m Far8ali👳🏽: dah 4alklo bard mata5odlak Vitamin C kman]\n");
             } else if (choice == 4) {
-                printf("\t\t[You may also need👳🏽‍♂️: Vitamin C, Antibiotic Pills.]\n");
+                printf("\t\t[3m Far8ali👳🏽: lw el ko7a 4ededa 5od paracetamol 3l4an lw sada3t kman]\n");
             } else if (choice == 5) {
-                printf("\t\t[You may also need👳🏽‍♂️: Vitamin C, Paracetamol.]\n");
+                printf("\t\t[3m Far8ali👳🏽: yaah modad 7ayawi! alaf salama ya 7abibi]\n");
             } else if (choice == 6) {
-                printf("\t\t[You may also need👳🏽‍♂️: Antacid Tablets, Cough Syrup.]\n");
+                printf("\t\t[3m Far8ali👳🏽: agiblak kilo borto2an knam ?]\n");
             } else if (choice == 7) {
-                printf("\t\t[You may also need👳🏽‍♂️: Allergy Relief, Antibiotic Pills.]\n");
+                printf("\t\t[3m Far8ali👳🏽: el tofa7 bysa3ed fi 3osr el hadm 3la fekra agebla kilo ?]\n");
             }
         break;
     }
@@ -344,17 +369,17 @@ void printQuestions() {
 
 void answerQuestion(int choice) {
     switch (choice) {
-        case 1: printf("\nOur store is open daily from 8 AM to 10 PM.\n\n"); break;
-        case 2: printf("\nWe do not provide a tracking service yet but stay tuned for the updates.\n\n"); break;
-        case 3: printf("\nReturns are accepted within 7 days with the receipt.\n\n"); break;
-        case 4: printf("\nUnfortunately we do not support that but you could contact us via our phone number that you will find at the customer support section.\n\n"); break;
-        case 5: printf("\nWe accept cash, credit/debit cards, and digital wallets like Vodafone Cash and Fawery.\n\n"); break;
-        case 6: printf("\nApply the coupon at checkout in the 'Promo Code' field.\n\n"); break;
-        case 7: printf("\nNo you could order as much as you want from 1 EGP to 1000 or more!\n\n"); break;
-        case 8: printf("\nCold items are delivered in temperature-controlled packaging.\n\n"); break;
-        case 9: printf("\nWe offer a wide selection of certified organic products.\n\n"); break;
-        case 10: printf("\nCall us at 4041404 or email dukan-404@grocery.com.\n\n"); break;
-        default: printf("\nInvalid selection. Please choose a number between 1 and 10.\n\n");
+        case 1: printf("\n[3m far8ali 👳🏽 : el ma7al fake7 kol yom mn 8 AM le 10 PM. ]\n\n"); break;
+        case 2: printf("\n[3m far8ali 👳🏽 : haneb3atlak resala ow hanetesl beek yom el tawsil ]\n\n"); break;
+        case 3: printf("\n[3m far8ali 👳🏽 : ay montag ma3ada el akal we el 4orb momken teraga3o fi 5lal 7 ayam ]\n\n"); break;
+        case 4: printf("\n[3m far8ali 👳🏽 : tab3an ! e7tar \"5. view cart\" 2abal me te7aseb we hatla2i el option enak te4eel 7agat ]\n\n"); break;
+        case 5: printf("\n[3m far8ali 👳🏽 : te2dar tedfa3 cach aw be el criedt card aw 7ata vodafon cash we fawry ]\n\n"); break;
+        case 6: printf("\n[3m far8ali 👳🏽 : el barnameg hys2alak lw kan m3ak coupon we enta be t-check out 25tar 'y' we da5al el coupon ]\n\n"); break;
+        case 7: printf("\n[3m far8ali 👳🏽 : la2 te2dar totlop 4o7na be ay se3r te7ebo ]\n\n"); break;
+        case 8: printf("\n[3m far8ali 👳🏽 : beneb3athom fi sandoo2 mo5asas be7afez 3la daraget 7ararithom ta7et el sefr ]\n\n"); break;
+        case 9: printf("\n[3m far8ali 👳🏽 : kol el fwakeh we el 4odrawat 3andena organic 100 fi el 100 ]\n\n"); break;
+        case 10:printf("\n[3m far8ali 👳🏽 : momken tetwasel ma3ana 3la DUKAN404@gmail.com aw tetesl 3la 0103-345-4949 ]\n\n"); break; //dah rakami begad ya 4bab ma7ade4 ye troll XD
+        default:printf("\n[3m far8ali 👳🏽 : atamano akoon 3ereft asa3dak ]\n\n");
     }
 }
 //---------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -404,7 +429,14 @@ int main() {
     char other_section;
     int section;
 
-    printf("\n\t\t\t\t\t\tWelcome to Dukan-404!👳🏽‍♂️\n\n");
+    // Random number generators ::   
+        srand(time(NULL));  
+        int orderNumber = (rand() % 99) + 1;   // Generating a Random Number between 1 and 99 for use in order number
+        int greeting_number = (rand() % 10);   // Generating a Random Number between 0 and 9 for use in greeting greeting message
+        int farewell_number = (rand() % 10);   // Generating a Random Number between 0 and 9 for use in farewell message
+    //=====================================================================
+
+    printf("\n\t\t\t%s\n\n", greetings_3m_far8ali[greeting_number]); // Print out the greeting message
 
     while (checker) {
         int run = 1;
@@ -631,7 +663,7 @@ int main() {
             
             case 6: // Customer Support Section
                 run = 1;
-                printf("\nWelcome to the Customer Support Center!\n"); // Customer Support Section welcome message
+                printf("\n3m Far8ali👳🏽: ahlan beek fi 5edmet el 3omala2 2a2dar asa3dak ezay ?\n\n"); // Customer Support Section welcome message
                 printQuestions(); // Print out the questions
                 int question_choice; // Variable to store the question choice
 
@@ -657,7 +689,7 @@ int main() {
 }
 
 if (section == 0) { // Exit the program
-    printf("\n3am Far8ali👳🏽‍♂️: Mafeesh Moshkelah ya Basha Tnwar Fi ei wa2t 🫡!\n\n");
+    printf("\n3m Far8ali👳🏽: Mafeesh Moshkelah ya Basha Tnwar Fi ei wa2t 🫡!\n\n");
     return 0;
 } else { // Proceed to payment      
     float shipping_price = Shipping(); // get the value of the shipping method
@@ -691,16 +723,13 @@ if (section == 0) { // Exit the program
             int payment_m_print = Payment_Function(full_price - discount_value);
 
 
-        // Random Order Number
-        srand(time(NULL));  // Seeding the random number with a random value
-        int orderNumber = (rand() % 99) + 1;  // Generating a Random Number
-        //=====================================================================
+       
 
         //============================================================================================================================================//
                                                     //             ###     Printing Out the Receipt    ###             //
         //==========================================================================================================================================//
         
-        printf("\n");
+        printf("\n%s\n\n",farewells_3m_far8ali[farewell_number]); // Print out the farewell message
         printf("          ||========================================||\n");
         printf("          ||              Your Receipt              ||\n");    
         printf("          ||========================================||\n");
