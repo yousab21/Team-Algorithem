@@ -247,6 +247,7 @@ int Payment_Function(double total) {  // Choosing out the payment method
 
             break;
         case 3:
+        {
             int reEnter=1 ,len,is_valid;
             char mobile_number[11];
             char number_response;
@@ -288,7 +289,7 @@ int Payment_Function(double total) {  // Choosing out the payment method
 
                 
                         if (number_response == 'y' || number_response == 'Y')
-                        {ِ
+                        {
                             reEnter=0;
                             wrong=0;
                             is_valid=0;
@@ -318,6 +319,7 @@ int Payment_Function(double total) {  // Choosing out the payment method
             printf("\t\tPayment Succefully Proccesed!\n");
             printf("==============================================\n\n\n");
             break;
+        }
         default:
             printf("\nInvalid choice. Try again.\n");
             Payment_Function(total);
