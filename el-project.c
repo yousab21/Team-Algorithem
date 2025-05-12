@@ -218,9 +218,9 @@ int Payment_Function(double total) {  // Choosing out the payment method
 
     printf("\n------ Payment ------\n");
     printf("Select payment method:\n");
-    printf("1. Cash\n");
-    printf("2. Credit Card\n");
-    printf("3. Vodafone Cash \\ Fawary\n");
+    printf("1. Cash 💲\n");
+    printf("2. Credit Card 💳\n");
+    printf("3. Vodafone Cash \\ Fawary 📲\n");
     printf("-----------------------------");
     printf("\n\nChoice: ");
     scanf("%d", &paymentMethod);
