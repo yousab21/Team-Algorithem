@@ -288,7 +288,7 @@ int Payment_Function(double total) {  // Choosing out the payment method
 
                 
                         if (number_response == 'y' || number_response == 'Y')
-                        {
+                        {ِ
                             reEnter=0;
                             wrong=0;
                             is_valid=0;
