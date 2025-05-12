@@ -515,7 +515,7 @@ int main() {
         while (run) {
             printf("For Food Enter \"1\" 🍔 \nFor Drinks Enter \"2\" 🍹 \nFor Clothes Enter \"3\" 👕 \nFor Medicine Enter \"4\" 💊 \n======================\nTo See Your Cart Enter \"5\" 🛒 \nFor Customer Support Enter \"6\" 🎧 \nFor Far8li's Recipes Enter \"7\" 🥘👳 \n"); // Print out the sections
             if (number_of_items > 0) { // If there are items in the cart then print the payment option
-                printf("\n[Proceed to payment Enter \"8\"] \n");
+                printf("\n\t\t\t\t[Proceed to payment Enter \"8\" 💵 ] \n");
             }
             printf("\nSection [Enter 0 to Exit the Program]: "); // Choossing the section
             scanf("%d", &section); // Choosing the section
