@@ -123,16 +123,16 @@ char greetings_3m_far8ali [10][100] = {
 };
 
 char farewells_3m_far8ali [10][100] = {
-    "[3m far8ali👳 : Maʿ el salama ya basha!]",
-    "[3m far8ali👳 : Yalla salam ya gameel!]",
-    "[3m far8ali👳 : Ashofak 3la 5eir insha2 Allah!]",
-    "[3m far8ali👳 : Matet2akharsh 3alina keda ya ma3lem!]",
-    "[3m far8ali👳 : Yalla bye bye ya ma3lem !]",
-    "[3m far8ali👳 : tenawatna fi 2y wa3t, el makan makanak!]",
-    "[3m far8ali👳 : Dayman menawarna ya 7abibi!]",
-    "[3m far8ali👳 : 7ala ya kebeer salamli 3la el 3eyal]",
-    "[3m far8ali👳 : 7adretak tesharraf ay wa2t]",
-    "[3m far8ali👳 : te4arfna 3alatoon ya m3alem]" 
+    "[3m far8ali👳 : Maʿ el salama ya basha!🧾]",
+    "[3m far8ali👳 : Yalla salam ya gameel!🧾]",
+    "[3m far8ali👳 : Ashofak 3la 5eir insha2 Allah!🧾]",
+    "[3m far8ali👳 : Matet2akharsh 3alina keda ya ma3lem!🧾]",
+    "[3m far8ali👳 : Yalla bye bye ya ma3lem !🧾]",
+    "[3m far8ali👳 : tenawatna fi 2y wa3t, el makan makanak!🧾]",
+    "[3m far8ali👳 : Dayman menawarna ya 7abibi!🧾]",
+    "[3m far8ali👳 : 7ala ya kebeer salamli 3la el 3eyal🧾]",
+    "[3m far8ali👳 : 7adretak tesharraf ay wa2t🧾]",
+    "[3m far8ali👳 : te4arfna 3alatoon ya m3alem🧾]" 
 };
 
 
@@ -600,6 +600,7 @@ int main() {
     bool checker = true;
     char other_section;
     int section;
+    bool run_the_cart_rmoval = true;
 
     // Random number generators ::   
         srand(time(NULL));  
@@ -617,7 +618,7 @@ int main() {
 
         // Choosing the desired section in the grocery shop
         while (run) {
-            printf("For Food Enter \"1\" 🍔 \nFor Drinks Enter \"2\" 🍹 \nFor Clothes Enter \"3\" 👕 \nFor Medicine Enter \"4\" 💊 \n======================\nTo See Your Cart Enter \"5\" 🛒 \nFor Customer Support Enter \"6\" 🎧 \nFor Far8li's Recipes Enter \"7\" 🥘👳 \n"); // Print out the sections
+            printf("For Food Enter \"1\" 🍔 \nFor Drinks Enter \"2\" 🍹 \nFor Clothes Enter \"3\" 👕 \nFor Medicine Enter \"4\" 💊 \n======================\nTo See Your Cart Enter \"5\" 🛒 \nFor Es2al Far8ali Enter \"6\" ❓ \nFor Far8li's Recipes Enter \"7\" 🥘👳 \n"); // Print out the sections
             if (number_of_items > 0) { // If there are items in the cart then print the payment option
                 printf("\n\t\t\t\t[Proceed to payment Enter \"8\" 💵 ] \n");
             }
@@ -813,7 +814,7 @@ int main() {
                 if (check_for_removal == 'r') { // If the user wants to remove an item from the cart
                     run = true;
 
-                    while (run) 
+                    while (run_the_cart_rmoval) 
                     {
                         printf("Enter the number of the item you want to remove [Press 0 for exit]: ");
                         scanf("%d", &item_to_remove);
@@ -821,13 +822,13 @@ int main() {
 
                         if (item_to_remove == 0) { // Exit when user enters 0
                             printf("\nExiting the cart section...........\n\n");
-                            run = false;
+                            run_the_cart_rmoval = false;
                         } else if (item_to_remove < 1 || item_to_remove > number_of_items) { // Invalid choice
                             printf("\n\t!Wrong Input! \n\t! Try Again ! \n\n");
-                            run = true; 
+                            run_the_cart_rmoval = true; 
                         } else if (item_to_remove >= 1 || item_to_remove <= number_of_items) {
                             remove_item_from_cart(item_to_remove - 1);
-                            run = true;
+                            run_the_cart_rmoval = true;
                             printf("\n[Item removed from cart.]\n");
                         }
                         show_selected_items(); // Show the updated cart
@@ -999,5 +1000,4 @@ if (section == 0) { // Exit the program
     return 0;
 
 }
-
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
