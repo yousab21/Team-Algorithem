@@ -86,7 +86,7 @@ float discount_value = 0.0;
 // Global Variables
 double full_price = 0; // Full Price of the purchased items
 int number_of_items = 0; // Number of Purchesed items
-struct product item[100]; // Array of items
+struct product item[100]; // Array of items in the cart
 int item_index = 0; // Index for the items
 int shipping_method; // Shipping Method
 
@@ -424,6 +424,68 @@ void remove_item_from_cart(int item_index) {
     full_price -= item[item_index].price; // Update the total price
     printf("Item removed from cart.\n");
 }
+//---------------------------------------------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------------------------------------------
+
+// 3am Far8ali's recipes from cart items
+
+void suggestRecipeFromFood() {
+    int hasBananas = 0, hasRice = 0, hasBread = 0, hasEggs = 0, hasMilk = 0, hasCheese = 0, hasButter = 0, hasChicken = 0, hasApples = 0;
+
+    for (int i = 0; i < number_of_items; i++) {
+        if (strcmp(item[i].name, "Bananas (1kg)      ") == 0) hasBananas = 1;
+        if (strcmp(item[i].name, "Rice    (1kg)      ") == 0) hasRice = 1;
+        if (strcmp(item[i].name, "Bread  (loaf)      ") == 0) hasBread = 1;
+        if (strcmp(item[i].name, "Eggs  (dozen)      ") == 0) hasEggs = 1;
+        if (strcmp(item[i].name, "Milk     (1L)      ") == 0) hasMilk = 1;
+        if (strcmp(item[i].name, "Cheese (200g)      ") == 0) hasCheese = 1;
+        if (strcmp(item[i].name, "Butter (250g)      ") == 0) hasButter = 1;
+        if (strcmp(item[i].name, "Chicken (1kg)      ") == 0) hasChicken = 1;
+        if (strcmp(item[i].name, "Apples  (1kg)      ") == 0) hasApples = 1;
+    }
+    
+    int all_of_them = hasApples + hasBananas + hasRice + hasBread + hasEggs + hasMilk + hasCheese + hasButter + hasChicken;
+
+    if (all_of_them > 0) {
+        printf("\n3m Far8ali👳: 7abibi, el akl elly 3andak fi el cart da 7aga 7elw awi! \n");
+    }
+
+    // Recipe suggestions based on available ingredients
+    if (hasBananas && hasMilk) {
+        printf("Bananas + Milk = Smoothie farghali, ya 7abibi 🥤🍌\n");
+    }
+    if (hasChicken && hasRice) {
+        printf("Chicken + Rice = Farghali's Special Chicken & Rice 🍗🍚\n");
+    }
+    if (hasEggs && hasCheese && hasBread) {
+        printf("Eggs + Cheese + Bread = Sandwich farghali style! 🍞🧀🍳\n");
+    }
+    if (hasApples && hasCheese) {
+        printf("Apples + Cheese = Salata farghali, ba7ebeh 🧀🍏\n");
+    }
+    if (hasBananas && hasEggs) {
+        printf("Bananas + Eggs = Pancakes farghali style! 🥞🍌\n");
+    }
+    if (hasChicken && hasCheese && hasBread) {
+        printf("Chicken + Cheese + Bread = Sandwich ala Farghali! 🍗🧀🍞\n");
+    }
+    if (hasRice && hasMilk) {
+        printf("Rice + Milk = Rice pudding, ya 7abibi! 🍚🥛\n");
+    }
+    if (hasBananas && hasApples && hasMilk) {
+        printf("Bananas + Apples + Milk = Smoothie farghali style, ya m3alem 🍌🍏🥛\n");
+    }
+    if (hasEggs && hasCheese) {
+        printf("Eggs + Cheese = Omelette farghali! 🍳🧀\n");
+    }
+    if (hasBananas && hasEggs && hasButter) {
+        printf("Bananas + Eggs + Butter = Banana bread, farghali style! 🍌🍞\n");
+    }
+
+    if (all_of_them == 0) {
+        printf("\nMafish Akl kifayah 3shan elwasfah fi Al salah ya m3lem. 👳\n\n");
+    }
+}
 
 //=========================================================================================================================================================================//
 //=================================================================END OF FEATURES SECTION OF THE CODE=====================================================================//
@@ -451,18 +513,18 @@ int main() {
 
         // Choosing the desired section in the grocery shop
         while (run) {
-            printf("For Food Enter \"1\" \nFor Drinks Enter \"2\" \nFor Clothes Enter \"3\" \nFor Medicine Enter \"4\" \n======================\nTo See Your Cart Enter \"5\" \nFor Customer Support Enter \"6\" \n"); // Print out the sections
+            printf("For Food Enter \"1\" 🍔 \nFor Drinks Enter \"2\" 🍹 \nFor Clothes Enter \"3\" 👕 \nFor Medicine Enter \"4\" 💊 \n======================\nTo See Your Cart Enter \"5\" 🛒 \nFor Customer Support Enter \"6\" 🎧 \nFor Far8li's Recipes Enter \"7\" 🥘👳 \n"); // Print out the sections
             if (number_of_items > 0) { // If there are items in the cart then print the payment option
-                printf("\n[Proceed to payment Enter \"7\"] \n");
+                printf("\n[Proceed to payment Enter \"8\"] \n");
             }
             printf("\nSection [Enter 0 to Exit the Program]: "); // Choossing the section
             scanf("%d", &section); // Choosing the section
             fflush(stdin);
 
             if (number_of_items > 0) { // If there are items in the cart then show the payment option
-                if (section < 0 || section > 7) {
+                if (section < 0 || section > 8) {
                     printf("\n\t!Wrong Input! \n\t! Try Again ! \n\n");
-                } else if (section == 7) { // Proceed to payment
+                } else if (section == 8) { // Proceed to payment
                         checker = false;
                         run = 0;
                 } else if (section == 0) { // Exit the program
@@ -474,7 +536,7 @@ int main() {
             }
 
             if (number_of_items == 0) { // If there are no items in the cart then do not show the payment option
-                if (section < 0 || section > 6) {
+                if (section < 0 || section > 7) {
                     printf("\n\t!Wrong Input! \n\t! Try Again ! \n\n");
                 } else if (section == 0) { // Exit the program
                     checker = false;
@@ -693,7 +755,10 @@ int main() {
                         run = 1;
                     }
                 }
-                break;
+            break;
+            case 7: // far8ali's recipe suggestion
+                suggestRecipeFromFood();
+            break;
         }
 
 }
@@ -708,7 +773,6 @@ if (section == 0) { // Exit the program
     bool LocationVerification = true;
     int choiceOfShipping;
         
-    if(shipping_method != 4) {     //only print out shipping location if the the shipping method is not take away
         while (LocationVerification) { // Loop until a valid location is selected
                 
             printf("\nSelect your shipping address from the list below:\n"); // Show the locations
@@ -727,7 +791,7 @@ if (section == 0) { // Exit the program
                     LocationVerification = false;
                 }
             }
-        }
+        
             //----------------------------------------------------------------------------------------------------------------------------------------------------------------
             
             check_coupon(); // check for the coupon
