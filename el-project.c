@@ -248,7 +248,7 @@ int Payment_Function(double total) {  // Choosing out the payment method
             break;
         case 3:
             int reEnter=1 ,len,is_valid;
-            char mobile_number[12];
+            char mobile_number[11];
             char number_response;
 
             while(reEnter)
@@ -257,7 +257,8 @@ int Payment_Function(double total) {  // Choosing out the payment method
                 printf("\n==============================================");
                 printf("\nPaying via digital services %.2f EGP...\n",total);
                 printf("Please Enter your mobile number: ");
-                fgets(mobile_number, 12 ,stdin);
+                scanf("%s", mobile_number);
+
                 len = strlen(mobile_number);
                 
                 if (len !=11)
@@ -990,9 +991,11 @@ if (section == 0) { // Exit the program
         printf("          ||             See You Soon :)            ||\n"); 
         printf("          ||========================================||\n\n\n");
         }
+
          Rating();
          
     return 0;
 
 }
+
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
