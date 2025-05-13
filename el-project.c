@@ -236,14 +236,14 @@ int Payment_Function(double total) {  // Choosing out the payment method
                 printf("\nInsufficient amount! Please pay at least [%0.2f EGP]\n\n\n", total);
                 Payment_Function(total); // Re-prompt recursively
             } else {
-                printf("\nPayment accepted. Change: %.2f EGP\n\n\n", paidAmount - total);
+                printf("\n\t\tPayment accepted. Change: %.2f EGP\n\n\n", paidAmount - total);
             }
             break;
         case 2:
-            printf("\n==============================================");
-            printf("\nProcessing credit card payment of %0.2f EGP...\n", total);
-            printf("\t\tPayment successful!\n");
-            printf("==============================================\n\n\n");
+            printf("\n\t\t\t==============================================");
+            printf("\n\t\t\tProcessing credit card payment of %0.2f EGP...", total);
+            printf("\n\t\t\t\t\tPayment successful!");
+            printf("\n\t\t\t==============================================\n\n\n");
 
             break;
         case 3:
@@ -255,17 +255,25 @@ int Payment_Function(double total) {  // Choosing out the payment method
             while(reEnter)
             {
                 int wrong=1;
-                printf("\n==============================================");
-                printf("\nPaying via digital services %.2f EGP...\n",total);
-                printf("Please Enter your mobile number: ");
+                printf("\n\t\t\t==============================================");
+                printf("\n\t\t\tPaying via digital services %.2f EGP...",total);
+                printf("\n\t\t\tPlease Enter your mobile number: ");
                 scanf("%s", mobile_number);
 
                 len = strlen(mobile_number);
                 
                 if (len !=11)
                 {
-                    printf("\nTHE NUMBER MUST BE 11 DIGITS!!");
-                    printf("\n\t Try Again  \n\n");
+                    printf("\n\t\t\tTHE NUMBER MUST BE 11 DIGITS!!");
+                    printf("\n\t\t\t\t Try Again  \n\n");
+                    is_valid=0;
+                } else if (mobile_number[0] != '0') {
+                    printf("\n\t\t\tTHE NUMBER MUST BEGIN WITH 01!!");
+                    printf("\n\t\t\t\t Try Again  \n\n");
+                    is_valid=0;
+                } else if (mobile_number[1] != '1') {
+                    printf("\n\t\t\tTHE NUMBER MUST BEGIN WITH 01!!");
+                    printf("\n\t\t\t\t Try Again  \n\n");
                     is_valid=0;
                 }
                 else
@@ -273,7 +281,7 @@ int Payment_Function(double total) {  // Choosing out the payment method
                 
                 while(is_valid)
                 {
-                    printf("\nCheck your mobile number: ");
+                    printf("\n\t\t\tCheck your mobile number: ");
 
                     for(int i=0;i<=12;i++)
                         printf("%c", mobile_number[i]);
@@ -282,7 +290,7 @@ int Payment_Function(double total) {  // Choosing out the payment method
 
                     while(wrong)
                     {
-                        printf("Choice: ");
+                        printf("\t\t\tChoice: ");
                         scanf(" %c", &number_response);
                         fflush(stdin);
                             
@@ -293,11 +301,11 @@ int Payment_Function(double total) {  // Choosing out the payment method
                             reEnter=0;
                             wrong=0;
                             is_valid=0;
-                            printf("Thank you\n");
+                            printf("\n\t\t\t\tThank you\n");
                         }
                         else if (number_response == 'n' || number_response == 'N')
                         {
-                            printf("Please reEnter your mobile number\n\n");
+                            printf("\n\t\t\tPlease reEnter your mobile number\n");
                             reEnter=1;
                             wrong=0;
                             is_valid=0;
@@ -305,7 +313,7 @@ int Payment_Function(double total) {  // Choosing out the payment method
 
                         else
                         {
-                            printf("\n\t!Wrong Input! \n\t! Try Again ! \n\n");
+                            printf("\n\t\t\t\t!Wrong Input! \n\t! Try Again ! \n\n");
                             wrong=1;
                             is_valid=0;
                         }
@@ -316,8 +324,8 @@ int Payment_Function(double total) {  // Choosing out the payment method
                 
             }
             
-            printf("\t\tPayment Succefully Proccesed!\n");
-            printf("==============================================\n\n\n");
+            printf("\t\t\t\t\tPayment Successfully Processed!");
+            printf("\n\t\t\t==============================================\n\n\n");
             break;
         }
         default:
@@ -490,7 +498,6 @@ void remove_item_from_cart(int item_index) {
     }
     number_of_items--;
     full_price -= item[item_index].price; // Update the total price
-    printf("Item removed from cart.\n");
 }
 //---------------------------------------------------------------------------------------------------------------------------------------------------------
 //---------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -833,6 +840,7 @@ int main() {
                         }
                         show_selected_items(); // Show the updated cart
                     }
+                    checker = true;
                 }
 
                 break;
