@@ -248,89 +248,44 @@ int Payment_Function(double total) {  // Choosing out the payment method
             break;
         case 3:
         {
-            int reEnter=1 ,len,is_valid;
+            int len, not_valid=1;
             char mobile_number[11];
-            char number_response;
+            char check_number;
 
-            while(reEnter)
-            {
-                int wrong=1;
-                printf("\n\t\t\t==============================================");
-                printf("\n\t\t\tPaying via digital services %.2f EGP...",total);
+            printf("\n\t\t\t==============================================");
+            printf("\n\t\t\tPaying via digital services %.2f EGP...",total);
+
+            while(not_valid){
+                
                 printf("\n\t\t\tPlease Enter your mobile number: ");
                 scanf("%s", mobile_number);
-
+                fflush(stdin);
                 len = strlen(mobile_number);
-                
-                if (len !=11)
-                {
-                    printf("\n\t\t\tTHE NUMBER MUST BE 11 DIGITS!!");
-                    printf("\n\t\t\t\t Try Again  \n\n");
-                    is_valid=0;
-                } else if (mobile_number[0] != '0') {
-                    printf("\n\t\t\tTHE NUMBER MUST BEGIN WITH 01!!");
-                    printf("\n\t\t\t\t Try Again  \n\n");
-                    is_valid=0;
-                } else if (mobile_number[1] != '1') {
-                    printf("\n\t\t\tTHE NUMBER MUST BEGIN WITH 01!!");
-                    printf("\n\t\t\t\t Try Again  \n\n");
-                    is_valid=0;
+
+                if ( (len !=11) || (mobile_number[0] != '0') || (mobile_number[1] != '1' ) ){
+                    printf("\n\t\t\tInvalid mobile number. Please try again.\n");
+                    not_valid = 1;
+                }   
+                else{
+                   printf("\n\t\t\t confirm this is your mobile number: %s ? [Y/n] \n", mobile_number);
+                    scanf(" %c", &check_number);
+                    fflush(stdin);
+
+                    if (check_number == 'Y' || check_number == 'y') {
+                        not_valid = 0; 
+                        printf("\t\t\t\t\tPayment Successfully Processed!");
+                        printf("\n\t\t\t==============================================\n\n\n");
+                    } else {
+                        not_valid = 1;
+                    }
                 }
-                else
-                    is_valid=1;
-                
-                while(is_valid)
-                {
-                    printf("\n\t\t\tCheck your mobile number: ");
-
-                    for(int i=0;i<=12;i++)
-                        printf("%c", mobile_number[i]);
-            
-                    printf(" (Y/n)\n\n");
-
-                    while(wrong)
-                    {
-                        printf("\t\t\tChoice: ");
-                        scanf(" %c", &number_response);
-                        fflush(stdin);
-                            
-
-                
-                        if (number_response == 'y' || number_response == 'Y')
-                        {
-                            reEnter=0;
-                            wrong=0;
-                            is_valid=0;
-                            printf("\n\t\t\t\tThank you\n");
-                        }
-                        else if (number_response == 'n' || number_response == 'N')
-                        {
-                            printf("\n\t\t\tPlease reEnter your mobile number\n");
-                            reEnter=1;
-                            wrong=0;
-                            is_valid=0;
-                        }
-
-                        else
-                        {
-                            printf("\n\t\t\t\t!Wrong Input! \n\t! Try Again ! \n\n");
-                            wrong=1;
-                            is_valid=0;
-                        }
-                        
-                    } 
-                }
-             
-                
             }
-            
-            printf("\t\t\t\t\tPayment Successfully Processed!");
-            printf("\n\t\t\t==============================================\n\n\n");
             break;
         }
-        default:
-            printf("\nInvalid choice. Try again.\n");
-            Payment_Function(total);
+
+default:
+printf("\nInvalid choice. Try again.\n");
+Payment_Function(total);
     }
     return paymentMethod;
 }
