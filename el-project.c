@@ -796,6 +796,8 @@ int main() {
                         show_selected_items(); // Show the updated cart
                     }
                     checker = true;
+                } else {
+                    checker = true;
                 }
 
                 break;
