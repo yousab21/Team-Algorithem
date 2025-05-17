@@ -145,7 +145,7 @@ int Shipping() {
     int run = 1;
     int shippingPrice = 0;
     while (run) {
-        printf("\n1. Standard Shipping\t5-7 Days\t10$\n2. Fast Shipping\t\t2-3 Days\t17$\n3. Overnight Shipping\tNext Day\t25$\n\nchoose shipping option: "); // All Shipping choices
+        printf("\n1. Standard Shipping\t5-7 Days\t10$\n2. Fast Shipping\t2-3 Days\t17$\n3. Overnight Shipping\tNext Day\t25$\n\nchoose shipping option: "); // All Shipping choices
         scanf("%d", &shipping_method); // Receives The Shipping Option Chose By The User.
         fflush(stdin);
         
