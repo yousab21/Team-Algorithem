@@ -1,9 +1,13 @@
-// Yousab Nabil Nasrala  || Section (39)
+// Yousab Nabil Nasrala   || Section (39)
 // Yahia Khaled Elsafty   || Section (39)
 // Mohamed Hamada AboSeda || Section (39)
 // Yassin Khaled Elnaggar || Section (39)
 // Omar Mohamed Ragaa     || Section (22)
 // Omar Mohamed Shehata   || Section (22)
+// Mahmoud Saad Helal     || Section (33)
+// Mohamed Sobhi Eltelwy  || Section (29)
+// Mohamed Elnagar        || Section (30)
+// Mahmoud Samir Saad     || SEction (33)
 
 // Libraries
 #include <stdio.h>
