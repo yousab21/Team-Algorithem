@@ -123,16 +123,16 @@ char greetings_3m_far8ali [10][100] = {
 };
 
 char farewells_3m_far8ali [10][100] = {
-    "[3m far8ali👳 : Maʿ el salama ya basha!]",
-    "[3m far8ali👳 : Yalla salam ya gameel!]",
-    "[3m far8ali👳 : Ashofak 3la 5eir insha2 Allah!]",
-    "[3m far8ali👳 : Matet2akharsh 3alina keda ya ma3lem!]",
-    "[3m far8ali👳 : Yalla bye bye ya ma3lem !]",
-    "[3m far8ali👳 : tenawatna fi 2y wa3t, el makan makanak!]",
-    "[3m far8ali👳 : Dayman menawarna ya 7abibi!]",
-    "[3m far8ali👳 : 7ala ya kebeer salamli 3la el 3eyal]",
-    "[3m far8ali👳 : 7adretak tesharraf ay wa2t]",
-    "[3m far8ali👳 : te4arfna 3alatoon ya m3alem]" 
+    "[3m far8ali👳 : Maʿ el salama ya basha!🧾]",
+    "[3m far8ali👳 : Yalla salam ya gameel!🧾]",
+    "[3m far8ali👳 : Ashofak 3la 5eir insha2 Allah!🧾]",
+    "[3m far8ali👳 : Matet2akharsh 3alina keda ya ma3lem!🧾]",
+    "[3m far8ali👳 : Yalla bye bye ya ma3lem !🧾]",
+    "[3m far8ali👳 : tenawatna fi 2y wa3t, el makan makanak!🧾]",
+    "[3m far8ali👳 : Dayman menawarna ya 7abibi!🧾]",
+    "[3m far8ali👳 : 7ala ya kebeer salamli 3la el 3eyal🧾]",
+    "[3m far8ali👳 : 7adretak tesharraf ay wa2t🧾]",
+    "[3m far8ali👳 : te4arfna 3alatoon ya m3alem🧾]" 
 };
 
 
@@ -218,9 +218,9 @@ int Payment_Function(double total) {  // Choosing out the payment method
 
     printf("\n------ Payment ------\n");
     printf("Select payment method:\n");
-    printf("1. Cash\n");
-    printf("2. Credit Card\n");
-    printf("3. Vodafone Cash \\ Fawary\n");
+    printf("1. Cash 💲\n");
+    printf("2. Credit Card 💳\n");
+    printf("3. Vodafone Cash \\ Fawary 📲\n");
     printf("-----------------------------");
     printf("\n\nChoice: ");
     scanf("%d", &paymentMethod);
@@ -236,93 +236,56 @@ int Payment_Function(double total) {  // Choosing out the payment method
                 printf("\nInsufficient amount! Please pay at least [%0.2f EGP]\n\n\n", total);
                 Payment_Function(total); // Re-prompt recursively
             } else {
-                printf("\nPayment accepted. Change: %.2f EGP\n\n\n", paidAmount - total);
+                printf("\n\t\tPayment accepted. Change: %.2f EGP\n\n\n", paidAmount - total);
             }
             break;
         case 2:
-            printf("\n==============================================");
-            printf("\nProcessing credit card payment of %0.2f EGP...\n", total);
-            printf("\t\tPayment successful!\n");
-            printf("==============================================\n\n\n");
+            printf("\n\t\t\t==============================================");
+            printf("\n\t\t\tProcessing credit card payment of %0.2f EGP...", total);
+            printf("\n\t\t\t\t\tPayment successful!");
+            printf("\n\t\t\t==============================================\n\n\n");
 
             break;
         case 3:
         {
-            int reEnter=1 ,len,is_valid;
+            int len, not_valid=1;
             char mobile_number[11];
-            char number_response;
+            char check_number;
 
-            while(reEnter)
-            {
-                int wrong=1;
-                printf("\n==============================================");
-                printf("\nPaying via digital services %.2f EGP...\n",total);
-                printf("Please Enter your mobile number: ");
+            printf("\n\t\t\t==============================================");
+            printf("\n\t\t\tPaying via digital services %.2f EGP...",total);
+
+            while(not_valid){
+                
+                printf("\n\t\t\tPlease Enter your mobile number: ");
                 scanf("%s", mobile_number);
-
+                fflush(stdin);
                 len = strlen(mobile_number);
-                
-                if (len !=11)
-                {
-                    printf("\nTHE NUMBER MUST BE 11 DIGITS!!");
-                    printf("\n\t Try Again  \n\n");
-                    is_valid=0;
+
+                if ( (len !=11) || (mobile_number[0] != '0') || (mobile_number[1] != '1' ) ){
+                    printf("\n\t\t\tInvalid mobile number. Please try again.\n");
+                    not_valid = 1;
+                }   
+                else{
+                   printf("\n\t\t\t confirm this is your mobile number: %s ? [Y/n] \n", mobile_number);
+                    scanf(" %c", &check_number);
+                    fflush(stdin);
+
+                    if (check_number == 'Y' || check_number == 'y') {
+                        not_valid = 0; 
+                        printf("\t\t\t\t\tPayment Successfully Processed!");
+                        printf("\n\t\t\t==============================================\n\n\n");
+                    } else {
+                        not_valid = 1;
+                    }
                 }
-                else
-                    is_valid=1;
-                
-                while(is_valid)
-                {
-                    printf("\nCheck your mobile number: ");
-
-                    for(int i=0;i<=12;i++)
-                        printf("%c", mobile_number[i]);
-            
-                    printf(" (Y/n)\n\n");
-
-                    while(wrong)
-                    {
-                        printf("Choice: ");
-                        scanf(" %c", &number_response);
-                        fflush(stdin);
-                            
-
-                
-                        if (number_response == 'y' || number_response == 'Y')
-                        {
-                            reEnter=0;
-                            wrong=0;
-                            is_valid=0;
-                            printf("Thank you\n");
-                        }
-                        else if (number_response == 'n' || number_response == 'N')
-                        {
-                            printf("Please reEnter your mobile number\n\n");
-                            reEnter=1;
-                            wrong=0;
-                            is_valid=0;
-                        }
-
-                        else
-                        {
-                            printf("\n\t!Wrong Input! \n\t! Try Again ! \n\n");
-                            wrong=1;
-                            is_valid=0;
-                        }
-                        
-                    } 
-                }
-             
-                
             }
-            
-            printf("\t\tPayment Succefully Proccesed!\n");
-            printf("==============================================\n\n\n");
             break;
         }
-        default:
-            printf("\nInvalid choice. Try again.\n");
-            Payment_Function(total);
+
+default:
+printf("\nInvalid choice. Try again.\n");
+Payment_Function(total);
     }
     return paymentMethod;
 }
@@ -490,7 +453,6 @@ void remove_item_from_cart(int item_index) {
     }
     number_of_items--;
     full_price -= item[item_index].price; // Update the total price
-    printf("Item removed from cart.\n");
 }
 //---------------------------------------------------------------------------------------------------------------------------------------------------------
 //---------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -600,6 +562,7 @@ int main() {
     bool checker = true;
     char other_section;
     int section;
+    bool run_the_cart_rmoval = true;
 
     // Random number generators ::   
         srand(time(NULL));  
@@ -617,7 +580,7 @@ int main() {
 
         // Choosing the desired section in the grocery shop
         while (run) {
-            printf("For Food Enter \"1\" 🍔 \nFor Drinks Enter \"2\" 🍹 \nFor Clothes Enter \"3\" 👕 \nFor Medicine Enter \"4\" 💊 \n======================\nTo See Your Cart Enter \"5\" 🛒 \nFor Customer Support Enter \"6\" 🎧 \nFor Far8li's Recipes Enter \"7\" 🥘👳 \n"); // Print out the sections
+            printf("For Food Enter \"1\" 🍔 \nFor Drinks Enter \"2\" 🍹 \nFor Clothes Enter \"3\" 👕 \nFor Medicine Enter \"4\" 💊 \n======================\nTo See Your Cart Enter \"5\" 🛒 \nFor Es2al Far8ali Enter \"6\" ❓ \nFor Far8li's Recipes Enter \"7\" 🥘👳 \n"); // Print out the sections
             if (number_of_items > 0) { // If there are items in the cart then print the payment option
                 printf("\n\t\t\t\t[Proceed to payment Enter \"8\" 💵 ] \n");
             }
@@ -813,7 +776,7 @@ int main() {
                 if (check_for_removal == 'r') { // If the user wants to remove an item from the cart
                     run = true;
 
-                    while (run) 
+                    while (run_the_cart_rmoval) 
                     {
                         printf("Enter the number of the item you want to remove [Press 0 for exit]: ");
                         scanf("%d", &item_to_remove);
@@ -821,17 +784,20 @@ int main() {
 
                         if (item_to_remove == 0) { // Exit when user enters 0
                             printf("\nExiting the cart section...........\n\n");
-                            run = false;
+                            run_the_cart_rmoval = false;
                         } else if (item_to_remove < 1 || item_to_remove > number_of_items) { // Invalid choice
                             printf("\n\t!Wrong Input! \n\t! Try Again ! \n\n");
-                            run = true; 
+                            run_the_cart_rmoval = true; 
                         } else if (item_to_remove >= 1 || item_to_remove <= number_of_items) {
                             remove_item_from_cart(item_to_remove - 1);
-                            run = true;
+                            run_the_cart_rmoval = true;
                             printf("\n[Item removed from cart.]\n");
                         }
                         show_selected_items(); // Show the updated cart
                     }
+                    checker = true;
+                } else {
+                    checker = true;
                 }
 
                 break;
@@ -999,5 +965,4 @@ if (section == 0) { // Exit the program
     return 0;
 
 }
-
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
